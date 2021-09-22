@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:key="theme"
+        app:iconSpaceReserved="false"
+        app:summary="@string/summary_light"
+        app:title="@string/title_theme" />
+
+    <SwitchPreference
+        app:key="use_system_colors"
+        android:summary="@string/summary_system_colors"
+        app:iconSpaceReserved="false"
+        app:title="@string/title_system_colors" />
+
+    <Preference
+        app:icon="@drawable/ic_info_24dp"
+        app:selectable="false"
+        app:summary="@string/message_system_colors_only" />
+</PreferenceScreen>

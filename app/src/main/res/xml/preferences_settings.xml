@@ -1,0 +1,27 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:icon="@drawable/ic_general_36dp"
+        app:key="general"
+        app:summary="@string/summary_general"
+        app:title="@string/title_general" />
+
+    <Preference
+        app:icon="@drawable/ic_appearance_36dp"
+        app:key="appearance"
+        app:summary="@string/summary_appearance"
+        app:title="@string/title_appearance" />
+
+    <Preference
+        app:icon="@drawable/ic_experimental_36dp"
+        app:key="experimental"
+        app:summary="@string/summary_experimental"
+        app:title="@string/title_experimental" />
+
+    <Preference
+        app:icon="@drawable/ic_about_36dp"
+        app:key="about"
+        app:summary="@string/summary_about"
+        app:title="@string/title_about" />
+
+</PreferenceScreen>

@@ -1,0 +1,58 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Splash theme. -->
+    <style name="Theme.Debuggy.SplashTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+        <item name="android:statusBarColor">@color/gray_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="l">@color/gray_900</item>
+        <item name="colorPrimary">@color/amber_neutral_100</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="Theme.Debuggy.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/amber_neutral_100</item>
+        <item name="colorPrimaryVariant">@color/amber_neutral_400</item>
+        <item name="colorOnPrimary">@color/gray_900</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/light_green_100</item>
+        <item name="colorSecondaryVariant">@color/light_green_300</item>
+        <item name="colorOnSecondary">@color/gray_900</item>
+        <!-- Customize your theme here. -->
+        <item name="android:colorBackground">@color/gray_900</item>
+        <item name="colorSurface">@color/gray_900</item>
+        <item name="colorError">@color/red_200</item>
+        <item name="colorOnBackground">@color/gray_50</item>
+        <item name="colorOnSurface">@color/gray_50</item>
+        <item name="colorOnError">@color/gray_50</item>
+        <!--Material type attributes-->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Debuggy.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Debuggy.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.Debuggy.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.Debuggy.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.Debuggy.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Debuggy.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Debuggy.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.Debuggy.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Debuggy.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Debuggy.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Debuggy.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Debuggy.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.Debuggy.Overline</item>
+        <!--Material shape attributes-->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Debuggy.SmallComponent
+        </item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Debuggy.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Debuggy.LargeComponent
+        </item>
+        <!--Fix issue with scrollbars in jetpack navigation-->
+        <item name="android:scrollbars">none</item>
+        <item name="preferenceTheme">@style/Debuggy.PreferenceThemeOverlay</item>
+        <item name="snackbarStyle">@style/Base.Widget.Debuggy.Snackbar</item>
+    </style>
+
+    <style name="Theme.Debuggy.App" parent="Theme.Debuggy.Base">
+        <item name="android:statusBarColor">@color/gray_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="l">@color/gray_900</item>
+    </style>
+</resources>

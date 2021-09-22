@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ShapeAppearance.Debuggy.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corners_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Debuggy.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corners_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Debuggy.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corners_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Debuggy.Custom.Start" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomRight">@dimen/corners_4</item>
+        <item name="cornerSizeTopRight">@dimen/corners_4</item>
+        <item name="cornerSize">@dimen/corners_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Debuggy.Custom.Inside" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corners_4</item>
+    </style>
+
+    <style name="ShapeAppearance.Debuggy.Custom.End" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">@dimen/corners_4</item>
+        <item name="cornerSizeTopLeft">@dimen/corners_4</item>
+        <item name="cornerSize">@dimen/corners_size</item>
+    </style>
+</resources>

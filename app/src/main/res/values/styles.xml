@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Debuggy.PreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
+        <item name="android:layout">@layout/fragment_settings</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:summary">?colorOnBackground</item>
+        <item name="android:textColorSecondary">?android:textColorSecondary</item>
+    </style>
+
+    <style name="Widget.Debuggy.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAppearance">@style/TextAppearance.Debuggy.Subtitle2</item>
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Base.Widget.Debuggy.Snackbar" parent="Base.Widget.MaterialComponents.Snackbar">
+        <item name="shapeAppearance">@style/ShapeAppearance.Debuggy.SmallComponent</item>
+    </style>
+</resources>

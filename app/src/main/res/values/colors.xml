@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="amber_0">#FFFFFF</color>
+    <color name="amber_10">#FFFBF9</color>
+    <color name="amber_50">#FFEEDC</color>
+    <color name="amber_100">#FFDDB6</color>
+    <color name="amber_200">#FFB85D</color>
+    <color name="amber_300">#E69B37</color>
+    <color name="amber_400">#C7811D</color>
+    <color name="amber_500">#A76800</color>
+    <color name="amber_600">#875300</color>
+    <color name="amber_700">#663D00</color>
+    <color name="amber_800">#482A00</color>
+    <color name="amber_900">#2B1700</color>
+    <color name="amber_1000">#000000</color>
+
+    <color name="amber_neutral_0">#FFFFFF</color>
+    <color name="amber_neutral_10">#FFFBF9</color>
+    <color name="amber_neutral_50">#FFEEDC</color>
+    <color name="amber_neutral_100">#FDDDBD</color>
+    <color name="amber_neutral_200">#DFC1A2</color>
+    <color name="amber_neutral_300">#C3A689</color>
+    <color name="amber_neutral_400">#A78C70</color>
+    <color name="amber_neutral_500">#8A7257</color>
+    <color name="amber_neutral_600">#715A41</color>
+    <color name="amber_neutral_700">#57432B</color>
+    <color name="amber_neutral_800">#3F2D17</color>
+    <color name="amber_neutral_900">#281805</color>
+    <color name="amber_neutral_1000">#000000</color>
+
+    <color name="light_green_0">#FFFFFF</color>
+    <color name="light_green_10">#F9FFE2</color>
+    <color name="light_green_50">#E1FAB6</color>
+    <color name="light_green_100">#D2ECA9</color>
+    <color name="light_green_200">#B7CF8F</color>
+    <color name="light_green_300">#9CB376</color>
+    <color name="light_green_400">#82995E</color>
+    <color name="light_green_500">#687D46</color>
+    <color name="light_green_600">#516530</color>
+    <color name="light_green_700">#394D1A</color>
+    <color name="light_green_800">#233605</color>
+    <color name="light_green_900">#112000</color>
+    <color name="light_green_1000">#000000</color>
+
+    <color name="gray_0">#FFFFFF</color>
+    <color name="gray_10">#FFFBF9</color>
+    <color name="gray_50">#F9EFE7</color>
+    <color name="gray_100">#EBE0D9</color>
+    <color name="gray_200">#CEC5BD</color>
+    <color name="gray_300">#B2AAA2</color>
+    <color name="gray_400">#978F89</color>
+    <color name="gray_500">#7C756E</color>
+    <color name="gray_600">#645D58</color>
+    <color name="gray_700">#4C4540</color>
+    <color name="gray_800">#35302A</color>
+    <color name="gray_900">#1F1B16</color>
+    <color name="gray_1000">#000000</color>
+
+    <color name="gray_neutral_0">#FFFFFF</color>
+    <color name="gray_neutral_10">#FFFBF9</color>
+    <color name="gray_neutral_50">#FFEEDD</color>
+    <color name="gray_neutral_100">#F1E0D0</color>
+    <color name="gray_neutral_200">#D4C4B4</color>
+    <color name="gray_neutral_300">#B8A89A</color>
+    <color name="gray_neutral_400">#9D8E81</color>
+    <color name="gray_neutral_500">#817467</color>
+    <color name="gray_neutral_600">#695C50</color>
+    <color name="gray_neutral_700">#4F4539</color>
+    <color name="gray_neutral_800">#382F24</color>
+    <color name="gray_neutral_900">#231A11</color>
+    <color name="gray_neutral_1000">#000000</color>
+
+    <color name="settings1">#4285F4</color>
+    <color name="settings2">#EA4335</color>
+    <color name="settings3">#FBBC04</color>
+    <color name="settings4">#34A853</color>
+
+    <color name="red_200">#F2B8B5</color>
+    <color name="red_700">#B3261E</color>
+</resources>

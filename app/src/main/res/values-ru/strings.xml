@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">Debuggy</string>
+
+    <string name="title_home">Главная</string>
+    <string name="title_settings">Настройки</string>
+    <string name="title_faq">Часто Задаваемые Вопросы</string>
+
+    <string name="header_information">Информация</string>
+    <string name="header_developers">Разработчики</string>
+    <string name="header_contributors">Участники</string>
+    <string name="header_description">Описание</string>
+    <string name="header_instruction">Инструкция</string>
+    <string name="header_dependencies">Зависимости</string>
+
+    <string name="title_adb_daemon">ADB daemon</string>
+    <string name="summary_adb_daemon_running">Запущен</string>
+    <string name="summary_adb_daemon_stopped">Остановлен</string>
+    <string name="summary_adb_daemon_with_root">Статус доступен с рут</string>
+    <string name="title_adbd_listening_port">Активный ADBD порт</string>
+    <string name="summary_adbd_listening_port">%1$s</string>
+    <string name="title_root_access">Рут доступ</string>
+    <string name="summary_root_access_granted">Предоставлен</string>
+    <string name="summary_root_access_declined">Отклонен</string>
+    <string name="summary_root_access_not_requested">Еще не запрашивался</string>
+    <string name="title_adb_over_usb">Отладка по USB</string>
+    <string name="summary_adb_over_usb_enabled">Включёна</string>
+    <string name="summary_adb_over_usb_disabled">Отключёна</string>
+
+    <string name="summary_connect_to_device">Подключите это устройство и компьютер к одной сети WI-FI</string>
+    <string name="summary_run_command">На ПК запустите команду: adb connect %1$s:%2$s</string>
+
+    <string name="title_general">Общие</string>
+    <string name="summary_general">Пользовательский порт, запуск после загрузки</string>
+    <string name="title_appearance">Внешний вид</string>
+    <string name="summary_appearance">Тёмная тема, системные цвета</string>
+    <string name="title_experimental">Экспериментальные</string>
+    <string name="summary_experimental">Невыпущенные функции</string>
+    <string name="title_about">О приложении</string>
+    <string name="summary_about">Версия, журнал изменений, F.A.Q, обновления</string>
+
+    <string name="title_adb_enabled">Отладка по сети включена</string>
+    <string name="content_adb_enabled">"Доступен на: %1$s:5555"</string>
+
+    <string name="message_action_unavailable">Это действие доступно только с рут</string>
+
+    <string name="message_network_connection_failed">Ваша сеть недоступна. Проверьте ваше WI-FI соединение.</string>
+    <string name="text_turn_on_internet">Включить WIFI</string>
+
+    <string name="action_save">Сохранить</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="action_reset">Сбросить</string>
+    <string name="action_ok">OK</string>
+
+    <string name="title_set_custom_port">Установить пользовательский порт</string>
+    <string name="summary_port">Порт</string>
+    <string name="error_port_less_4_char">Порт не может быть короче 4 символов</string>
+
+    <string name="toast_debuggy_running">Debuggy запущен…</string>
+
+    <string name="system_status_adb_enabled">ОТЛАДКА ПО USB СТАТУС = %1$b, [%2$d]</string>
+
+    <string name="header_set_theme">Установить тему</string>
+    <string name="header_set_adb_over_usb">Установить переменную отладки по USB</string>
+
+    <string name="message_system_colors_only">Системные цвета доступны только на android 12</string>
+    <string name="message_takes_effect_next_time">Вступает в силу при следующем включении отладки по сети</string>
+    <string name="message_adb_startup">Включает отладку по сети после запуска устройства. Может не работать на некоторых устройствах.</string>
+
+    <string name="title_theme">Тема</string>
+    <string name="summary_light">Светлая</string>
+    <string name="summary_dark">Тёмная</string>
+    <string name="summary_default">Следовать настройкам системы</string>
+    <string name="summary_system_colors">Использовать цвета, предоставленные системной темой</string>
+    <string name="title_system_colors">Использовать системные цвета</string>
+    <string name="summary_soft_restart">Перезагрузка устройств во избежание ошибок с отладкой по сети</string>
+    <string name="title_soft_restart">Мягкий перезапуск</string>
+    <string name="summary_adb_over_usb">Измените системную переменную отладки по USB</string>
+    <string name="title_custom_port">Пользовательский порт</string>
+    <string name="title_adb_after_boot">Включить отладку по сети после загрузки</string>
+
+    <string name="summary_support">F.A.Q</string>
+    <string name="summary_feedback">Обратная связь</string>
+    <string name="summary_news">Новости</string>
+    <string name="summary_translate">Перевести</string>
+    <string name="title_app_description">Приложение для включения отладки по сети</string>
+    <string name="title_changelog">Журнал изменений</string>
+    <string name="title_libraries">Библиотеки</string>
+    <string name="title_updates">Обновления</string>
+    <string name="version_concat_with_buildtime">%1$s \n %2$s</string>
+
+    <string name="jeffrey_status">Разработка &amp; Дизайн</string>
+    <string name="title_developer_portfolio">Портфолио</string>
+
+    <string name="title_without_root">Можно ли использовать приложение без рут-доступа?</string>
+    <string name="message_without_root">Нет, приложение использует рут-доступ для включения отладки по сети через системные значения. Вы можете использовать отладку по сети через пункт "Для разработчиков".</string>
+    <string name="title_connect_via_pc">Я не могу подключится к устройству через ПК</string>
+    <string name="message_connect_via_pc">Если у вас возникли трудности с подключением к устройству, я рекомендую проверить в "Для разработчиков" пункт "Отладка по WI-FI", возможно ваша прошивка не поддерживает данную функцию, или была вырезана разработчиком.</string>
+    <string name="title_connect_more_devices">Возможно ли подключить 2 и более устройств через отладку по сети к ПК?</string>
+    <string name="message_connect_more_devices">Да, специально для этого в настройках есть пункт "Пользовательский порт" что дает возможность менять порт на свой во избежание подобных ситуаций.</string>
+    <string name="title_after_load_not_work">Отладка по сети после загрузки устройства не работает</string>
+    <string name="message_after_load_not_work">Отладка по сети после загрузки может не работать если производитель прошивки ограничил возможность запускать программы в заднем фоне, в этом случае вам прийдется включать её вручную.</string>
+</resources>

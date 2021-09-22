@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="keyline_2">2dp</dimen>
+    <dimen name="keyline_4">4dp</dimen>
+    <dimen name="keyline_8">8dp</dimen>
+    <dimen name="keyline_10">10dp</dimen>
+    <dimen name="keyline_12">12dp</dimen>
+    <dimen name="keyline_16">16dp</dimen>
+    <dimen name="keyline_24">24dp</dimen>
+
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="icon_slot_size">48dp</dimen>
+
+    <dimen name="developer_avatar_size">64dp</dimen>
+    <dimen name="developer_avatar_margin">100dp</dimen>
+    <dimen name="product_icon_size">76dp</dimen>
+    <dimen name="card_elevation">3dp</dimen>
+    <dimen name="three_section_list_size">72dp</dimen>
+    <dimen name="banner_view_icon_size">40dp</dimen>
+    <integer name="port_max_length">4</integer>
+    <dimen name="shared_axis_x_slide_distance">64dp</dimen>
+    <dimen name="parallax_about_height">250dp</dimen>
+    <dimen name="fab_size">72dp</dimen>
+    <dimen name="dialog_slot_height">64dp</dimen>
+
+    <dimen name="app_bar_height">200dp</dimen>
+    <dimen name="app_bar_elevation">0dp</dimen>
+    <dimen name="toolbar_expanded_height">226dp</dimen>
+    <dimen name="toolbar_scrim_visible_height">174dp</dimen>
+    <dimen name="toolbar_expanded_title_margin">16dp</dimen>
+
+    <dimen name="corners_size">25dp</dimen>
+    <dimen name="corners_4">4dp</dimen>
+</resources>

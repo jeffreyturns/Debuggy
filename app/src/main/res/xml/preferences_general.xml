@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:iconSpaceReserved="false"
+        app:key="port"
+        app:summary="5555"
+        app:title="@string/title_custom_port" />
+
+    <Preference
+        app:icon="@drawable/ic_info_24dp"
+        app:selectable="false"
+        app:summary="@string/message_takes_effect_next_time" />
+
+    <SwitchPreference
+        app:allowDividerAbove="true"
+        app:iconSpaceReserved="false"
+        app:key="adb_after_boot"
+        app:summary=""
+        app:title="@string/title_adb_after_boot" />
+
+    <Preference
+        app:icon="@drawable/ic_info_24dp"
+        app:selectable="false"
+        app:summary="@string/message_adb_startup" />
+
+</PreferenceScreen>
