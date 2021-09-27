@@ -28,6 +28,7 @@
 
     <string name="summary_connect_to_device">Подключите это устройство и компьютер к одной сети WI-FI</string>
     <string name="summary_run_command">На ПК запустите команду: adb connect %1$s:%2$s</string>
+    <string name="message_ip_unable_determine">Невозможно определить IP-адрес. Проверьте ваше WI-FI соединение.</string>
 
     <string name="title_general">Общие</string>
     <string name="summary_general">Пользовательский порт, запуск после загрузки</string>
@@ -39,7 +40,7 @@
     <string name="summary_about">Версия, журнал изменений, F.A.Q, обновления</string>
 
     <string name="title_adb_enabled">Отладка по сети включена</string>
-    <string name="content_adb_enabled">"Доступен на: %1$s:5555"</string>
+    <string name="content_adb_enabled">"Доступна на: %1$s:5555"</string>
 
     <string name="message_action_unavailable">Это действие доступно только с рут</string>
 

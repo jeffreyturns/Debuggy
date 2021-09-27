@@ -40,6 +40,7 @@
 
     <string name="title_adb_enabled">ADB over network enabled</string>
     <string name="content_adb_enabled">"Available on: %1$s:5555"</string>
+    <string name="message_ip_unable_determine">Unable to determine the IP address. Check your WI-FI connection</string>
 
     <string name="message_action_unavailable">This action only available with root</string>
 

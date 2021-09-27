@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.jeffrey.debuggy.R
+import com.jeffrey.debuggy.utils.Constants
 import com.jeffrey.debuggy.utils.Utils
 import com.jeffrey.debuggy.utils.extensions.getAttr
 
@@ -25,10 +26,10 @@ class NotificationHelper(context: Context) {
                 .setColor(context.getAttr(R.attr.colorSecondary))
                 .setContentTitle(context.resources.getString(R.string.title_adb_enabled))
                 .setContentText(
-                    context.resources.getString(
+                    if (Utils.ip() != Constants.DUMMY_IP) context.resources.getString(
                         R.string.content_adb_enabled,
                         Utils.ip()
-                    )
+                    ) else context.getString(R.string.message_ip_unable_determine)
                 ).setPriority(-1)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE).setContentIntent(
                     PendingIntent.getActivity(

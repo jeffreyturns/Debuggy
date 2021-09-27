@@ -6,6 +6,7 @@ import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferenceHelper
 import com.jeffrey.debuggy.ui.setting.about.LibrariesAction
+import com.jeffrey.debuggy.utils.Constants
 import com.jeffrey.debuggy.utils.Utils
 
 fun informationHomeList(context: Context): List<Slot> {
@@ -59,11 +60,11 @@ fun instructionHomeList(context: Context): List<Slot> {
             summary = context.resources.getString(R.string.summary_connect_to_device)
         ),
         Slot(
-            summary = context.resources.getString(
+            summary = if (Utils.ip() != Constants.DUMMY_IP) context.resources.getString(
                 R.string.summary_run_command,
                 Utils.ip(),
                 PreferenceHelper.port(context)
-            )
+            ) else context.getString(R.string.message_ip_unable_determine)
         )
     )
 }
