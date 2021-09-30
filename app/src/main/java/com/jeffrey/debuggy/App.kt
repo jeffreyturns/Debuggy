@@ -17,7 +17,7 @@ class App : Application() {
     companion object {
 
         private var root = false
-        private var daemonStatus = Constants.SAFELY_NULL
+        private var daemonStatus = Constants.UNDEFINED_TEXT
         private var notificationHelper: NotificationHelper? = null
 
         fun isRoot(): Boolean {

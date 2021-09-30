@@ -17,7 +17,7 @@ import java.util.*
 object Utils {
 
     fun ip(): String {
-        var ip: String? = Constants.SAFELY_NULL
+        var ip: String? = Constants.UNDEFINED_TEXT
         try {
             try {
                 val en = NetworkInterface

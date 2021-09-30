@@ -4,7 +4,7 @@ object Constants {
 
     const val NO_ICON_SLOT = -1
     const val NO_TEXT = "%NO_TEXT%"
-    const val SAFELY_NULL = "NULL"
+    const val UNDEFINED_TEXT = "undefined"
     const val BUILDTIME_PATTERN = "dd.MM.yyyy HH:mm:ss"
     const val DUMMY_IP = "fe80::54df:95ff:fece:9fa7%dummy0"
 
