@@ -3,6 +3,7 @@ package com.jeffrey.debuggy.ui.home
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,9 +19,12 @@ import com.jeffrey.debuggy.utils.extensions.addInsetPaddings
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
+    var container: MotionLayout? = null
+
     override fun setUpViews() {
         returnTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
 
+        container = binding.mainContainer
         setHasOptionsMenu(true)
 
         NetworkUtil.listener(
@@ -63,10 +67,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun showBanner() {
-        binding.mainContainer.transitionToEnd()
+        container?.transitionToEnd()
     }
 
     private fun hideBanner() {
-        binding.mainContainer.transitionToStart()
+        container?.transitionToStart()
     }
 }
