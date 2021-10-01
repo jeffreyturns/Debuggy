@@ -26,7 +26,7 @@ class NotificationHelper(context: Context) {
                 .setColor(context.getAttr(R.attr.colorSecondary))
                 .setContentTitle(context.resources.getString(R.string.title_adb_enabled))
                 .setContentText(
-                    if (Utils.ip() != Constants.DUMMY_IP) context.resources.getString(
+                    if (Utils.ip() != Constants.UNDEFINED_TEXT) context.resources.getString(
                         R.string.content_adb_enabled,
                         Utils.ip()
                     ) else context.getString(R.string.message_ip_unable_determine)

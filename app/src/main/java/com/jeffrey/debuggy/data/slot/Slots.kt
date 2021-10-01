@@ -60,7 +60,7 @@ fun instructionHomeList(context: Context): List<Slot> {
             summary = context.resources.getString(R.string.summary_connect_to_device)
         ),
         Slot(
-            summary = if (Utils.ip() != Constants.DUMMY_IP) context.resources.getString(
+            summary = if (Utils.ip() != Constants.UNDEFINED_TEXT) context.resources.getString(
                 R.string.summary_run_command,
                 Utils.ip(),
                 PreferenceHelper.port(context)

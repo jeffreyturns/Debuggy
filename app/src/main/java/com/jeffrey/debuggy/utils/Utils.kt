@@ -35,11 +35,10 @@ object Utils {
             } catch (ex: Exception) {
                 Log.e("IP Address", ex.toString())
             }
-            return ip.toString()
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        return ip.toString()
+        return if (ip.toString().length > 13) Constants.UNDEFINED_TEXT else ip.toString()
     }
 
     fun restartApp(context: Context) {

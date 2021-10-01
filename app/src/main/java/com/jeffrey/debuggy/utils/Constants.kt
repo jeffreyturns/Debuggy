@@ -6,7 +6,6 @@ object Constants {
     const val NO_TEXT = "%NO_TEXT%"
     const val UNDEFINED_TEXT = "undefined"
     const val BUILDTIME_PATTERN = "dd.MM.yyyy HH:mm:ss"
-    const val DUMMY_IP = "fe80::54df:95ff:fece:9fa7%dummy0"
 
     const val URL_FEEDBACK = "https://github.com/Jeffrey01596/Debuggy/issues"
     const val URL_NEWS = "https://jeffrey01596.github.io/#/blog/debuggy"
