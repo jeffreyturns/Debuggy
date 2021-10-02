@@ -111,6 +111,10 @@ fun libsLibrariesList(action: LibrariesAction): List<Slot> {
         Slot(
             title = "Coil-kt / Coil",
             action = action::callCoilKtx
-        )
+        ),
+        Slot(
+            title = "InsertKoinIO / Koin",
+            action = action::callKoin
+        ),
     )
 }

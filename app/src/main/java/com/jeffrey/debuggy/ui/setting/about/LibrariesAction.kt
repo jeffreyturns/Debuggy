@@ -20,4 +20,8 @@ class LibrariesAction(private val context: Context) {
     fun callAndroidX() {
         callUrl("https://github.com/androidx/androidx")
     }
+
+    fun callKoin() {
+        callUrl("https://github.com/InsertKoinIO/koin")
+    }
 }

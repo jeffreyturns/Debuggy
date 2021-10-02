@@ -65,7 +65,6 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("com.google.android.material:material:1.5.0-alpha03")
     implementation("androidx.constraintlayout:constraintlayout:2.1.1")
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
@@ -74,8 +73,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.browser:browser:1.3.0")
+
+    implementation("com.google.android.material:material:1.5.0-alpha03")
+
     implementation("io.coil-kt:coil:1.3.2")
-    implementation("androidx.core:core:1.6.0")
+    implementation ("io.insert-koin:koin-android:3.1.2")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

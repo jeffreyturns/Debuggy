@@ -1,5 +1,7 @@
 package com.jeffrey.debuggy.data.notification
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
@@ -75,5 +77,22 @@ class NotificationHelper(context: Context) {
 
     fun cancelNoInternetConnectionNotification() {
         this.notificationManager.cancel(Notifications.ID_NO_INTERNET_CONNECTION)
+    }
+
+    companion object {
+
+        fun createNotificationChannel(channel: String, context: Context) {
+            if (Build.VERSION.SDK_INT >= 26) {
+                val notificationChannel =
+                    NotificationChannel(
+                        channel,
+                        context.getString(R.string.title_adb_enabled),
+                        NotificationManager.IMPORTANCE_DEFAULT
+                    )
+                (context.getSystemService(NotificationManager::class.java) as NotificationManager).createNotificationChannel(
+                    notificationChannel
+                )
+            }
+        }
     }
 }

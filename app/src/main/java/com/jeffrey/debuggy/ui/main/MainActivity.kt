@@ -22,6 +22,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.monet.MonetDynamicPalette
+import com.jeffrey.debuggy.data.notification.NotificationHelper
 import com.jeffrey.debuggy.data.preference.PreferenceHelper
 import com.jeffrey.debuggy.databinding.ActivityMainBinding
 import com.jeffrey.debuggy.ui.base.BaseActivity
@@ -30,10 +31,13 @@ import com.jeffrey.debuggy.utils.extensions.addInsetPaddings
 import com.jeffrey.debuggy.utils.extensions.navBarHeight
 import com.jeffrey.debuggy.utils.extensions.navigationType
 import com.jeffrey.debuggy.utils.extensions.toDp
+import org.koin.android.ext.android.inject
 import kotlin.math.roundToInt
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate),
     PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
+
+    private val notification: NotificationHelper by inject()
 
     override fun preSuperCall() {
         themeCall(false)
@@ -61,23 +65,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         initColors()
 
         if (PreferenceHelper.adb(this)) {
-            RootUtil.enableTcp(App.notificationManager(), this)
+            RootUtil.enableTcp(notification, this)
             TransitionUtil.disableIconImage(binding.adbIcon, this)
         } else {
-            RootUtil.disableTcp(App.notificationManager())
+            RootUtil.disableTcp(notification)
             TransitionUtil.enableIconImage(binding.adbIcon, this)
         }
 
         binding.fabAnimation.setOnClickListener {
             if (App.isRoot()) {
                 if (PreferenceHelper.adb(this)) {
-                    RootUtil.disableTcp(App.notificationManager())
+                    RootUtil.disableTcp(notification)
                     TransitionUtil.enableFAB(binding.fabAnimation, this)
                     TransitionUtil.enableIconImage(binding.adbIcon, this)
                     TransitionUtil.enableIcon(binding.adbIcon, this)
                     PreferenceHelper.adb(this, false)
                 } else {
-                    RootUtil.enableTcp(App.notificationManager(), this)
+                    RootUtil.enableTcp(notification, this)
                     TransitionUtil.disableFAB(binding.fabAnimation, this)
                     TransitionUtil.disableIconImage(binding.adbIcon, this)
                     TransitionUtil.disableIcon(binding.adbIcon, this)
