@@ -1,12 +1,11 @@
 package com.jeffrey.debuggy
 
-import android.app.Application
 import com.jeffrey.debuggy.data.notification.NotificationHelper.Companion.createNotificationChannel
 import com.jeffrey.debuggy.data.notification.Notifications
 import com.jeffrey.debuggy.utils.Constants
 import com.jeffrey.debuggy.utils.RootUtil
 
-class App : Application() {
+class App : AppModule() {
 
     private val process: Process = Runtime.getRuntime().exec("su")
 
@@ -26,7 +25,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        this.initModule()
+        initModule()
 
         root = RootUtil.canRunRootCommands(process)
         if (root) daemonStatus = RootUtil.getDaemonStatus(process)
