@@ -12,7 +12,7 @@ Application for enable android debug bride over network with some additional fea
 
 ## License
 
-    Copyright 2015 Jeffrey Turns
+    Copyright 2021 Jeffrey Turns
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
