@@ -12,10 +12,11 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.jeffrey.debuggy.utils.aliases.FragmentInflate
+import org.koin.core.component.KoinComponent
 
 abstract class BaseSheetFragment<VB : ViewBinding>(
     private val inflate: FragmentInflate<VB>
-) : BottomSheetDialogFragment() {
+) : BottomSheetDialogFragment(), KoinComponent {
 
     private var _binding: VB? = null
     val binding get() = _binding!!

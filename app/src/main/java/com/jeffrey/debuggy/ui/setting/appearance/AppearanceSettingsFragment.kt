@@ -6,11 +6,17 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.data.preference.PreferenceHelper
+import com.jeffrey.debuggy.data.notification.NotificationHelper
+import com.jeffrey.debuggy.data.preference.PreferencesHelper
+import com.jeffrey.debuggy.utils.Constants
 import com.jeffrey.debuggy.utils.TransitionUtil
 import com.jeffrey.debuggy.utils.Utils
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class AppearanceSettingsFragment : PreferenceFragmentCompat() {
+class AppearanceSettingsFragment : PreferenceFragmentCompat(), KoinComponent {
+
+    private val preference: PreferencesHelper by inject()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_appearance, rootKey)
@@ -28,15 +34,9 @@ class AppearanceSettingsFragment : PreferenceFragmentCompat() {
         val systemColors: SwitchPreference = findPreference("use_system_colors")!!
         systemColors.isEnabled = false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) systemColors.isEnabled = true
-        systemColors.isChecked = PreferenceHelper.useSystemColors(requireActivity())
+        systemColors.isChecked = preference.useSystemColors
         systemColors.setOnPreferenceChangeListener { _, value ->
-            if (value == true) PreferenceHelper.useSystemColors(
-                requireActivity(),
-                true
-            ) else PreferenceHelper.useSystemColors(
-                requireActivity(),
-                false
-            )
+            preference.useSystemColors = value == true
             Utils.restartApp(requireActivity())
             true
         }
@@ -52,7 +52,7 @@ class AppearanceSettingsFragment : PreferenceFragmentCompat() {
     fun updateTheme() {
         val appearance: Preference = findPreference("theme")!!
         appearance.summary =
-            when (PreferenceHelper.theme(requireActivity())) {
+            when (preference.appTheme) {
                 1 -> {
                     requireActivity().getString(R.string.summary_light)
                 }
@@ -63,7 +63,7 @@ class AppearanceSettingsFragment : PreferenceFragmentCompat() {
                     requireActivity().getString(R.string.summary_default)
                 }
                 else -> {
-                    "Undefined"
+                    Constants.UNDEFINED_TEXT
                 }
             }
     }

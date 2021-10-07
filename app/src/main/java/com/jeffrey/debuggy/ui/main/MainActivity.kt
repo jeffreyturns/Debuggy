@@ -23,7 +23,7 @@ import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.monet.MonetDynamicPalette
 import com.jeffrey.debuggy.data.notification.NotificationHelper
-import com.jeffrey.debuggy.data.preference.PreferenceHelper
+import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.ActivityMainBinding
 import com.jeffrey.debuggy.ui.base.BaseActivity
 import com.jeffrey.debuggy.utils.*
@@ -38,6 +38,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     private val notification: NotificationHelper by inject()
+    private val preference: PreferencesHelper by inject()
 
     override fun preSuperCall() {
         themeCall(false)
@@ -64,8 +65,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         initColors()
 
-        if (PreferenceHelper.adb(this)) {
-            RootUtil.enableTcp(notification, this)
+        if (preference.adbEnabled) {
+            RootUtil.enableTcp(notification, this, preference.port)
             TransitionUtil.disableIconImage(binding.adbIcon, this)
         } else {
             RootUtil.disableTcp(notification)
@@ -74,18 +75,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         binding.fabAnimation.setOnClickListener {
             if (App.isRoot()) {
-                if (PreferenceHelper.adb(this)) {
+                if (preference.adbEnabled) {
                     RootUtil.disableTcp(notification)
                     TransitionUtil.enableFAB(binding.fabAnimation, this)
                     TransitionUtil.enableIconImage(binding.adbIcon, this)
                     TransitionUtil.enableIcon(binding.adbIcon, this)
-                    PreferenceHelper.adb(this, false)
+                    preference.adbEnabled = false
                 } else {
-                    RootUtil.enableTcp(notification, this)
+                    RootUtil.enableTcp(notification, this, preference.port)
                     TransitionUtil.disableFAB(binding.fabAnimation, this)
                     TransitionUtil.disableIconImage(binding.adbIcon, this)
                     TransitionUtil.disableIcon(binding.adbIcon, this)
-                    PreferenceHelper.adb(this, true)
+                    preference.adbEnabled = true
                 }
             } else {
                 callSnackBar(this.resources.getString(R.string.message_action_unavailable))
@@ -184,7 +185,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     private fun initColors() {
         binding.collapsingToolbar.setContentScrimColor(MonetDynamicPalette(this).collapsingToolbarColor)
-        if (PreferenceHelper.adb(this)) {
+        if (preference.adbEnabled) {
             binding.fabAnimation.setBackgroundColor(MonetDynamicPalette(this).fabLayoutEnabledColor)
             binding.adbIcon.setColorFilter(MonetDynamicPalette(this).fabIconEnabledColor)
         } else {
@@ -207,16 +208,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     private fun systemColorsTheme() {
-        if (PreferenceHelper.useSystemColors(this)) {
+        if (preference.useSystemColors) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 setTheme(R.style.Theme_Debuggy_App_Monet)
+            } else {
+                preference.useSystemColors = false
             }
         } else setTheme(R.style.Theme_Debuggy_App)
     }
 
     fun themeCall(recreate: Boolean) {
         if (recreate) Utils.restartApp(this) else
-            when (PreferenceHelper.theme(this)) {
+            when (preference.appTheme) {
                 1 -> {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 }

@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.jeffrey.debuggy.utils.aliases.FragmentInflate
+import org.koin.core.component.KoinComponent
 
 abstract class BaseFragment<VB : ViewBinding>(
     private val inflate: FragmentInflate<VB>
-) : Fragment() {
+) : Fragment(), KoinComponent {
 
     private var _binding: VB? = null
     val binding get() = _binding!!

@@ -4,12 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Context
 import androidx.core.content.res.ResourcesCompat
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.data.preference.PreferenceHelper
+import com.jeffrey.debuggy.data.preference.PreferencesHelper
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 @SuppressLint("InlinedApi")
-class MonetCompatColors(val context: Context) {
+class MonetCompatColors(val context: Context) : KoinComponent {
 
-    private val systemColors = PreferenceHelper.useSystemColors(context)
+    private val preference: PreferencesHelper by inject()
+    private val systemColors = preference.useSystemColors
 
     /*
 

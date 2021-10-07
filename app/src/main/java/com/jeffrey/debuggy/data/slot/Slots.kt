@@ -4,12 +4,11 @@ import android.content.Context
 import android.provider.Settings
 import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.data.preference.PreferenceHelper
 import com.jeffrey.debuggy.ui.setting.about.LibrariesAction
 import com.jeffrey.debuggy.utils.Constants
 import com.jeffrey.debuggy.utils.Utils
 
-fun informationHomeList(context: Context): List<Slot> {
+fun informationHomeList(context: Context, port: String): List<Slot> {
     return listOf(
         Slot(
             context.resources.getString(R.string.title_adb_daemon),
@@ -28,7 +27,7 @@ fun informationHomeList(context: Context): List<Slot> {
             context.resources.getString(R.string.title_adbd_listening_port),
             context.resources.getString(
                 R.string.summary_adbd_listening_port,
-                PreferenceHelper.port(context)
+                port
             ),
             R.drawable.ic_usb_24dp
         ),
@@ -54,7 +53,7 @@ fun informationHomeList(context: Context): List<Slot> {
     )
 }
 
-fun instructionHomeList(context: Context): List<Slot> {
+fun instructionHomeList(context: Context, port: String): List<Slot> {
     return listOf(
         Slot(
             summary = context.resources.getString(R.string.summary_connect_to_device)
@@ -63,7 +62,7 @@ fun instructionHomeList(context: Context): List<Slot> {
             summary = if (Utils.ip() != Constants.UNDEFINED_TEXT) context.resources.getString(
                 R.string.summary_run_command,
                 Utils.ip(),
-                PreferenceHelper.port(context)
+                port
             ) else context.getString(R.string.message_ip_unable_determine)
         )
     )

@@ -2,12 +2,17 @@ package com.jeffrey.debuggy.data.monet
 
 import android.annotation.SuppressLint
 import android.content.Context
+import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.utils.Utils
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 @SuppressLint("InlinedApi")
-class MonetDynamicPalette(val context: Context) {
+class MonetDynamicPalette(val context: Context) : KoinComponent {
 
-    private val darkMode = Utils.isDarkMode(context)
+    private val preference: PreferencesHelper by inject()
+
+    private val darkMode = Utils.isDarkMode(context, preference.appTheme)
     private val monetCompatColors: MonetCompatColors = MonetCompatColors(context)
 
     val collapsingToolbarColor =

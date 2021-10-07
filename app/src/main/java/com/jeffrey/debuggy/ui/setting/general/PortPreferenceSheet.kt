@@ -1,18 +1,20 @@
 package com.jeffrey.debuggy.ui.setting.general
 
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.data.preference.PreferenceHelper
+import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.DialogPortPreferenceBinding
 import com.jeffrey.debuggy.ui.base.BaseSheetFragment
-
+import org.koin.core.component.inject
 
 class PortPreferenceSheet : BaseSheetFragment<DialogPortPreferenceBinding>(
     DialogPortPreferenceBinding::inflate
 ) {
 
+    private val preference: PreferencesHelper by inject()
+
     override fun setUpViews() {
         binding.actionReset.setOnClickListener {
-            PreferenceHelper.port(requireActivity(), "5555")
+            preference.port = "5555"
             parentFragmentCallBack()
             dismiss()
         }
@@ -22,10 +24,7 @@ class PortPreferenceSheet : BaseSheetFragment<DialogPortPreferenceBinding>(
                 binding.textData.error =
                     requireActivity().getString(R.string.error_port_less_4_char)
             } else {
-                PreferenceHelper.port(
-                    requireActivity(),
-                    binding.textData.editText!!.text.toString()
-                )
+                preference.port = binding.textData.editText!!.text.toString()
                 parentFragmentCallBack()
                 dismiss()
             }

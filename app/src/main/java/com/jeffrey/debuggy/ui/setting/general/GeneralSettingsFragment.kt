@@ -5,15 +5,20 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.data.preference.PreferenceHelper
+import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.utils.TransitionUtil
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class GeneralSettingsFragment : PreferenceFragmentCompat() {
+class GeneralSettingsFragment : PreferenceFragmentCompat(), KoinComponent {
+
+    private val preference: PreferencesHelper by inject()
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_general, rootKey)
 
         val port: Preference = findPreference("port")!!
-        port.summary = PreferenceHelper.port(requireActivity())
+        port.summary = preference.port
         port.setOnPreferenceClickListener {
             val portSheet = PortPreferenceSheet()
             portSheet.show(
@@ -24,15 +29,9 @@ class GeneralSettingsFragment : PreferenceFragmentCompat() {
         }
 
         val adbAfterBoot: SwitchPreference = findPreference("adb_after_boot")!!
-        adbAfterBoot.isChecked = PreferenceHelper.runAfterBoot(requireActivity())
+        adbAfterBoot.isChecked = preference.runAfterBoot
         adbAfterBoot.setOnPreferenceChangeListener { _, value ->
-            if (value == true) PreferenceHelper.runAfterBoot(
-                requireActivity(),
-                true
-            ) else PreferenceHelper.runAfterBoot(
-                requireActivity(),
-                false
-            )
+            preference.runAfterBoot = value == true
             true
         }
         updatePort()
@@ -46,6 +45,6 @@ class GeneralSettingsFragment : PreferenceFragmentCompat() {
 
     fun updatePort() {
         val port: Preference = findPreference("port")!!
-        port.summary = PreferenceHelper.port(requireActivity())
+        port.summary = preference.port
     }
 }

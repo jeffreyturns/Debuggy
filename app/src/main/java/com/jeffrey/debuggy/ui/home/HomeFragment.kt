@@ -8,6 +8,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeffrey.debuggy.R
+import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.data.sectioned.CardSectionedAdapter
 import com.jeffrey.debuggy.data.slot.informationHomeList
 import com.jeffrey.debuggy.data.slot.instructionHomeList
@@ -16,10 +17,12 @@ import com.jeffrey.debuggy.ui.base.BaseFragment
 import com.jeffrey.debuggy.utils.NetworkUtil
 import com.jeffrey.debuggy.utils.TransitionUtil
 import com.jeffrey.debuggy.utils.extensions.addInsetPaddings
+import org.koin.android.ext.android.inject
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     var container: MotionLayout? = null
+    private val preference: PreferencesHelper by inject()
 
     override fun setUpViews() {
         returnTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
@@ -37,12 +40,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         binding.recyclerView.adapter = ConcatAdapter(
             CardSectionedAdapter(
-                informationHomeList(requireActivity()),
+                informationHomeList(requireActivity(), preference.port),
                 requireActivity().resources.getString(R.string.header_information),
                 requireActivity()
             ),
             CardSectionedAdapter(
-                instructionHomeList(requireActivity()),
+                instructionHomeList(requireActivity(), preference.port),
                 requireActivity().resources.getString(R.string.header_instruction),
                 requireActivity()
             )

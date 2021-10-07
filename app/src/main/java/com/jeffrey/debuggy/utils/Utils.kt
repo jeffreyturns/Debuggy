@@ -9,7 +9,6 @@ import android.util.Log
 import androidx.browser.customtabs.CustomTabsIntent
 import com.jeffrey.debuggy.BuildConfig
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.data.preference.PreferenceHelper
 import java.net.NetworkInterface
 import java.text.SimpleDateFormat
 import java.util.*
@@ -57,11 +56,11 @@ object Utils {
         ) == 1
     }
 
-    fun isDarkMode(context: Context): Boolean {
+    fun isDarkMode(context: Context, theme: Int): Boolean {
 
         var isDark = false
 
-        when (PreferenceHelper.theme(context)) {
+        when (theme) {
             1 -> isDark = false
             2 -> isDark = true
             0 -> {

@@ -4,10 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.jeffrey.debuggy.utils.aliases.ActivityInflate
+import org.koin.core.component.KoinComponent
 
 abstract class BaseActivity<VB : ViewBinding>(
     private val inflate: ActivityInflate<VB>
-) : AppCompatActivity() {
+) : AppCompatActivity(), KoinComponent {
 
     protected lateinit var binding: VB
 

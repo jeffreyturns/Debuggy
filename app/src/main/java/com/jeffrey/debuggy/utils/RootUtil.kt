@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.jeffrey.debuggy.data.notification.NotificationHelper
-import com.jeffrey.debuggy.data.preference.PreferenceHelper
 import com.jeffrey.debuggy.ui.main.MainActivity
 import java.io.BufferedReader
 import java.io.DataOutputStream
@@ -62,14 +61,14 @@ object RootUtil {
         }
     }
 
-    fun enableTcp(notificationHelper: NotificationHelper, context: Context) {
+    fun enableTcp(notificationHelper: NotificationHelper, context: Context, port: String) {
         val intent = Intent(context.applicationContext, MainActivity::class.java)
         notificationHelper.createADBEnabledNotification(
             context,
             intent
         )
         try {
-            callCommandWithADBDRestart("setprop service.adb.tcp.port ${PreferenceHelper.port(context)}")
+            callCommandWithADBDRestart("setprop service.adb.tcp.port $port")
         } catch (e: Exception) {
             e.printStackTrace()
         }
