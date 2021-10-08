@@ -1,4 +1,4 @@
-package com.jeffrey.debuggy.utils.aliases
+package com.jeffrey.debuggy.util.aliases
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

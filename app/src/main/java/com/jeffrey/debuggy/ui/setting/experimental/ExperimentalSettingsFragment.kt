@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.utils.RootUtil
-import com.jeffrey.debuggy.utils.TransitionUtil
+import com.jeffrey.debuggy.util.RootUtils
+import com.jeffrey.debuggy.util.TransitionUtils
 
 class ExperimentalSettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -13,7 +13,7 @@ class ExperimentalSettingsFragment : PreferenceFragmentCompat() {
 
         val softRestart: Preference = findPreference("soft_restart")!!
         softRestart.setOnPreferenceClickListener {
-            RootUtil.softRestart()
+            RootUtils.softRestart()
             true
         }
 
@@ -30,7 +30,7 @@ class ExperimentalSettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enterTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), false)
-        returnTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
+        enterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
+        returnTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
     }
 }

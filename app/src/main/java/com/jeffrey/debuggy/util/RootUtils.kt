@@ -1,4 +1,4 @@
-package com.jeffrey.debuggy.utils
+package com.jeffrey.debuggy.util
 
 import android.content.Context
 import android.content.Intent
@@ -11,7 +11,7 @@ import java.io.IOException
 import java.io.InputStreamReader
 
 
-object RootUtil {
+object RootUtils {
 
     fun canRunRootCommands(su: Process): Boolean {
 

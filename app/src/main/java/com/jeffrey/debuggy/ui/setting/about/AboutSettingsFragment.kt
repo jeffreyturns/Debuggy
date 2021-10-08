@@ -5,14 +5,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jeffrey.debuggy.data.about.AboutAdapter
 import com.jeffrey.debuggy.databinding.FragmentAboutBinding
 import com.jeffrey.debuggy.ui.base.BaseFragment
-import com.jeffrey.debuggy.utils.TransitionUtil
+import com.jeffrey.debuggy.util.TransitionUtils
 import kotlin.math.abs
 
 class AboutSettingsFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
 
     override fun setUpViews() {
-        enterTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), false)
-        returnTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
+        enterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
+        returnTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
 
         setHasOptionsMenu(true)
 

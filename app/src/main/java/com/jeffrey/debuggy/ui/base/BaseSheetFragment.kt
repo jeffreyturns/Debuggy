@@ -11,7 +11,7 @@ import androidx.core.view.*
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.jeffrey.debuggy.utils.aliases.FragmentInflate
+import com.jeffrey.debuggy.util.aliases.FragmentInflate
 import org.koin.core.component.KoinComponent
 
 abstract class BaseSheetFragment<VB : ViewBinding>(

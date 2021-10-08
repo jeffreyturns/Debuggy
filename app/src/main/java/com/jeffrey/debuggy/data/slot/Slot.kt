@@ -1,6 +1,6 @@
 package com.jeffrey.debuggy.data.slot
 
-import com.jeffrey.debuggy.utils.Constants
+import com.jeffrey.debuggy.util.Constants
 
 data class Slot(
     val title: String = Constants.NO_TEXT,

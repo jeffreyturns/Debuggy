@@ -1,4 +1,4 @@
-package com.jeffrey.debuggy.utils.extensions
+package com.jeffrey.debuggy.util.extensions
 
 import android.content.Context
 import android.util.TypedValue

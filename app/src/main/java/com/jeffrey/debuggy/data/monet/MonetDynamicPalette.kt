@@ -3,7 +3,7 @@ package com.jeffrey.debuggy.data.monet
 import android.annotation.SuppressLint
 import android.content.Context
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
-import com.jeffrey.debuggy.utils.Utils
+import com.jeffrey.debuggy.util.Utils
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

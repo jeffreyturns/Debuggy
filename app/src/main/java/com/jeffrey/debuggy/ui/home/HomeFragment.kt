@@ -14,9 +14,9 @@ import com.jeffrey.debuggy.data.slot.informationHomeList
 import com.jeffrey.debuggy.data.slot.instructionHomeList
 import com.jeffrey.debuggy.databinding.FragmentHomeBinding
 import com.jeffrey.debuggy.ui.base.BaseFragment
-import com.jeffrey.debuggy.utils.NetworkUtil
-import com.jeffrey.debuggy.utils.TransitionUtil
-import com.jeffrey.debuggy.utils.extensions.addInsetPaddings
+import com.jeffrey.debuggy.util.NetworkUtils
+import com.jeffrey.debuggy.util.TransitionUtils
+import com.jeffrey.debuggy.util.extensions.addInsetPaddings
 import org.koin.android.ext.android.inject
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
@@ -25,12 +25,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private val preference: PreferencesHelper by inject()
 
     override fun setUpViews() {
-        returnTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
+        returnTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
 
         container = binding.mainContainer
         setHasOptionsMenu(true)
 
-        NetworkUtil.listener(
+        NetworkUtils.listener(
             requireActivity(),
             ::hideBanner,
             ::showBanner
@@ -63,8 +63,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 requireActivity(),
                 R.id.nav_host_fragment
             ).navigate(R.id.navigation_settings)
-            exitTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), false)
-            reenterTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
+            exitTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
+            reenterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
         }
         return false
     }

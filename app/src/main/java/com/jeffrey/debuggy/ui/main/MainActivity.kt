@@ -26,11 +26,11 @@ import com.jeffrey.debuggy.data.notification.NotificationHelper
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.ActivityMainBinding
 import com.jeffrey.debuggy.ui.base.BaseActivity
-import com.jeffrey.debuggy.utils.*
-import com.jeffrey.debuggy.utils.extensions.addInsetPaddings
-import com.jeffrey.debuggy.utils.extensions.navBarHeight
-import com.jeffrey.debuggy.utils.extensions.navigationType
-import com.jeffrey.debuggy.utils.extensions.toDp
+import com.jeffrey.debuggy.util.*
+import com.jeffrey.debuggy.util.extensions.addInsetPaddings
+import com.jeffrey.debuggy.util.extensions.navBarHeight
+import com.jeffrey.debuggy.util.extensions.navigationType
+import com.jeffrey.debuggy.util.extensions.toDp
 import org.koin.android.ext.android.inject
 import kotlin.math.roundToInt
 
@@ -66,26 +66,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         initColors()
 
         if (preference.adbEnabled) {
-            RootUtil.enableTcp(notification, this, preference.port)
-            TransitionUtil.disableIconImage(binding.adbIcon, this)
+            RootUtils.enableTcp(notification, this, preference.port)
+            TransitionUtils.disableIconImage(binding.adbIcon, this)
         } else {
-            RootUtil.disableTcp(notification)
-            TransitionUtil.enableIconImage(binding.adbIcon, this)
+            RootUtils.disableTcp(notification)
+            TransitionUtils.enableIconImage(binding.adbIcon, this)
         }
 
         binding.fabAnimation.setOnClickListener {
             if (App.isRoot()) {
                 if (preference.adbEnabled) {
-                    RootUtil.disableTcp(notification)
-                    TransitionUtil.enableFAB(binding.fabAnimation, this)
-                    TransitionUtil.enableIconImage(binding.adbIcon, this)
-                    TransitionUtil.enableIcon(binding.adbIcon, this)
+                    RootUtils.disableTcp(notification)
+                    TransitionUtils.enableFAB(binding.fabAnimation, this)
+                    TransitionUtils.enableIconImage(binding.adbIcon, this)
+                    TransitionUtils.enableIcon(binding.adbIcon, this)
                     preference.adbEnabled = false
                 } else {
-                    RootUtil.enableTcp(notification, this, preference.port)
-                    TransitionUtil.disableFAB(binding.fabAnimation, this)
-                    TransitionUtil.disableIconImage(binding.adbIcon, this)
-                    TransitionUtil.disableIcon(binding.adbIcon, this)
+                    RootUtils.enableTcp(notification, this, preference.port)
+                    TransitionUtils.disableFAB(binding.fabAnimation, this)
+                    TransitionUtils.disableIconImage(binding.adbIcon, this)
+                    TransitionUtils.disableIcon(binding.adbIcon, this)
                     preference.adbEnabled = true
                 }
             } else {

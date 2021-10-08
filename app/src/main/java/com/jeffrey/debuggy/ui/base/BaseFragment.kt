@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.jeffrey.debuggy.utils.aliases.FragmentInflate
+import com.jeffrey.debuggy.util.aliases.FragmentInflate
 import org.koin.core.component.KoinComponent
 
 abstract class BaseFragment<VB : ViewBinding>(

@@ -1,7 +1,7 @@
 package com.jeffrey.debuggy.ui.setting.about
 
 import android.content.Context
-import com.jeffrey.debuggy.utils.Utils
+import com.jeffrey.debuggy.util.Utils
 
 class LibrariesAction(private val context: Context) {
 

@@ -2,8 +2,8 @@ package com.jeffrey.debuggy
 
 import com.jeffrey.debuggy.data.notification.NotificationHelper.Companion.createNotificationChannel
 import com.jeffrey.debuggy.data.notification.Notifications
-import com.jeffrey.debuggy.utils.Constants
-import com.jeffrey.debuggy.utils.RootUtil
+import com.jeffrey.debuggy.util.Constants
+import com.jeffrey.debuggy.util.RootUtils
 
 class App : AppModule() {
 
@@ -27,8 +27,8 @@ class App : AppModule() {
         super.onCreate()
         initModule()
 
-        root = RootUtil.canRunRootCommands(process)
-        if (root) daemonStatus = RootUtil.getDaemonStatus(process)
+        root = RootUtils.canRunRootCommands(process)
+        if (root) daemonStatus = RootUtils.getDaemonStatus(process)
         createNotificationChannel(Notifications.BASE_CHANNEL_NAME, this)
     }
 }

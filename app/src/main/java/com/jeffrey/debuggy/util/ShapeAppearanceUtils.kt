@@ -1,11 +1,11 @@
-package com.jeffrey.debuggy.utils
+package com.jeffrey.debuggy.util
 
 import android.content.Context
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.jeffrey.debuggy.R
 
-object ShapeAppearanceUtil {
+object ShapeAppearanceUtils {
     fun getTopShape(context: Context): ShapeAppearanceModel {
         return ShapeAppearanceModel.builder()
             .setAllCornerSizes(context.resources.getDimension(R.dimen.corners_size))

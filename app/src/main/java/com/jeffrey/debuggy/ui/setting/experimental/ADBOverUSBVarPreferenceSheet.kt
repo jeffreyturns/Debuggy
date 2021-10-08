@@ -4,8 +4,8 @@ import android.widget.CompoundButton
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.databinding.DialogAdbOverUsbVarPreferenceBinding
 import com.jeffrey.debuggy.ui.base.BaseSheetFragment
-import com.jeffrey.debuggy.utils.RootUtil
-import com.jeffrey.debuggy.utils.Utils
+import com.jeffrey.debuggy.util.RootUtils
+import com.jeffrey.debuggy.util.Utils
 
 
 class ADBOverUSBVarPreferenceSheet : BaseSheetFragment<DialogAdbOverUsbVarPreferenceBinding>(
@@ -20,7 +20,7 @@ class ADBOverUSBVarPreferenceSheet : BaseSheetFragment<DialogAdbOverUsbVarPrefer
         )
         binding.switchAdb.isChecked = Utils.getADBOverUSBStatus(requireActivity())
         binding.switchAdb.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
-            RootUtil.changeADBOverUSBVar(isChecked)
+            RootUtils.changeADBOverUSBVar(isChecked)
             dismiss()
         }
 

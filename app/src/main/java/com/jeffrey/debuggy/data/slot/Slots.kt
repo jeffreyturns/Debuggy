@@ -5,8 +5,8 @@ import android.provider.Settings
 import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.ui.setting.about.LibrariesAction
-import com.jeffrey.debuggy.utils.Constants
-import com.jeffrey.debuggy.utils.Utils
+import com.jeffrey.debuggy.util.Constants
+import com.jeffrey.debuggy.util.Utils
 
 fun informationHomeList(context: Context, port: String): List<Slot> {
     return listOf(

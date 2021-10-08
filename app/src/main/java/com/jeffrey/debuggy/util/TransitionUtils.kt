@@ -1,4 +1,4 @@
-package com.jeffrey.debuggy.utils
+package com.jeffrey.debuggy.util
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
@@ -16,7 +16,7 @@ import com.jeffrey.debuggy.data.monet.MonetDynamicPalette
 import kotlin.math.roundToInt
 
 
-object TransitionUtil {
+object TransitionUtils {
 
     fun getMaterialSharedAxis(context: Context, forward: Boolean): MaterialSharedAxis {
         return MaterialSharedAxis(MaterialSharedAxis.X, forward).apply {

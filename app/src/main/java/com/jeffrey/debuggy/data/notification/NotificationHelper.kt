@@ -9,9 +9,9 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.utils.Constants
-import com.jeffrey.debuggy.utils.Utils
-import com.jeffrey.debuggy.utils.extensions.getAttr
+import com.jeffrey.debuggy.util.Constants
+import com.jeffrey.debuggy.util.Utils
+import com.jeffrey.debuggy.util.extensions.getAttr
 
 class NotificationHelper(context: Context) {
 

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.databinding.ItemFaqBinding
-import com.jeffrey.debuggy.utils.Constants
+import com.jeffrey.debuggy.util.Constants
 
 class FAQAdapter(private val data: List<FAQ>) :
     RecyclerView.Adapter<FAQAdapter.ViewHolder>() {

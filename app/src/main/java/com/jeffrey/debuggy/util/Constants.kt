@@ -1,4 +1,4 @@
-package com.jeffrey.debuggy.utils
+package com.jeffrey.debuggy.util
 
 object Constants {
 

@@ -1,4 +1,4 @@
-package com.jeffrey.debuggy.utils
+package com.jeffrey.debuggy.util
 
 import android.app.Activity
 import android.content.Context
@@ -8,7 +8,7 @@ import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Build
 
-object NetworkUtil {
+object NetworkUtils {
 
     private fun isOverWIFI(context: Context): Boolean {
         var result = false

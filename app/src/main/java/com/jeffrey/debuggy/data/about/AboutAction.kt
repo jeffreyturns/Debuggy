@@ -5,9 +5,9 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.utils.Constants
-import com.jeffrey.debuggy.utils.TransitionUtil
-import com.jeffrey.debuggy.utils.Utils
+import com.jeffrey.debuggy.util.Constants
+import com.jeffrey.debuggy.util.TransitionUtils
+import com.jeffrey.debuggy.util.Utils
 
 class AboutAction(private val context: Context, private val fragment: Fragment) {
 
@@ -16,9 +16,9 @@ class AboutAction(private val context: Context, private val fragment: Fragment) 
             context as Activity,
             R.id.nav_host_fragment
         ).navigate(R.id.navigation_faq)
-        fragment.exitTransition = TransitionUtil.getMaterialSharedAxis(context, false)
+        fragment.exitTransition = TransitionUtils.getMaterialSharedAxis(context, false)
         fragment.reenterTransition =
-            TransitionUtil.getMaterialSharedAxis(context, true)
+            TransitionUtils.getMaterialSharedAxis(context, true)
     }
 
     fun callFeedbackCard() {

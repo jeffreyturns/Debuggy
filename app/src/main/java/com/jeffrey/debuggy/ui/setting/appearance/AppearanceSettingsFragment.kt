@@ -6,11 +6,10 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.data.notification.NotificationHelper
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
-import com.jeffrey.debuggy.utils.Constants
-import com.jeffrey.debuggy.utils.TransitionUtil
-import com.jeffrey.debuggy.utils.Utils
+import com.jeffrey.debuggy.util.Constants
+import com.jeffrey.debuggy.util.TransitionUtils
+import com.jeffrey.debuggy.util.Utils
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -45,8 +44,8 @@ class AppearanceSettingsFragment : PreferenceFragmentCompat(), KoinComponent {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enterTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), false)
-        returnTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
+        enterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
+        returnTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
     }
 
     fun updateTheme() {

@@ -6,7 +6,7 @@ import androidx.navigation.Navigation
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.utils.TransitionUtil
+import com.jeffrey.debuggy.util.TransitionUtils
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -18,8 +18,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
             val navController: NavController =
                 Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
             navController.navigate(R.id.navigation_general_settings)
-            exitTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), false)
-            reenterTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
+            exitTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
+            reenterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
 
             true
         }
@@ -29,8 +29,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
             val navController: NavController =
                 Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
             navController.navigate(R.id.navigation_appearance_settings)
-            exitTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), false)
-            reenterTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
+            exitTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
+            reenterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
 
             true
         }
@@ -40,8 +40,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
             val navController: NavController =
                 Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
             navController.navigate(R.id.navigation_experimental_settings)
-            exitTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), false)
-            reenterTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
+            exitTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
+            reenterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
 
             true
         }
@@ -51,8 +51,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
             val navController: NavController =
                 Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
             navController.navigate(R.id.navigation_about_settings)
-            exitTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), false)
-            reenterTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
+            exitTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
+            reenterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
 
             true
         }
@@ -60,7 +60,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enterTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), false)
-        returnTransition = TransitionUtil.getMaterialSharedAxis(requireActivity(), true)
+        enterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
+        returnTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
     }
 }
