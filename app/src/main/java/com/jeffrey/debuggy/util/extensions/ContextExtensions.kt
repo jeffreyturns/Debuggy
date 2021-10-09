@@ -27,15 +27,6 @@ fun Context.navBarHeight(): Int {
     return result
 }
 
-fun Context.toDp(dp: Int): Int {
-    return TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,
-        dp.toFloat(),
-        this.resources.displayMetrics
-    )
-        .toInt()
-}
-
 fun Context.navigationType(): Int {
     val resourceId =
         this.resources.getIdentifier("config_navBarInteractionMode", "integer", "android")

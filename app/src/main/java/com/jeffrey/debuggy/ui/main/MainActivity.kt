@@ -26,7 +26,9 @@ import com.jeffrey.debuggy.data.notification.NotificationHelper
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.ActivityMainBinding
 import com.jeffrey.debuggy.ui.base.BaseActivity
-import com.jeffrey.debuggy.util.*
+import com.jeffrey.debuggy.util.RootUtils
+import com.jeffrey.debuggy.util.TransitionUtils
+import com.jeffrey.debuggy.util.Utils
 import com.jeffrey.debuggy.util.extensions.addInsetPaddings
 import com.jeffrey.debuggy.util.extensions.navBarHeight
 import com.jeffrey.debuggy.util.extensions.navigationType
@@ -137,7 +139,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private fun hideFAB() {
         binding.adbFab.animate()
             .translationY(
-                (binding.adbFab.height + this.navBarHeight() + this.toDp(16)).toFloat()
+                (binding.adbFab.height + this.navBarHeight() + 16.toDp).toFloat()
             )
             .setDuration(450)
             .withEndAction { binding.adbFab.visibility = View.GONE }
@@ -156,7 +158,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             insets
         }
         ViewCompat.setOnApplyWindowInsetsListener(binding.toolbar) { view, insets ->
-            this.toDp(56).let {
+            56.toDp.let {
                 val statusInsets = insets.getInsets(WindowInsetsCompat.Type.statusBars())
                 val overflowPadding = resources.getDimension(R.dimen.keyline_8)
                 val topInset = statusInsets.top
@@ -174,9 +176,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         ViewCompat.setOnApplyWindowInsetsListener(binding.adbFab) { _, insets ->
             binding.adbFab.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 updateMargins(
-                    bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom + this@MainActivity.toDp(
-                        16
-                    )
+                    bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom + 16.toDp
                 )
             }
             insets
