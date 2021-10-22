@@ -16,5 +16,5 @@ object PreferenceKeys {
     const val DEF_VAL_APP_THEME = 0
     const val DEF_VAL_USE_SYSTEM_COLORS = true
     const val DEF_VAL_AUTHENTICATION_ENABLED = false
-    const val DEF_VAL_ADB_AFTER_WHILE = 4
+    const val DEF_VAL_ADB_AFTER_WHILE = 0
 }
