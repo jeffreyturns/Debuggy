@@ -2,15 +2,15 @@ package com.jeffrey.debuggy.ui.setting.general
 
 import android.os.Bundle
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
+import com.jeffrey.debuggy.ui.base.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.TransitionUtils
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class GeneralSettingsFragment : PreferenceFragmentCompat(), KoinComponent {
+class GeneralSettingsFragment : BasePreferenceFragmentCompat(), KoinComponent {
 
     private val preference: PreferencesHelper by inject()
 
@@ -34,7 +34,7 @@ class GeneralSettingsFragment : PreferenceFragmentCompat(), KoinComponent {
             preference.runAfterBoot = value == true
             true
         }
-        updatePort()
+        update()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +43,7 @@ class GeneralSettingsFragment : PreferenceFragmentCompat(), KoinComponent {
         returnTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
     }
 
-    fun updatePort() {
+    fun update() {
         val port: Preference = findPreference("port")!!
         port.summary = preference.port
     }

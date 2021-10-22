@@ -13,6 +13,12 @@
         app:title="@string/title_appearance" />
 
     <Preference
+        app:icon="@drawable/ic_security_36dp"
+        app:key="security"
+        app:summary="@string/summary_security"
+        app:title="@string/title_security" />
+
+    <Preference
         app:icon="@drawable/ic_experimental_36dp"
         app:key="experimental"
         app:summary="@string/summary_experimental"

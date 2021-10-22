@@ -2,12 +2,12 @@ package com.jeffrey.debuggy.ui.setting.experimental
 
 import android.os.Bundle
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import com.jeffrey.debuggy.R
+import com.jeffrey.debuggy.ui.base.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.RootUtils
 import com.jeffrey.debuggy.util.TransitionUtils
 
-class ExperimentalSettingsFragment : PreferenceFragmentCompat() {
+class ExperimentalSettingsFragment : BasePreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_experimental, rootKey)
 
@@ -26,11 +26,5 @@ class ExperimentalSettingsFragment : PreferenceFragmentCompat() {
             )
             true
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
-        returnTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
     }
 }

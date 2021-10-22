@@ -115,5 +115,9 @@ fun libsLibrariesList(action: LibrariesAction): List<Slot> {
             title = "InsertKoinIO / Koin",
             action = action::callKoin
         ),
+        Slot(
+            title = "Kotlin / Kotlinx.coroutines",
+            action = action::callCoroutines
+        )
     )
 }

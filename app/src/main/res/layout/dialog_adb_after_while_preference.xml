@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.setting.appearance.ThemePreferenceSheet">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_slot_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_wifi_off_timer_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?colorPrimary" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_slot_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+
+        <TextView
+            style="@style/TextAppearance.Debuggy.Headline5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/keyline_16"
+            android:layout_marginEnd="@dimen/keyline_16"
+            android:text="@string/header_set_disable_adb_after_while"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <RadioGroup
+            android:id="@+id/adb_after_while_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/radio_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/radio_never"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginStart="@dimen/keyline_16"
+                android:layout_marginEnd="@dimen/keyline_16"
+                android:paddingStart="@dimen/keyline_8"
+                android:paddingEnd="0dp"
+                android:text="@string/title_never" />
+
+            <RadioButton
+                android:id="@+id/radio_one_hour"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginStart="@dimen/keyline_16"
+                android:layout_marginEnd="@dimen/keyline_16"
+                android:paddingStart="@dimen/keyline_8"
+                android:paddingEnd="0dp"
+                android:text="@string/title_one_hour" />
+
+            <RadioButton
+                android:id="@+id/radio_two_hours"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginStart="@dimen/keyline_16"
+                android:layout_marginEnd="@dimen/keyline_16"
+                android:paddingStart="@dimen/keyline_8"
+                android:paddingEnd="0dp"
+                android:text="@string/title_two_hours" />
+
+            <RadioButton
+                android:id="@+id/radio_four_hours"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginStart="@dimen/keyline_16"
+                android:layout_marginEnd="@dimen/keyline_16"
+                android:paddingStart="@dimen/keyline_8"
+                android:paddingEnd="0dp"
+                android:text="@string/title_four_hours" />
+
+            <RadioButton
+                android:id="@+id/radio_six_hours"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginStart="@dimen/keyline_16"
+                android:layout_marginEnd="@dimen/keyline_16"
+                android:paddingStart="@dimen/keyline_8"
+                android:paddingEnd="0dp"
+                android:text="@string/title_six_hours" />
+
+            <RadioButton
+                android:id="@+id/radio_twelve_hours"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginStart="@dimen/keyline_16"
+                android:layout_marginEnd="@dimen/keyline_16"
+                android:paddingStart="@dimen/keyline_8"
+                android:paddingEnd="0dp"
+                android:text="@string/title_twelve_hours" />
+
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/action_cancel"
+            style="@style/Widget.Debuggy.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/keyline_16"
+            android:layout_marginTop="@dimen/keyline_16"
+            android:paddingTop="@dimen/keyline_2"
+            android:paddingBottom="@dimen/keyline_2"
+            android:text="@string/action_cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

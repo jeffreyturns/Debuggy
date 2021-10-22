@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import com.jeffrey.debuggy.R
+import com.jeffrey.debuggy.ui.base.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.TransitionUtils
 
-class SettingsFragment : PreferenceFragmentCompat() {
+class SettingsFragment : BasePreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_settings, rootKey)
@@ -29,6 +29,17 @@ class SettingsFragment : PreferenceFragmentCompat() {
             val navController: NavController =
                 Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
             navController.navigate(R.id.navigation_appearance_settings)
+            exitTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
+            reenterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
+
+            true
+        }
+
+        val security: Preference = findPreference("security")!!
+        security.setOnPreferenceClickListener {
+            val navController: NavController =
+                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+            navController.navigate(R.id.navigation_security_settings)
             exitTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
             reenterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
 
@@ -56,11 +67,5 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
             true
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
-        returnTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
     }
 }

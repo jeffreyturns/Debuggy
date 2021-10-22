@@ -50,35 +50,6 @@ class NotificationHelper(context: Context) {
         this.notificationManager.cancel(Notifications.ID_CREATE_ENABLED_ADB)
     }
 
-    fun crateNoInternetConnectionNotification(context: Context, intent: Intent) {
-        this.notificationManager.notify(
-            Notifications.ID_NO_INTERNET_CONNECTION,
-            NotificationCompat.Builder(
-                context,
-                Notifications.BASE_CHANNEL_NAME
-            ).setSmallIcon(R.drawable.ic_debuggy_notification_24dp)
-                .setOngoing(true)
-                .setColor(context.getAttr(R.attr.colorSecondary))
-                .setContentTitle("Связь с интернетом потеряна")
-                .setContentText("Устройство может быть недоступно для отладки")
-                .setPriority(-1)
-                .setCategory(NotificationCompat.CATEGORY_SERVICE).setContentIntent(
-                    PendingIntent.getActivity(
-                        context.applicationContext,
-                        0,
-                        intent,
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT else
-                            PendingIntent.FLAG_UPDATE_CURRENT
-                    )
-                ).build()
-        )
-    }
-
-    fun cancelNoInternetConnectionNotification() {
-        this.notificationManager.cancel(Notifications.ID_NO_INTERNET_CONNECTION)
-    }
-
     companion object {
 
         fun createNotificationChannel(channel: String, context: Context) {

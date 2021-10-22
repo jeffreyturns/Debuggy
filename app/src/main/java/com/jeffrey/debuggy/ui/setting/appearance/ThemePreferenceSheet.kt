@@ -57,7 +57,7 @@ class ThemePreferenceSheet : BaseSheetFragment<DialogThemePreferenceBinding>(
     private fun parentFragmentCallBack() {
         try {
             val callback = parentFragment as AppearanceSettingsFragment?
-            callback!!.updateTheme()
+            callback!!.update()
         } catch (e: ClassCastException) {
             throw ClassCastException("interface not implemented")
         }

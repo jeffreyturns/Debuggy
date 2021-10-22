@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        app:iconSpaceReserved="false"
+        app:summary=""
+        app:key="authentication_enabled"
+        app:title="@string/title_authentication_at_start" />
+
+    <Preference
+        app:icon="@drawable/ic_info_24dp"
+        app:selectable="false"
+        app:summary="@string/message_authentication_enable" />
+
+    <Preference
+        app:allowDividerAbove="true"
+        app:iconSpaceReserved="false"
+        app:key="adb_after_while"
+        app:summary=""
+        app:title="@string/title_disable_adb_after_while" />
+
+    <Preference
+        app:icon="@drawable/ic_info_24dp"
+        app:selectable="false"
+        app:summary="@string/message_disable_adb_after_while" />
+
+</PreferenceScreen>

@@ -34,7 +34,7 @@ class PortPreferenceSheet : BaseSheetFragment<DialogPortPreferenceBinding>(
     private fun parentFragmentCallBack() {
         try {
             val callback = parentFragment as GeneralSettingsFragment?
-            callback!!.updatePort()
+            callback!!.update()
         } catch (e: ClassCastException) {
             throw ClassCastException("interface not implemented")
         }

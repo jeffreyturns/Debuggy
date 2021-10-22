@@ -16,11 +16,14 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.snackbar.Snackbar
 import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
+import com.jeffrey.debuggy.data.authentication.AuthenticationManager
 import com.jeffrey.debuggy.data.monet.MonetDynamicPalette
 import com.jeffrey.debuggy.data.notification.NotificationHelper
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
@@ -33,6 +36,9 @@ import com.jeffrey.debuggy.util.extensions.addInsetPaddings
 import com.jeffrey.debuggy.util.extensions.navBarHeight
 import com.jeffrey.debuggy.util.extensions.navigationType
 import com.jeffrey.debuggy.util.extensions.toDp
+import com.jeffrey.debuggy.worker.TimeoutWorker
+import com.jeffrey.debuggy.worker.WorkerHelper
+import com.jeffrey.debuggy.worker.Workers
 import org.koin.android.ext.android.inject
 import kotlin.math.roundToInt
 
@@ -41,6 +47,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     private val notification: NotificationHelper by inject()
     private val preference: PreferencesHelper by inject()
+    private val work: WorkerHelper = WorkerHelper
+
+    private val workManager = WorkManager.getInstance(this)
 
     override fun preSuperCall() {
         themeCall(false)
@@ -49,6 +58,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun setUpViews() {
         setSupportActionBar(binding.toolbar)
+
+        if (preference.authenticationEnabled) {
+            hideFAB()
+            AuthenticationManager.getBiometricPrompt(
+                this,
+                onError = ::authenticationError,
+                onSucceeded = ::authenticationSuccess,
+                onFailed = ::authenticationError
+            )
+                .authenticate(AuthenticationManager.info(getString(R.string.title_biometric_prompt)))
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -67,24 +87,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         initColors()
 
-        if (preference.adbEnabled) {
-            RootUtils.enableTcp(notification, this, preference.port)
-            TransitionUtils.disableIconImage(binding.adbIcon, this)
-        } else {
-            RootUtils.disableTcp(notification)
-            TransitionUtils.enableIconImage(binding.adbIcon, this)
-        }
-
         binding.fabAnimation.setOnClickListener {
             if (App.isRoot()) {
                 if (preference.adbEnabled) {
                     RootUtils.disableTcp(notification)
+                    work.cancelUniqueWork(workManager, Workers.WORKER_TIMEOUT_TASK_NAME)
                     TransitionUtils.enableFAB(binding.fabAnimation, this)
                     TransitionUtils.enableIconImage(binding.adbIcon, this)
                     TransitionUtils.enableIcon(binding.adbIcon, this)
                     preference.adbEnabled = false
                 } else {
                     RootUtils.enableTcp(notification, this, preference.port)
+                    work.beginUniqueWork(
+                        workManager,
+                        OneTimeWorkRequest.from(TimeoutWorker::class.java),
+                        this
+                    )
                     TransitionUtils.disableFAB(binding.fabAnimation, this)
                     TransitionUtils.disableIconImage(binding.adbIcon, this)
                     TransitionUtils.disableIcon(binding.adbIcon, this)
@@ -125,6 +143,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         pref: Preference?
     ): Boolean {
         return true
+    }
+
+    private fun authenticationSuccess() {
+        showFAB()
+        if (preference.adbEnabled) {
+            RootUtils.enableTcp(notification, this, preference.port)
+            work.beginUniqueWork(
+                workManager,
+                OneTimeWorkRequest.from(TimeoutWorker::class.java),
+                this
+            )
+            TransitionUtils.disableIconImage(binding.adbIcon, this)
+        } else {
+            RootUtils.disableTcp(notification)
+            work.cancelUniqueWork(workManager, Workers.WORKER_TIMEOUT_TASK_NAME)
+            TransitionUtils.enableIconImage(binding.adbIcon, this)
+        }
+    }
+
+    private fun authenticationError() {
+        finishAffinity()
     }
 
     private fun showFAB() {

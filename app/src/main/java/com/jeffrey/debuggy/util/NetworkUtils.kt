@@ -10,7 +10,7 @@ import android.os.Build
 
 object NetworkUtils {
 
-    private fun isOverWIFI(context: Context): Boolean {
+    fun isOverWIFI(context: Context): Boolean {
         var result = false
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

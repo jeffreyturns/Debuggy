@@ -33,6 +33,8 @@
     <string name="title_general">Общие</string>
     <string name="summary_general">Пользовательский порт, запуск после загрузки</string>
     <string name="title_appearance">Внешний вид</string>
+    <string name="title_security">Безопасность</string>
+    <string name="summary_security">Блокировка приложения, отключение ADB через время</string>
     <string name="summary_appearance">Тёмная тема, системные цвета</string>
     <string name="title_experimental">Экспериментальные</string>
     <string name="summary_experimental">Невыпущенные функции</string>
@@ -62,6 +64,7 @@
 
     <string name="header_set_theme">Установить тему</string>
     <string name="header_set_adb_over_usb">Установить переменную отладки по USB</string>
+    <string name="header_set_disable_adb_after_while">Установить время выключения ADB</string>
 
     <string name="message_system_colors_only">Системные цвета доступны только на android 12</string>
     <string name="message_takes_effect_next_time">Вступает в силу при следующем включении отладки по сети</string>
@@ -100,4 +103,16 @@
     <string name="message_connect_more_devices">Да, специально для этого в настройках есть пункт \"Пользовательский порт\" что дает возможность менять порт на свой во избежание подобных ситуаций.</string>
     <string name="title_after_load_not_work">Отладка по сети после загрузки устройства не работает</string>
     <string name="message_after_load_not_work">Отладка по сети после загрузки может не работать если производитель прошивки ограничил возможность запускать программы в заднем фоне, в этом случае вам прийдется включать её вручную.</string>
+    <string name="title_authentication_at_start">Запрашивать аутентификацию при входе</string>
+    <string name="message_authentication_enable">При входе в приложение каждый раз будет запрашиваться отпечаток или пароль \n \nРекомендую включить данную функцию если ваше устройство может находится без присмотра</string>
+    <string name="title_disable_adb_after_while">Выключать ADB через время</string>
+    <string name="message_disable_adb_after_while">Отключает ADB по сети через определённое время</string>
+    <string name="title_never">Никогда</string>
+    <string name="title_one_hour">1 час</string>
+    <string name="title_two_hours">2 часа</string>
+    <string name="title_four_hours">4 часа</string>
+    <string name="title_six_hours">6 часов</string>
+    <string name="title_twelve_hours">12 часов</string>
+
+    <string name="title_biometric_prompt">Аутентификация действия</string>
 </resources>

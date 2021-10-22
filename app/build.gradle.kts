@@ -73,8 +73,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.browser:browser:1.3.0")
+    implementation ("androidx.biometric:biometric:1.1.0")
+    implementation("androidx.work:work-runtime-ktx:2.7.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 
-    implementation("com.google.android.material:material:1.5.0-alpha03")
+    implementation("com.google.android.material:material:1.5.0-alpha04")
 
     implementation("io.coil-kt:coil:1.3.2")
     implementation ("io.insert-koin:koin-android:3.1.2")

@@ -30,6 +30,12 @@
         tools:layout="@layout/fragment_settings" />
 
     <fragment
+        android:id="@+id/navigation_security_settings"
+        android:name="com.jeffrey.debuggy.ui.setting.security.SecuritySettingsFragment"
+        android:label="@string/title_security"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
         android:id="@+id/navigation_experimental_settings"
         android:name="com.jeffrey.debuggy.ui.setting.experimental.ExperimentalSettingsFragment"
         android:label="@string/title_experimental"

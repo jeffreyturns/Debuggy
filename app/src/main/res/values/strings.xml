@@ -33,6 +33,8 @@
     <string name="summary_general">Custom port, run after boot</string>
     <string name="title_appearance">Appearance</string>
     <string name="summary_appearance">Dark theme, system colors</string>
+    <string name="title_security">Security</string>
+    <string name="summary_security">Lock app, disable ADB after time</string>
     <string name="title_experimental">Experimental</string>
     <string name="summary_experimental">Unreleased features</string>
     <string name="title_about">About</string>
@@ -62,6 +64,7 @@
 
     <string name="header_set_theme">Set theme</string>
     <string name="header_set_adb_over_usb">Set ADB over USB variable</string>
+    <string name="header_set_disable_adb_after_while">Set ADB shutdown time</string>
 
     <string name="message_system_colors_only">Theme by the system only available on android 12</string>
     <string name="message_takes_effect_next_time">Takes effect when turning on ADB over network next time</string>
@@ -100,4 +103,18 @@
     <string name="message_connect_more_devices">Yes, especially for this in the settings there is an item "User port" that makes it possible to change the port to your own in order to avoid such situations.</string>
     <string name="title_after_load_not_work">Debugging over the network after booting the device does not work</string>
     <string name="message_after_load_not_work">After boot network debugging may not work if the firmware manufacturer has restricted the ability to run programs in the background, in which case you will have to enable it manually.</string>
+
+    <string name="title_authentication_at_start">Request authentication at start</string>
+    <string name="message_authentication_enable">Each time you enter the application, you will be prompted for a fingerprint or password \n \nI recommend enabling this function if your device can be unattended</string>
+    <string name="title_disable_adb_after_while">Turn off ADB after a while</string>
+    <string name="message_disable_adb_after_while">Disables ADB over the network after a certain time</string>
+    <string name="title_never">Never</string>
+    <string name="title_one_hour">1 hour</string>
+    <string name="title_two_hours">2 hours</string>
+    <string name="title_four_hours">4 hours</string>
+    <string name="title_six_hours">6 hours</string>
+    <string name="title_twelve_hours">12 hours</string>
+
+    <string name="title_biometric_prompt">Action authentication</string>
+
 </resources>

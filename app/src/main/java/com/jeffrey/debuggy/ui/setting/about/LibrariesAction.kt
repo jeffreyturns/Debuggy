@@ -24,4 +24,8 @@ class LibrariesAction(private val context: Context) {
     fun callKoin() {
         callUrl("https://github.com/InsertKoinIO/koin")
     }
+
+    fun callCoroutines() {
+        callUrl("https://github.com/Kotlin/kotlinx.coroutines")
+    }
 }
