@@ -63,11 +63,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             hideFAB()
             AuthenticationManager.getBiometricPrompt(
                 this,
-                onError = ::authenticationError,
-                onSucceeded = ::authenticationSuccess,
-                onFailed = ::authenticationError
+                onError = ::closeApp,
+                onSucceeded = ::initFromStart,
+                onFailed = ::closeApp
             )
                 .authenticate(AuthenticationManager.info(getString(R.string.title_biometric_prompt)))
+        } else {
+            initFromStart()
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -145,7 +147,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         return true
     }
 
-    private fun authenticationSuccess() {
+    private fun initFromStart() {
         showFAB()
         if (preference.adbEnabled) {
             RootUtils.enableTcp(notification, this, preference.port)
@@ -162,7 +164,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
     }
 
-    private fun authenticationError() {
+    private fun closeApp() {
         finishAffinity()
     }
 
