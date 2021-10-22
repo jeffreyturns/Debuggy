@@ -30,8 +30,8 @@ android {
         applicationId = "com.jeffrey.debuggy"
         minSdk = 22
         targetSdk = 31
-        versionCode = 1
-        versionName = "1.0." + getCountBuild()
+        versionCode = 2
+        versionName = "1.1." + getCountBuild()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
