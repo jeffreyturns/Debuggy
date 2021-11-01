@@ -7,17 +7,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.core.view.*
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.jeffrey.debuggy.data.preference.PreferencesHelper
+import com.jeffrey.debuggy.util.Utils
 import com.jeffrey.debuggy.util.aliases.FragmentInflate
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 abstract class BaseSheetFragment<VB : ViewBinding>(
     private val inflate: FragmentInflate<VB>
 ) : BottomSheetDialogFragment(), KoinComponent {
 
+    private val preference: PreferencesHelper by inject()
     private var _binding: VB? = null
     val binding get() = _binding!!
 
@@ -41,6 +46,16 @@ abstract class BaseSheetFragment<VB : ViewBinding>(
         val dialog = object : BottomSheetDialog(requireContext(), theme) {
             override fun onAttachedToWindow() {
                 super.onAttachedToWindow()
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    if (!Utils.isDarkMode(context, theme)) {
+                        @Suppress("DEPRECATION")
+                        window?.decorView?.systemUiVisibility =
+                            WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS or
+                                    View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+                    }
+                }
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     window?.let {
                         WindowCompat.setDecorFitsSystemWindows(it, false)
