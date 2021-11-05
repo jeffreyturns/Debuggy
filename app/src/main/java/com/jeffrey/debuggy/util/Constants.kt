@@ -8,8 +8,8 @@ object Constants {
     const val BUILDTIME_PATTERN = "dd.MM.yyyy HH:mm:ss"
 
     const val URL_FEEDBACK = "https://github.com/Jeffrey01596/Debuggy/issues"
-    const val URL_NEWS = "https://jeffrey01596.github.io/#/blog/debuggy"
-    const val URL_TRANSLATE = "https://jeffrey01596.github.io/#/translate/debuggy"
+    const val URL_NEWS = "https://jeffreyturns.vercel.app/blog/debuggy"
+    const val URL_TRANSLATE = "https://jeffreyturns.vercel.app/translate/debuggy"
     const val URL_LATEST_RELEASE = "https://github.com/Jeffrey01596/Debuggy/releases/latest"
     const val URL_CURRENT_RELEASE = "https://github.com/Jeffrey01596/Debuggy/releases/tag/v"
 

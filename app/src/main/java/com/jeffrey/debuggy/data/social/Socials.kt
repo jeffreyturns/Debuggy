@@ -7,7 +7,7 @@ fun socialsJeffreyList(context: Context): List<Social> {
     return listOf(
         Social(
             context.getString(R.string.title_developer_portfolio),
-            "https://jeffrey01596.github.io/",
+            "https://jeffreyturns.vercel.app/",
         ),
         Social(
             "Github",
