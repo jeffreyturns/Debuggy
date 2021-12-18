@@ -1,20 +1,17 @@
 package com.jeffrey.debuggy
 
 import android.app.Application
-import com.jeffrey.debuggy.di.helperModule
+import com.jeffrey.debuggy.di.modulesList
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 open class AppModule : Application() {
 
-    fun Application.initModule() {
+    override fun onCreate() {
+        super.onCreate()
         startKoin {
-            androidContext(this@initModule)
-            modules(modules)
+            androidContext(this@AppModule)
+            modules(modulesList)
         }
     }
-
-    private val modules = listOf(
-        helperModule
-    )
 }

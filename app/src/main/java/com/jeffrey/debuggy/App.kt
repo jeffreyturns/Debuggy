@@ -24,7 +24,6 @@ class App : AppModule() {
 
     override fun onCreate() {
         super.onCreate()
-        initModule()
 
         root = RootUtils.canRunRootCommands(process)
         if (root) daemonStatus = RootUtils.getDaemonStatus(process)
