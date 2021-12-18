@@ -70,12 +70,6 @@
     <color name="gray_neutral_900">#231A11</color>
     <color name="gray_neutral_1000">#000000</color>
 
-    <color name="blue_500">#4285F4</color>
-    <color name="red_500">#EA4335</color>
-    <color name="yellow_500">#FBBC04</color>
-    <color name="green_500">#34A853</color>
-    <color name="purple_500">#A142F4</color>
-
     <color name="red_200">#F2B8B5</color>
     <color name="red_700">#B3261E</color>
 </resources>
