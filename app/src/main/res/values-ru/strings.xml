@@ -25,6 +25,9 @@
     <string name="title_adb_over_usb">Отладка по USB</string>
     <string name="summary_adb_over_usb_enabled">Включёна</string>
     <string name="summary_adb_over_usb_disabled">Отключёна</string>
+    <string name="title_switch_adb_enabled">ADB Включён</string>
+    <string name="title_switch_adb_disabled">ADB Отключён</string>
+
 
     <string name="summary_connect_to_device">Подключите это устройство и компьютер к одной сети WI-FI</string>
     <string name="summary_run_command">На ПК запустите команду: adb connect %1$s:%2$s</string>

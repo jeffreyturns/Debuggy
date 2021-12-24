@@ -3,9 +3,6 @@ package com.jeffrey.debuggy.ui.main
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.res.ResourcesCompat
@@ -30,10 +27,8 @@ import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.ActivityMainBinding
 import com.jeffrey.debuggy.ui.base.BaseActivity
 import com.jeffrey.debuggy.util.RootUtils
-import com.jeffrey.debuggy.util.TransitionUtils
 import com.jeffrey.debuggy.util.Utils
 import com.jeffrey.debuggy.util.extensions.addInsetPaddings
-import com.jeffrey.debuggy.util.extensions.navBarHeight
 import com.jeffrey.debuggy.util.extensions.navigationType
 import com.jeffrey.debuggy.util.extensions.toDp
 import com.jeffrey.debuggy.worker.TimeoutWorker
@@ -60,7 +55,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         setSupportActionBar(binding.toolbar)
 
         if (preference.authenticationEnabled) {
-            hideFAB()
             AuthenticationManager.getBiometricPrompt(
                 this,
                 onError = ::closeApp,
@@ -89,32 +83,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         initColors()
 
-        binding.fabAnimation.setOnClickListener {
-            if (App.isRoot()) {
-                if (preference.adbEnabled) {
-                    RootUtils.disableTcp(notification)
-                    work.cancelUniqueWork(workManager, Workers.WORKER_TIMEOUT_TASK_NAME)
-                    TransitionUtils.enableFAB(binding.fabAnimation, this)
-                    TransitionUtils.enableIconImage(binding.adbIcon, this)
-                    TransitionUtils.enableIcon(binding.adbIcon, this)
-                    preference.adbEnabled = false
-                } else {
-                    RootUtils.enableTcp(notification, this, preference.port)
-                    work.beginUniqueWork(
-                        workManager,
-                        OneTimeWorkRequest.from(TimeoutWorker::class.java),
-                        this
-                    )
-                    TransitionUtils.disableFAB(binding.fabAnimation, this)
-                    TransitionUtils.disableIconImage(binding.adbIcon, this)
-                    TransitionUtils.disableIcon(binding.adbIcon, this)
-                    preference.adbEnabled = true
-                }
-            } else {
-                callSnackBar(this.resources.getString(R.string.message_action_unavailable))
-            }
-        }
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
@@ -127,16 +95,34 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             binding.toolbar.title = navHostFragment.navController.currentDestination!!.label
             binding.appBar.setExpanded(true)
             if (destination.id == R.id.navigation_home) {
-                showFAB()
                 binding.toolbar.navigationIcon = null
             } else {
-                hideFAB()
                 binding.toolbar.navigationIcon = AppCompatResources.getDrawable(
                     this,
                     R.drawable.ic_arrow_back_24dp
                 )
                 binding.toolbar.setNavigationOnClickListener { navController.navigateUp() }
             }
+        }
+    }
+
+    fun tcpStatus() {
+        if (App.isRoot()) {
+            if (preference.adbEnabled) {
+                RootUtils.disableTcp(notification)
+                work.cancelUniqueWork(workManager, Workers.WORKER_TIMEOUT_TASK_NAME)
+                preference.adbEnabled = false
+            } else {
+                RootUtils.enableTcp(notification, this, preference.port)
+                work.beginUniqueWork(
+                    workManager,
+                    OneTimeWorkRequest.from(TimeoutWorker::class.java),
+                    this
+                )
+                preference.adbEnabled = true
+            }
+        } else {
+            callSnackBar(this.resources.getString(R.string.message_action_unavailable))
         }
     }
 
@@ -148,7 +134,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     private fun initFromStart() {
-        showFAB()
         if (preference.adbEnabled) {
             RootUtils.enableTcp(notification, this, preference.port)
             work.beginUniqueWork(
@@ -156,36 +141,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 OneTimeWorkRequest.from(TimeoutWorker::class.java),
                 this
             )
-            TransitionUtils.disableIconImage(binding.adbIcon, this)
         } else {
             RootUtils.disableTcp(notification)
             work.cancelUniqueWork(workManager, Workers.WORKER_TIMEOUT_TASK_NAME)
-            TransitionUtils.enableIconImage(binding.adbIcon, this)
         }
     }
 
     private fun closeApp() {
         finishAffinity()
-    }
-
-    private fun showFAB() {
-        binding.adbFab.clearAnimation()
-        binding.adbFab.visibility = View.VISIBLE
-        binding.adbFab.animate()
-            .translationY(0F)
-            .setDuration(450)
-            .interpolator = AnimationUtils.loadInterpolator(this, R.anim.fast_out_extra_slow_in)
-    }
-
-    private fun hideFAB() {
-        binding.adbFab.animate()
-            .translationY(
-                (binding.adbFab.height + this.navBarHeight() + 16.toDp).toFloat()
-            )
-            .setDuration(450)
-            .withEndAction { binding.adbFab.visibility = View.GONE }
-            .interpolator = AnimationUtils.loadInterpolator(this, R.anim.fast_out_extra_slow_in)
-        binding.adbFab.clearAnimation()
     }
 
     private fun setupInsets() {
@@ -214,37 +177,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             insets
         }
-        ViewCompat.setOnApplyWindowInsetsListener(binding.adbFab) { _, insets ->
-            binding.adbFab.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                updateMargins(
-                    bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom + 16.toDp
-                )
-            }
-            insets
-        }
     }
 
     private fun initColors() {
         binding.collapsingToolbar.setContentScrimColor(MonetDynamicPalette(this).collapsingToolbarColor)
-        if (preference.adbEnabled) {
-            binding.fabAnimation.setBackgroundColor(MonetDynamicPalette(this).fabLayoutEnabledColor)
-            binding.adbIcon.setColorFilter(MonetDynamicPalette(this).fabIconEnabledColor)
-        } else {
-            binding.fabAnimation.setBackgroundColor(MonetDynamicPalette(this).fabLayoutDisabledColor)
-            binding.adbIcon.setColorFilter(MonetDynamicPalette(this).fabIconDisabledColor)
-        }
     }
 
     private fun callSnackBar(string: String) {
         val snack = Snackbar.make(
-            binding.adbFab,
+            binding.root,
             string,
             Snackbar.LENGTH_LONG
         )
         snack.setTextColor(MonetDynamicPalette(this).snackbarTextColor)
         snack.setBackgroundTint(MonetDynamicPalette(this).snackbarBackgroundColor)
         snack.animationMode = Snackbar.ANIMATION_MODE_SLIDE
-        snack.anchorView = binding.adbFab
+        snack.anchorView = binding.root
         snack.show()
     }
 

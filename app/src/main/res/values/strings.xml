@@ -25,6 +25,8 @@
     <string name="title_adb_over_usb">ADB over USB</string>
     <string name="summary_adb_over_usb_enabled">Enabled</string>
     <string name="summary_adb_over_usb_disabled">Disabled</string>
+    <string name="title_switch_adb_enabled">ADB Enabled</string>
+    <string name="title_switch_adb_disabled">ADB Disabled</string>
 
     <string name="summary_connect_to_device">connect this device and PC to same WI-FI network</string>
     <string name="summary_run_command">on PC run command: adb connect %1$s:%2$s</string>

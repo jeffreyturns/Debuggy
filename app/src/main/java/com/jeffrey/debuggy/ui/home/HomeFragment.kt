@@ -12,6 +12,7 @@ import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.data.sectioned.CardSectionedAdapter
 import com.jeffrey.debuggy.data.slot.informationHomeList
 import com.jeffrey.debuggy.data.slot.instructionHomeList
+import com.jeffrey.debuggy.data.switch.SwitchAdapter
 import com.jeffrey.debuggy.databinding.FragmentHomeBinding
 import com.jeffrey.debuggy.ui.base.BaseFragment
 import com.jeffrey.debuggy.util.NetworkUtils
@@ -39,6 +40,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.recyclerView.addInsetPaddings(bottom = true)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         binding.recyclerView.adapter = ConcatAdapter(
+            SwitchAdapter(
+                requireActivity()
+            ),
             CardSectionedAdapter(
                 informationHomeList(requireActivity(), preference.port),
                 requireActivity().resources.getString(R.string.header_information),
