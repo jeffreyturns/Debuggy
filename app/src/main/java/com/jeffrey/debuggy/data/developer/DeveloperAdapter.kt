@@ -10,33 +10,30 @@ import coil.load
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.social.SocialAdapter
 import com.jeffrey.debuggy.databinding.ItemDeveloperBinding
+import com.jeffrey.debuggy.databinding.ItemDeveloperCardBinding
+import com.jeffrey.debuggy.ui.base.BaseViewHolder
 
 class DeveloperAdapter(
     private val slot: List<Developer>,
     private val context: Context
 ) :
-    RecyclerView.Adapter<DeveloperAdapter.ViewHolder>() {
+    RecyclerView.Adapter<BaseViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_developer, parent, false)
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
+        BaseViewHolder.create(parent, ItemDeveloperBinding::inflate)
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val list: Developer = slot[position]
-        with(holder) {
-            binding.username.text = list.username
-            binding.status.text = list.status
-            binding.avatar.load(list.avatarUrl)
-            binding.recyclerView.layoutManager = LinearLayoutManager(context)
-            binding.recyclerView.adapter = SocialAdapter(list.socials, context)
+        with(holder.binding as ItemDeveloperBinding) {
+            username.text = list.username
+            status.text = list.status
+            avatar.load(list.avatarUrl)
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            recyclerView.adapter = SocialAdapter(list.socials, context)
         }
 
     }
 
     override fun getItemCount() = slot.size
-
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = ItemDeveloperBinding.bind(view)
-    }
 }

@@ -10,30 +10,26 @@ import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.developer.Developer
 import com.jeffrey.debuggy.data.developer.DeveloperAdapter
 import com.jeffrey.debuggy.databinding.ItemDeveloperCardBinding
+import com.jeffrey.debuggy.databinding.ItemFaqBinding
+import com.jeffrey.debuggy.ui.base.BaseViewHolder
 
 class DeveloperCardAdapter(
     private val data: List<Developer>,
-    private val category: String,
+    private val title: String,
     private val context: Context
 ) :
-    RecyclerView.Adapter<DeveloperCardAdapter.ViewHolder>() {
+    RecyclerView.Adapter<BaseViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_developer_card, parent, false)
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
+        BaseViewHolder.create(parent, ItemDeveloperCardBinding::inflate)
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(holder) {
-            binding.category.text = category
-            binding.recyclerView.layoutManager = LinearLayoutManager(context)
-            binding.recyclerView.adapter = DeveloperAdapter(data, context)
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        with(holder.binding as ItemDeveloperCardBinding) {
+            category.text = title
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            recyclerView.adapter = DeveloperAdapter(data, context)
         }
     }
 
     override fun getItemCount() = 1
-
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = ItemDeveloperCardBinding.bind(view)
-    }
 }
