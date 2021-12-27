@@ -27,7 +27,7 @@ class NetworkBannerView @JvmOverloads constructor(
 
         actionButton.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                val panelIntent = Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY)
+                val panelIntent = Intent(Settings.Panel.ACTION_WIFI)
                 ActivityCompat.startActivityForResult(context as Activity, panelIntent, 545, null)
             } else {
                 ContextCompat.startActivity(
