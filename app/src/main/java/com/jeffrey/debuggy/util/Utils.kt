@@ -8,10 +8,7 @@ import android.provider.Settings
 import android.util.Log
 import androidx.browser.customtabs.CustomTabsIntent
 import com.jeffrey.debuggy.BuildConfig
-import com.jeffrey.debuggy.R
 import java.net.NetworkInterface
-import java.text.SimpleDateFormat
-import java.util.*
 
 object Utils {
 
@@ -91,14 +88,5 @@ object Utils {
                     0,
                     3
                 )
-    }
-
-    fun getBuildTime(context: Context): String {
-        return context.getString(
-            R.string.version_concat_with_buildtime, BuildConfig.VERSION_NAME, SimpleDateFormat(
-                Constants.BUILDTIME_PATTERN,
-                Locale.getDefault()
-            ).format(BuildConfig.BUILD_TIME)
-        )
     }
 }
