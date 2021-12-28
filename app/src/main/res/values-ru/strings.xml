@@ -25,9 +25,9 @@
     <string name="title_adb_over_usb">Отладка по USB</string>
     <string name="summary_adb_over_usb_enabled">Включёна</string>
     <string name="summary_adb_over_usb_disabled">Отключёна</string>
-    <string name="title_switch_adb_enabled">ADB Включён</string>
-    <string name="title_switch_adb_disabled">ADB Отключён</string>
-
+    <string name="title_switch_adb_enabled">ADB включён</string>
+    <string name="title_switch_adb_disabled">ADB отключён</string>
+    <string name="title_switch_adb_unavailable">ADB недоступен</string>
 
     <string name="summary_connect_to_device">Подключите это устройство и компьютер к одной сети WI-FI</string>
     <string name="summary_run_command">На ПК запустите команду: adb connect %1$s:%2$s</string>
@@ -118,4 +118,5 @@
     <string name="title_twelve_hours">12 часов</string>
 
     <string name="title_biometric_prompt">Аутентификация действия</string>
+    <string name="message_switch_root_unavailable">Функционал не доступен, так как вы отказали в доступе к рут-правам приложению</string>
 </resources>

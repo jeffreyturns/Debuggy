@@ -3,18 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/keyline_8">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/three_section_list_size"
         android:layout_marginStart="@dimen/keyline_16"
         android:layout_marginTop="@dimen/keyline_8"
         android:layout_marginEnd="@dimen/keyline_16"
         android:layout_marginBottom="@dimen/keyline_8"
+        android:padding="70dp"
         app:cardCornerRadius="@dimen/keyline_24"
         app:cardElevation="@dimen/card_elevation"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -37,11 +39,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:switchMinWidth="58dp"
+                app:thumbTint="@color/selector_master_switch_thumb"
                 app:track="@drawable/shape_switch_track"
                 tools:text="@string/title_switch_adb_enabled" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/keyline_16"
+        android:paddingTop="@dimen/keyline_8"
+        android:paddingEnd="@dimen/keyline_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/keyline_16"
+            android:text="@string/message_switch_root_unavailable"
+            app:drawableStartCompat="@drawable/ic_error_24dp"
+            app:drawableTint="?colorError"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

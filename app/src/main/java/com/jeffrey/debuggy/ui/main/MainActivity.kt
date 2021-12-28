@@ -17,7 +17,6 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.snackbar.Snackbar
 import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.authentication.AuthenticationManager
@@ -32,7 +31,7 @@ import com.jeffrey.debuggy.util.extensions.addInsetPaddings
 import com.jeffrey.debuggy.util.extensions.navigationType
 import com.jeffrey.debuggy.util.extensions.toDp
 import com.jeffrey.debuggy.worker.TimeoutWorker
-import com.jeffrey.debuggy.worker.WorkerHelper
+import com.jeffrey.debuggy.worker.WorkerUtils
 import com.jeffrey.debuggy.worker.Workers
 import org.koin.android.ext.android.inject
 import kotlin.math.roundToInt
@@ -42,7 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     private val notification: NotificationHelper by inject()
     private val preference: PreferencesHelper by inject()
-    private val work: WorkerHelper = WorkerHelper
+    private val work: WorkerUtils = WorkerUtils
 
     private val workManager = WorkManager.getInstance(this)
 
@@ -121,8 +120,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 )
                 preference.adbEnabled = true
             }
-        } else {
-            callSnackBar(this.resources.getString(R.string.message_action_unavailable))
         }
     }
 
@@ -181,19 +178,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     private fun initColors() {
         binding.collapsingToolbar.setContentScrimColor(MonetDynamicPalette(this).collapsingToolbarColor)
-    }
-
-    private fun callSnackBar(string: String) {
-        val snack = Snackbar.make(
-            binding.root,
-            string,
-            Snackbar.LENGTH_LONG
-        )
-        snack.setTextColor(MonetDynamicPalette(this).snackbarTextColor)
-        snack.setBackgroundTint(MonetDynamicPalette(this).snackbarBackgroundColor)
-        snack.animationMode = Snackbar.ANIMATION_MODE_SLIDE
-        snack.anchorView = binding.root
-        snack.show()
     }
 
     private fun systemColorsTheme() {
