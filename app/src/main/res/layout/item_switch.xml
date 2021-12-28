@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/master_surface"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -29,14 +30,15 @@
                 android:layout_height="match_parent"
                 android:paddingStart="@dimen/keyline_16"
                 android:paddingEnd="@dimen/keyline_16"
-                tools:text="@string/title_switch_adb_enabled"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:textColor="?colorOnPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:switchMinWidth="58dp"
-                app:track="@drawable/shape_switch_track" />
+                app:track="@drawable/shape_switch_track"
+                tools:text="@string/title_switch_adb_enabled" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
