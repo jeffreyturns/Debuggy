@@ -9,24 +9,6 @@ fun Context.toast(text: String?, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, text.orEmpty(), duration).show()
 }
 
-fun Context.statusBarHeight(): Int {
-    var result = 0
-    val resourceId = this.resources.getIdentifier("status_bar_height", "dimen", "android")
-    if (resourceId > 0) {
-        result = this.resources.getDimensionPixelSize(resourceId)
-    }
-    return result
-}
-
-fun Context.navBarHeight(): Int {
-    var result = 0
-    val resourceId = this.resources.getIdentifier("navigation_bar_height", "dimen", "android")
-    if (resourceId > 0) {
-        result = this.resources.getDimensionPixelSize(resourceId)
-    }
-    return result
-}
-
 fun Context.navigationType(): Int {
     val resourceId =
         this.resources.getIdentifier("config_navBarInteractionMode", "integer", "android")
