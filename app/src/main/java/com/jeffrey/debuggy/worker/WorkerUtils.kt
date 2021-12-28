@@ -6,7 +6,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 
-object WorkerHelper {
+object WorkerUtils {
 
     fun beginUniqueWork(
         workManager: WorkManager,
