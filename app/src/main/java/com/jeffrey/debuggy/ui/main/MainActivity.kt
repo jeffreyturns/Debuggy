@@ -5,7 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.*
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -28,8 +28,8 @@ import com.jeffrey.debuggy.ui.base.BaseActivity
 import com.jeffrey.debuggy.util.RootUtils
 import com.jeffrey.debuggy.util.Utils
 import com.jeffrey.debuggy.util.extensions.addInsetPaddings
+import com.jeffrey.debuggy.util.extensions.getAttr
 import com.jeffrey.debuggy.util.extensions.navigationType
-import com.jeffrey.debuggy.util.extensions.toDp
 import com.jeffrey.debuggy.worker.TimeoutWorker
 import com.jeffrey.debuggy.worker.WorkerUtils
 import com.jeffrey.debuggy.worker.Workers
@@ -70,12 +70,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             WindowCompat.setDecorFitsSystemWindows(window, false)
             window.statusBarColor = Color.TRANSPARENT
             when (this.navigationType()) {
-                0 -> {
-                    window.navigationBarColor =
-                        ResourcesCompat.getColor(resources, R.color.color_background_70, theme)
-                }
                 2 -> {
                     window.navigationBarColor = Color.TRANSPARENT
+                }
+                else -> {
+                    window.navigationBarColor =
+                        ColorUtils.setAlphaComponent(
+                            this.getAttr(android.R.attr.colorBackground),
+                            ((0.70f * 255).roundToInt())
+                        )
                 }
             }
             setupInsets()
@@ -151,14 +154,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         binding.root.addInsetPaddings(left = true, right = true)
         ViewCompat.setOnApplyWindowInsetsListener(binding.collapsingToolbar) { view, insets ->
             view.updateLayoutParams<AppBarLayout.LayoutParams> {
-                val appBarHeight = view.context.resources.getDimension(R.dimen.app_bar_height)
+                val collapsingAppBarHeight =
+                    view.context.resources.getDimension(R.dimen.collapsing_app_bar_height)
                 height =
-                    (appBarHeight + insets.getInsets(WindowInsetsCompat.Type.statusBars()).top).roundToInt()
+                    (collapsingAppBarHeight + insets.getInsets(WindowInsetsCompat.Type.statusBars()).top).roundToInt()
             }
             insets
         }
         ViewCompat.setOnApplyWindowInsetsListener(binding.toolbar) { view, insets ->
-            56.toDp.let {
+            resources.getDimension(R.dimen.toolbar_m3_height).toInt().let {
                 val statusInsets = insets.getInsets(WindowInsetsCompat.Type.statusBars())
                 val overflowPadding = resources.getDimension(R.dimen.keyline_8)
                 val topInset = statusInsets.top

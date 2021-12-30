@@ -23,10 +23,10 @@
     <dimen name="fab_size">72dp</dimen>
     <dimen name="dialog_slot_height">64dp</dimen>
 
-    <dimen name="app_bar_height">200dp</dimen>
+    <dimen name="collapsing_app_bar_height">152dp</dimen>
     <dimen name="app_bar_elevation">0dp</dimen>
     <dimen name="toolbar_expanded_height">226dp</dimen>
-    <dimen name="toolbar_scrim_visible_height">174dp</dimen>
+    <dimen name="toolbar_scrim_visible_height">126dp</dimen>
     <dimen name="toolbar_expanded_title_margin">16dp</dimen>
 
     <dimen name="toolbar_m3_height">64dp</dimen>
