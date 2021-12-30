@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.ItemSwitchBinding
 import com.jeffrey.debuggy.ui.base.BaseViewHolder
 import com.jeffrey.debuggy.ui.main.MainActivity
+import com.jeffrey.debuggy.util.ShapeAppearanceUtils
 import com.jeffrey.debuggy.util.extensions.getAttr
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -42,10 +44,22 @@ class SwitchAdapter(private val context: Context) :
                 masterSurface.setBackgroundColor(
                     if (preference.adbEnabled) context.getAttr(
                         R.attr.colorPrimaryContainer
-                    ) else context.getAttr(R.attr.colorSurfaceVariant)
+                    ) else context.getAttr(
+                        R.attr.colorSurfaceVariant
+                    )
+                )
+                masterSwitch.setTextColor(
+                    if (preference.adbEnabled) context.getAttr(
+                        R.attr.colorOnPrimaryContainer
+                    ) else context.getAttr(
+                        R.attr.colorOnSurfaceVariant
+                    )
                 )
             } else {
-                masterSwitch.setBackgroundColor(context.getAttr(R.attr.colorError))
+                masterCard.setCardBackgroundColor(context.getAttr(R.attr.colorErrorContainer))
+                masterSwitch.setTextColor(context.getAttr(R.attr.colorOnErrorContainer))
+                errorRootCard.shapeAppearanceModel = ShapeAppearanceUtils.getBottomShape(context)
+                masterCard.shapeAppearanceModel = ShapeAppearanceUtils.getTopShape(context)
                 masterSwitch.thumbTintList = ContextCompat.getColorStateList(
                     context,
                     R.color.selector_master_switch_thumb_root_unavailable
@@ -59,32 +73,57 @@ class SwitchAdapter(private val context: Context) :
             masterSwitch.setOnClickListener {
                 (context as MainActivity).tcpStatus()
                 masterSwitch.text = title
-                changeColor(masterSurface)
+                changeColor(masterSurface, masterSwitch)
             }
         }
     }
 
-    private fun changeColor(surface: ConstraintLayout) {
-        val fromColor =
-            if (preference.adbEnabled) context.getAttr(R.attr.colorPrimaryContainer) else context.getAttr(R.attr.colorSurfaceVariant)
-        val toColor =
+    private fun changeColor(surface: ConstraintLayout, switchText: SwitchMaterial) {
+        val fromColorContainer =
+            if (preference.adbEnabled) context.getAttr(R.attr.colorPrimaryContainer) else context.getAttr(
+                R.attr.colorSurfaceVariant
+            )
+        val toColorContainer =
             if (!preference.adbEnabled) context.getAttr(R.attr.colorPrimaryContainer) else context.getAttr(
                 R.attr.colorSurfaceVariant
             )
 
-        val colorAnimation: ValueAnimator =
+        val fromColorText =
+            if (preference.adbEnabled) context.getAttr(R.attr.colorOnPrimaryContainer) else context.getAttr(
+                R.attr.colorOnSurfaceVariant
+            )
+        val toColorText =
+            if (!preference.adbEnabled) context.getAttr(R.attr.colorOnPrimaryContainer) else context.getAttr(
+                R.attr.colorOnSurfaceVariant
+            )
+
+        val colorAnimationText: ValueAnimator =
             ValueAnimator.ofObject(
                 ArgbEvaluator(),
-                toColor,
-                fromColor
+                toColorText,
+                fromColorText
             )
-        colorAnimation.duration = 200
-        colorAnimation.addUpdateListener { animator ->
+
+        val colorAnimationContainer: ValueAnimator =
+            ValueAnimator.ofObject(
+                ArgbEvaluator(),
+                toColorContainer,
+                fromColorContainer
+            )
+        colorAnimationContainer.duration = 200
+        colorAnimationText.duration = 200
+        colorAnimationText.addUpdateListener { animator ->
+            switchText.setTextColor(
+                animator.animatedValue as Int
+            )
+        }
+        colorAnimationContainer.addUpdateListener { animator ->
             surface.setBackgroundColor(
                 animator.animatedValue as Int
             )
         }
-        colorAnimation.start()
+        colorAnimationContainer.start()
+        colorAnimationText.start()
     }
 
     override fun getItemCount() = 1

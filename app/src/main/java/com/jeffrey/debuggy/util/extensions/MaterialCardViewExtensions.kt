@@ -9,13 +9,13 @@ fun MaterialCardView.setMonetLikeShapeAppearance(shape_key: Int, context: Contex
     this.shapeAppearanceModel =
         when (shape_key) {
             Constants.SHAPE_KEY_TOP -> {
-                ShapeAppearanceUtils.getTopShape(context)
+                ShapeAppearanceUtils.getStartShape(context)
             }
             Constants.SHAPE_KEY_INSIDE -> {
                 ShapeAppearanceUtils.getInsideShape(context)
             }
             Constants.SHAPE_KEY_BOTTOM -> {
-                ShapeAppearanceUtils.getBottomShape(context)
+                ShapeAppearanceUtils.getEndShape(context)
             }
             else -> {
                 ShapeAppearanceUtils.getRoundShape(context)

@@ -54,9 +54,4 @@
     <color name="md_theme_dark_primaryInverse">#735C00</color>
     <color name="seed">#675300</color>
     <color name="error">#BA1B1B</color>
-    <color name="Custom0">#1E88E5</color>
-    <color name="Custom1">#E53935</color>
-    <color name="Custom2">#5E35B1</color>
-    <color name="Custom3">#FDD835</color>
-    <color name="Custom4">#43A047</color>
 </resources>
