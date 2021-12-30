@@ -29,6 +29,5 @@
     <dimen name="toolbar_scrim_visible_height">174dp</dimen>
     <dimen name="toolbar_expanded_title_margin">16dp</dimen>
 
-    <dimen name="corners_size">25dp</dimen>
-    <dimen name="corners_4">4dp</dimen>
+    <dimen name="toolbar_m3_height">64dp</dimen>
 </resources>

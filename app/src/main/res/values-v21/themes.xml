@@ -1,10 +1,10 @@
 <resources>
-    <!-- Splash theme. -->
-    <style name="Theme.Debuggy.SplashTheme" parent="Theme.MaterialComponents.NoActionBar">
+
+    <style name="Theme.Debuggy.SplashTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/launch_screen</item>
         <item name="android:statusBarColor">#999999</item>
         <item name="android:navigationBarColor">#999999</item>
-        <item name="colorPrimary">@color/amber_600</item>
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
     </style>
 
     <style name="Theme.Debuggy.App" parent="Theme.Debuggy.Base">

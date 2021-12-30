@@ -3,7 +3,6 @@ package com.jeffrey.debuggy.data.switch
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -42,8 +41,8 @@ class SwitchAdapter(private val context: Context) :
             if (App.isRoot()) {
                 masterSurface.setBackgroundColor(
                     if (preference.adbEnabled) context.getAttr(
-                        R.attr.colorSecondary
-                    ) else Color.WHITE
+                        R.attr.colorPrimaryContainer
+                    ) else context.getAttr(R.attr.colorSurfaceVariant)
                 )
             } else {
                 masterSwitch.setBackgroundColor(context.getAttr(R.attr.colorError))
@@ -67,9 +66,11 @@ class SwitchAdapter(private val context: Context) :
 
     private fun changeColor(surface: ConstraintLayout) {
         val fromColor =
-            if (preference.adbEnabled) context.getAttr(R.attr.colorSecondary) else Color.WHITE
+            if (preference.adbEnabled) context.getAttr(R.attr.colorPrimaryContainer) else context.getAttr(R.attr.colorSurfaceVariant)
         val toColor =
-            if (!preference.adbEnabled) context.getAttr(R.attr.colorSecondary) else Color.WHITE
+            if (!preference.adbEnabled) context.getAttr(R.attr.colorPrimaryContainer) else context.getAttr(
+                R.attr.colorSurfaceVariant
+            )
 
         val colorAnimation: ValueAnimator =
             ValueAnimator.ofObject(

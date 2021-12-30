@@ -7,13 +7,14 @@
     tools:context=".data.sectioned.CardSectionedAdapter">
 
     <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/keyline_16"
         android:layout_marginTop="@dimen/keyline_8"
         android:layout_marginEnd="@dimen/keyline_16"
         android:layout_marginBottom="@dimen/keyline_8"
-        app:cardElevation="@dimen/card_elevation"
+        app:cardCornerRadius="@dimen/keyline_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +28,7 @@
 
             <TextView
                 android:id="@+id/category"
-                style="@style/TextAppearance.Debuggy.Subtitle2"
+                style="@style/TextAppearance.Material3.BodyMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/keyline_16"

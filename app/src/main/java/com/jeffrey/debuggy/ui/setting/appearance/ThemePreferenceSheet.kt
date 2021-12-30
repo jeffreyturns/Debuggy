@@ -48,7 +48,6 @@ class ThemePreferenceSheet : BaseSheetFragment<DialogThemePreferenceBinding>(
                     parentFragmentCallBack()
                     dismiss()
                     (requireActivity() as MainActivity).themeCall(true)
-
                 }
             }
         }

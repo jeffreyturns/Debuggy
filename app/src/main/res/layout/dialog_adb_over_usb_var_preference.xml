@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/header">
 
         <TextView
-            style="@style/TextAppearance.Debuggy.Headline5"
+            style="@style/TextAppearance.Material3.HeadlineSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/keyline_16"
@@ -82,7 +82,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/action_cancel"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/keyline_16"
@@ -90,7 +90,6 @@
             android:paddingTop="@dimen/keyline_2"
             android:paddingBottom="@dimen/keyline_2"
             android:text="@string/action_cancel"
-            android:textAppearance="@style/TextAppearance.Debuggy.Subtitle2"
             android:textColor="?colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

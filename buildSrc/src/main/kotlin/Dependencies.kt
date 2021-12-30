@@ -35,7 +35,7 @@ object Versions {
     }
 
     object UI {
-        const val MaterialComponents = "1.6.0-alpha01"
+        const val MaterialComponents = "1.5.0-rc01"
         const val Coil = "1.3.2"
     }
 

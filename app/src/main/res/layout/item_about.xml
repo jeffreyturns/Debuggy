@@ -56,7 +56,7 @@
 
                 <TextView
                     android:id="@+id/title"
-                    style="@style/TextAppearance.Debuggy.Headline6"
+                    style="@style/TextAppearance.Material3.TitleLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/keyline_2"
@@ -70,7 +70,7 @@
 
                 <TextView
                     android:id="@+id/summary"
-                    style="@style/TextAppearance.Debuggy.Subtitle1"
+                    style="@style/TextAppearance.Material3.BodyMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/keyline_2"
@@ -111,19 +111,19 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_support"
+                style="@style/Widget.Material3.CardView.Filled"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardElevation="@dimen/card_elevation"
                 app:cardPreventCornerOverlap="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearance="@style/ShapeAppearance.Debuggy.Custom.Start">
 
                 <TextView
-                    style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    style="@style/TextAppearance.Material3.BodyMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/keyline_10"
@@ -140,18 +140,18 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_feedback"
+                style="@style/Widget.Material3.CardView.Filled"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="?android:selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardElevation="@dimen/card_elevation"
                 app:cardPreventCornerOverlap="false"
                 app:shapeAppearance="@style/ShapeAppearance.Debuggy.Custom.Inside"
                 tools:ignore="MissingConstraints">
 
                 <TextView
-                    style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    style="@style/TextAppearance.Material3.BodyMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/keyline_10"
@@ -168,12 +168,12 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_news"
+                style="@style/Widget.Material3.CardView.Filled"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardElevation="@dimen/card_elevation"
                 app:cardPreventCornerOverlap="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -181,7 +181,7 @@
                 tools:ignore="MissingConstraints">
 
                 <TextView
-                    style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    style="@style/TextAppearance.Material3.BodyMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/keyline_10"
@@ -198,12 +198,12 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_translate"
+                style="@style/Widget.Material3.CardView.Filled"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardElevation="@dimen/card_elevation"
                 app:cardPreventCornerOverlap="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -211,7 +211,7 @@
                 tools:ignore="MissingConstraints">
 
                 <TextView
-                    style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    style="@style/TextAppearance.Material3.BodyMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/keyline_10"

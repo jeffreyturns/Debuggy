@@ -50,7 +50,7 @@
 
             <TextView
                 android:id="@+id/message"
-                style="@style/TextAppearance.Debuggy.Body2"
+                style="@style/TextAppearance.Material3.BodyMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/keyline_2"
@@ -63,14 +63,12 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/action_button"
-                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/keyline_12"
                 android:paddingTop="@dimen/keyline_2"
                 android:paddingBottom="@dimen/keyline_2"
                 android:text="@string/text_turn_on_internet"
-                android:textColor="?colorOnPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/message" />

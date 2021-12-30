@@ -17,10 +17,10 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.color.DynamicColors
 import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.authentication.AuthenticationManager
-import com.jeffrey.debuggy.data.monet.MonetDynamicPalette
 import com.jeffrey.debuggy.data.notification.NotificationHelper
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.ActivityMainBinding
@@ -47,7 +47,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun preSuperCall() {
         themeCall(false)
-        systemColorsTheme()
+        setTheme(R.style.Theme_Debuggy_App)
+        if (preference.useSystemColors) DynamicColors.applyIfAvailable(this)
     }
 
     override fun setUpViews() {
@@ -79,8 +80,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             setupInsets()
         }
-
-        initColors()
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -176,32 +175,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
     }
 
-    private fun initColors() {
-        binding.collapsingToolbar.setContentScrimColor(MonetDynamicPalette(this).collapsingToolbarColor)
-    }
-
-    private fun systemColorsTheme() {
-        if (preference.useSystemColors) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                setTheme(R.style.Theme_Debuggy_App_Monet)
-            } else {
-                preference.useSystemColors = false
-            }
-        } else setTheme(R.style.Theme_Debuggy_App)
-    }
-
     fun themeCall(recreate: Boolean) {
         if (recreate) Utils.restartApp(this) else
-            when (preference.appTheme) {
-                1 -> {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            AppCompatDelegate.setDefaultNightMode(
+                when (preference.appTheme) {
+                    0 -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+                    1 -> AppCompatDelegate.MODE_NIGHT_NO
+                    2 -> AppCompatDelegate.MODE_NIGHT_YES
+                    else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
                 }
-                2 -> {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                }
-                0 -> {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                }
-            }
+            )
     }
 }
