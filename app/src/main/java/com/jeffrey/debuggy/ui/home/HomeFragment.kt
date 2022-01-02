@@ -18,6 +18,7 @@ import com.jeffrey.debuggy.ui.base.BaseFragment
 import com.jeffrey.debuggy.util.NetworkUtils
 import com.jeffrey.debuggy.util.TransitionUtils
 import com.jeffrey.debuggy.util.extensions.addInsetPaddings
+import com.jeffrey.debuggy.util.extensions.navigate
 import org.koin.android.ext.android.inject
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
@@ -63,10 +64,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.navigation_settings) {
-            Navigation.findNavController(
-                requireActivity(),
-                R.id.nav_host_fragment
-            ).navigate(R.id.navigation_settings)
+            requireActivity().navigate(R.id.navigation_settings)
             exitTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), false)
             reenterTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
         }

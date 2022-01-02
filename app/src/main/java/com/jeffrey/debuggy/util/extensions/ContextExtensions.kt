@@ -41,3 +41,8 @@ fun Context.getCurrentFragment(): Fragment {
     return (this as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
         ?.childFragmentManager?.fragments?.get(0)!!
 }
+
+fun Context.getNavController() = Navigation.findNavController(
+    (this as AppCompatActivity),
+    R.id.nav_host_fragment
+)

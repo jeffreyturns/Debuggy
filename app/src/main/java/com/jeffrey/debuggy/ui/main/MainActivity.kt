@@ -27,9 +27,7 @@ import com.jeffrey.debuggy.databinding.ActivityMainBinding
 import com.jeffrey.debuggy.ui.base.BaseActivity
 import com.jeffrey.debuggy.util.RootUtils
 import com.jeffrey.debuggy.util.Utils
-import com.jeffrey.debuggy.util.extensions.addInsetPaddings
-import com.jeffrey.debuggy.util.extensions.navigationType
-import com.jeffrey.debuggy.util.extensions.toDp
+import com.jeffrey.debuggy.util.extensions.*
 import com.jeffrey.debuggy.worker.TimeoutWorker
 import com.jeffrey.debuggy.worker.WorkerUtils
 import com.jeffrey.debuggy.worker.Workers
@@ -90,8 +88,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         navController.addOnDestinationChangedListener { _: NavController?, destination: NavDestination, _: Bundle? ->
             binding.collapsingToolbar.title =
-                navHostFragment.navController.currentDestination!!.label
-            binding.toolbar.title = navHostFragment.navController.currentDestination!!.label
+                this.getNavController().currentDestination!!.label
+            binding.toolbar.title = this.getNavController().currentDestination!!.label
             binding.appBar.setExpanded(true)
             if (destination.id == R.id.navigation_home) {
                 binding.toolbar.navigationIcon = null
@@ -100,7 +98,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     this,
                     R.drawable.ic_arrow_back_24dp
                 )
-                binding.toolbar.setNavigationOnClickListener { navController.navigateUp() }
+                binding.toolbar.setNavigationOnClickListener { this.navigateUp() }
             }
         }
     }
