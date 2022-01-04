@@ -9,7 +9,6 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.*
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -50,6 +49,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun setUpViews() {
         setSupportActionBar(binding.toolbar)
+        val navController: NavController = this.getNavController()
 
         if (preference.authenticationEnabled) {
             AuthenticationManager.getBiometricPrompt(
@@ -80,16 +80,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         initColors()
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
         setupActionBarWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _: NavController?, destination: NavDestination, _: Bundle? ->
             binding.collapsingToolbar.title =
-                this.getNavController().currentDestination!!.label
-            binding.toolbar.title = this.getNavController().currentDestination!!.label
+                navController.currentDestination!!.label
+            binding.toolbar.title = navController.currentDestination!!.label
             binding.appBar.setExpanded(true)
             if (destination.id == R.id.navigation_home) {
                 binding.toolbar.navigationIcon = null
@@ -98,7 +94,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     this,
                     R.drawable.ic_arrow_back_24dp
                 )
-                binding.toolbar.setNavigationOnClickListener { this.navigateUp() }
+                binding.toolbar.setNavigationOnClickListener { navController.navigateUp() }
             }
         }
     }

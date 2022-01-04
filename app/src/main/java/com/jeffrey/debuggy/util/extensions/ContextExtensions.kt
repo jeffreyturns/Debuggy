@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.jeffrey.debuggy.R
 
 fun Context.toast(text: String?, duration: Int = Toast.LENGTH_SHORT) {
@@ -42,7 +43,6 @@ fun Context.getCurrentFragment(): Fragment {
         ?.childFragmentManager?.fragments?.get(0)!!
 }
 
-fun Context.getNavController() = Navigation.findNavController(
-    (this as AppCompatActivity),
-    R.id.nav_host_fragment
-)
+fun Context.getNavController() =
+    ((this as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
+
