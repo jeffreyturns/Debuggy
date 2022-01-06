@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:constraint_referenced_ids="card_support, card_feedback, card_news, card_translate"
-                app:flow_horizontalGap="@dimen/keyline_2"
+                app:flow_horizontalGap="@dimen/keyline_4"
                 app:flow_wrapMode="chain"
                 tools:ignore="MissingConstraints" />
 

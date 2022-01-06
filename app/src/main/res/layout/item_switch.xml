@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/keyline_16"
-        android:paddingTop="@dimen/keyline_2"
+        android:paddingTop="@dimen/keyline_4"
         android:paddingEnd="@dimen/keyline_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
