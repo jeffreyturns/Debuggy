@@ -12,9 +12,4 @@ object Constants {
     const val URL_TRANSLATE = "https://jeffreyturns.vercel.app/translate/debuggy"
     const val URL_LATEST_RELEASE = "https://github.com/Jeffrey01596/Debuggy/releases/latest"
     const val URL_CURRENT_RELEASE = "https://github.com/Jeffrey01596/Debuggy/releases/tag/v"
-
-    const val SHAPE_KEY_ALL = -1
-    const val SHAPE_KEY_TOP = 1
-    const val SHAPE_KEY_INSIDE = 2
-    const val SHAPE_KEY_BOTTOM = 3
 }

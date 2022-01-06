@@ -64,6 +64,10 @@ class SwitchAdapter(private val context: Context) :
                     context,
                     R.color.selector_master_switch_thumb_root_unavailable
                 )
+                masterSwitch.trackTintList = ContextCompat.getColorStateList(
+                    context,
+                    R.color.selector_master_switch_track_root_unavailable
+                )
             }
 
             masterSwitch.text =
