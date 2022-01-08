@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="?colorPrimary" />
+            app:tint="?colorSecondary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -43,6 +43,7 @@
             android:layout_marginEnd="@dimen/keyline_16"
             android:text="@string/title_set_custom_port"
             android:textAlignment="center"
+            android:textColor="?colorOnSurface"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +107,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/action_save"
-            style="@style/Widget.Material3.Button.TextButton"
+            style="@style/Widget.Material3.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/keyline_4"
