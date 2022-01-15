@@ -50,7 +50,7 @@
         <item name="preferenceTheme">@style/Debuggy.PreferenceThemeOverlay</item>
     </style>
 
-    <style name="Theme.Debuggy.App" parent="Theme.Debuggy.Base">
+    <style name="Theme.Debuggy.App.Light" parent="Theme.Debuggy.Base">
         <item name="android:statusBarColor">@color/md_theme_light_background</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>

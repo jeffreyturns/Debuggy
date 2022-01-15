@@ -1,9 +1,12 @@
 package com.jeffrey.debuggy.util.extensions
 
 import android.content.Context
+import android.content.Intent
+import android.content.res.Configuration
 import android.util.TypedValue
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -43,6 +46,20 @@ fun Context.getCurrentFragment(): Fragment {
         ?.childFragmentManager?.fragments?.get(0)!!
 }
 
+fun Context.restartApp() {
+    this.startActivity(
+        Intent.makeRestartActivityTask(
+            this.packageManager.getLaunchIntentForPackage(
+                this.packageName
+            )!!.component
+        )
+    )
+}
+
 fun Context.getNavController() =
     ((this as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
 
+val Context.isDarkMode
+    get() = if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+    else AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES

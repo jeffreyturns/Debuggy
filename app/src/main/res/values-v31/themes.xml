@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Theme.Debuggy.SplashTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/md_theme_light_background</item>
         <item name="android:navigationBarColor" tools:targetApi="l">
@@ -16,5 +17,16 @@
         <item name="android:windowSplashScreenIconBackgroundColor">
             #FFF
         </item>
+    </style>
+
+    <style name="Theme.Debuggy.DynamicColors" parent="ThemeOverlay.Material3.DynamicColors.DayNight">
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Debuggy.SmallComponent
+        </item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Debuggy.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Debuggy.LargeComponent
+        </item>
+        <item name="android:scrollbars">none</item>
+        <item name="preferenceTheme">@style/Debuggy.PreferenceThemeOverlay</item>
     </style>
 </resources>

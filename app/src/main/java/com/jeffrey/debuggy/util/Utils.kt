@@ -6,8 +6,11 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.provider.Settings
 import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
 import com.jeffrey.debuggy.BuildConfig
+import com.jeffrey.debuggy.util.extensions.Level
+import com.jeffrey.debuggy.util.extensions.writeLog
 import java.net.NetworkInterface
 
 object Utils {
@@ -28,21 +31,13 @@ object Utils {
                         }
                     }
                 }
-            } catch (ex: Exception) {
-                Log.e("IP Address", ex.toString())
+            } catch (e: Exception) {
+                writeLog(Level.ERROR,"Cannot get IP address", e)
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
         return if (ip.toString().length > 13) Constants.UNDEFINED_TEXT else ip.toString()
-    }
-
-    fun restartApp(context: Context) {
-        val packageManager = context.packageManager
-        val intent = packageManager.getLaunchIntentForPackage(context.packageName)!!
-        val componentName = intent.component
-        val mainIntent = Intent.makeRestartActivityTask(componentName)
-        context.startActivity(mainIntent)
     }
 
     fun getADBOverUSBStatus(context: Context): Boolean {
@@ -88,5 +83,13 @@ object Utils {
                     0,
                     3
                 )
+    }
+
+    fun applyTheme(theme: Int) {
+        when (theme) {
+            1 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            2 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            0 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
     }
 }

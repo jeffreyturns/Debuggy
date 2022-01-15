@@ -4,7 +4,9 @@ import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.DialogThemePreferenceBinding
 import com.jeffrey.debuggy.ui.base.BaseSheetFragment
-import com.jeffrey.debuggy.ui.main.MainActivity
+import com.jeffrey.debuggy.util.extensions.Level
+import com.jeffrey.debuggy.util.extensions.restartApp
+import com.jeffrey.debuggy.util.extensions.writeLog
 import org.koin.core.component.inject
 
 class ThemePreferenceSheet : BaseSheetFragment<DialogThemePreferenceBinding>(
@@ -34,20 +36,19 @@ class ThemePreferenceSheet : BaseSheetFragment<DialogThemePreferenceBinding>(
                     preference.appTheme = 1
                     parentFragmentCallBack()
                     dismiss()
-                    (requireActivity() as MainActivity).themeCall(true)
+                    requireActivity().restartApp()
                 }
                 R.id.radio_dark -> {
                     preference.appTheme = 2
                     parentFragmentCallBack()
                     dismiss()
-                    (requireActivity() as MainActivity).themeCall(true)
-
+                    requireActivity().restartApp()
                 }
                 R.id.radio_default -> {
                     preference.appTheme = 0
                     parentFragmentCallBack()
                     dismiss()
-                    (requireActivity() as MainActivity).themeCall(true)
+                    requireActivity().restartApp()
                 }
             }
         }
@@ -58,7 +59,7 @@ class ThemePreferenceSheet : BaseSheetFragment<DialogThemePreferenceBinding>(
             val callback = parentFragment as AppearanceSettingsFragment?
             callback!!.update()
         } catch (e: ClassCastException) {
-            throw ClassCastException("interface not implemented")
+            writeLog(Level.ERROR, "Interface not implemented", e)
         }
     }
 }

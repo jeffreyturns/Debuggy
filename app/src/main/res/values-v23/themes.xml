@@ -8,7 +8,7 @@
         <item name="colorPrimary">@color/md_theme_light_primary</item>
     </style>
 
-    <style name="Theme.Debuggy.App" parent="Theme.Debuggy.Base">
+    <style name="Theme.Debuggy.App.Light" parent="Theme.Debuggy.Base">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/md_theme_light_background</item>
         <item name="android:navigationBarColor">#999999</item>

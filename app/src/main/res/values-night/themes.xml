@@ -3,6 +3,8 @@
     <style name="Theme.Debuggy.SplashTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/launch_screen</item>
         <item name="android:statusBarColor">@color/md_theme_dark_background</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="android:navigationBarColor" tools:targetApi="l">
             @color/md_theme_dark_background
         </item>
@@ -48,6 +50,8 @@
 
     <style name="Theme.Debuggy.App" parent="Theme.Debuggy.Base">
         <item name="android:statusBarColor">@color/md_theme_dark_background</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="android:navigationBarColor" tools:targetApi="l">
             @color/md_theme_dark_background
         </item>

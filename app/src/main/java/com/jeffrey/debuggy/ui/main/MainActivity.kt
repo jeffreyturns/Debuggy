@@ -3,7 +3,6 @@ package com.jeffrey.debuggy.ui.main
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.*
@@ -26,9 +25,6 @@ import com.jeffrey.debuggy.databinding.ActivityMainBinding
 import com.jeffrey.debuggy.ui.base.BaseActivity
 import com.jeffrey.debuggy.util.RootUtils
 import com.jeffrey.debuggy.util.Utils
-import com.jeffrey.debuggy.util.extensions.addInsetPaddings
-import com.jeffrey.debuggy.util.extensions.getAttr
-import com.jeffrey.debuggy.util.extensions.navigationType
 import com.jeffrey.debuggy.util.extensions.*
 import com.jeffrey.debuggy.worker.TimeoutWorker
 import com.jeffrey.debuggy.worker.WorkerUtils
@@ -46,9 +42,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private val workManager = WorkManager.getInstance(this)
 
     override fun preSuperCall() {
-        themeCall(false)
-        setTheme(R.style.Theme_Debuggy_App)
-        if (preference.useSystemColors) DynamicColors.applyIfAvailable(this)
+        Utils.applyTheme(preference.appTheme)
+        setTheme(
+            if (this.isDarkMode)
+                R.style.Theme_Debuggy_App_Dark
+            else
+                R.style.Theme_Debuggy_App_Light
+        )
+        if (preference.useSystemColors) DynamicColors.applyIfAvailable(
+            this,
+            R.style.Theme_Debuggy_DynamicColors
+        )
     }
 
     override fun setUpViews() {
@@ -174,17 +178,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             insets
         }
-    }
-
-    fun themeCall(recreate: Boolean) {
-        if (recreate) Utils.restartApp(this) else
-            AppCompatDelegate.setDefaultNightMode(
-                when (preference.appTheme) {
-                    0 -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-                    1 -> AppCompatDelegate.MODE_NIGHT_NO
-                    2 -> AppCompatDelegate.MODE_NIGHT_YES
-                    else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-                }
-            )
     }
 }

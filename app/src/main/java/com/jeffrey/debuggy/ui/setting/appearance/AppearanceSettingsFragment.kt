@@ -8,7 +8,7 @@ import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.ui.base.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.Constants
-import com.jeffrey.debuggy.util.Utils
+import com.jeffrey.debuggy.util.extensions.restartApp
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -35,7 +35,7 @@ class AppearanceSettingsFragment : BasePreferenceFragmentCompat(), KoinComponent
         systemColors.isChecked = preference.useSystemColors
         systemColors.setOnPreferenceChangeListener { _, value ->
             preference.useSystemColors = value == true
-            Utils.restartApp(requireActivity())
+            requireActivity().restartApp()
             true
         }
         update()
