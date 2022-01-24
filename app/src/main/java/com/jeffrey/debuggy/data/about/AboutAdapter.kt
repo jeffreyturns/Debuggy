@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.jeffrey.debuggy.BuildConfig
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.developer.developersList
 import com.jeffrey.debuggy.data.sectioned.CardSectionedAdapter
@@ -28,7 +27,7 @@ class AboutAdapter(private val context: Context, fragment: Fragment) :
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         with(holder.binding as ItemAboutBinding) {
-            summary.text = BuildConfig.VERSION_NAME
+            summary.text = Utils.getBuildTime(context)
             recyclerView.layoutManager = LinearLayoutManager(context)
             recyclerView.adapter = ConcatAdapter(
                 CardSectionedAdapter(

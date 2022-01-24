@@ -4,13 +4,9 @@
     android:viewportWidth="36"
     android:viewportHeight="36">
     <path
-        android:fillColor="?colorSurface"
+        android:fillColor="?colorPrimaryContainer"
         android:pathData="M0 18c0-9.94 8.06-18 18-18h0c9.94 0 18 8.06 18 18v0c0 9.94-8.06 18-18 18h0c-9.94 0-18-8.06-18-18z" />
     <path
-        android:fillAlpha="0.25"
-        android:fillColor="?colorPrimary"
-        android:pathData="M0 18c0-9.94 8.06-18 18-18h0c9.94 0 18 8.06 18 18v0c0 9.94-8.06 18-18 18h0c-9.94 0-18-8.06-18-18z" />
-    <path
-        android:fillColor="?colorOnSurface"
+        android:fillColor="?colorOnPrimaryContainer"
         android:pathData="M24,14H23V12C23,9.24 20.76,7 18,7C15.24,7 13,9.24 13,12V14H12C10.9,14 10,14.9 10,16V26C10,27.1 10.9,28 12,28H24C25.1,28 26,27.1 26,26V16C26,14.9 25.1,14 24,14ZM18,23C16.9,23 16,22.1 16,21C16,19.9 16.9,19 18,19C19.1,19 20,19.9 20,21C20,22.1 19.1,23 18,23ZM15,14V12C15,10.34 16.34,9 18,9C19.66,9 21,10.34 21,12V14H15Z" />
 </vector>

@@ -12,8 +12,8 @@ fun informationHomeList(context: Context, port: String): List<Slot> {
     return listOf(
         Slot(
             context.resources.getString(R.string.title_adb_daemon),
-            if (App.isRoot()) {
-                if ((App.daemonStatus()).replace("\n", "")
+            if (App.root) {
+                if ((App.daemonStatus).replace("\n", "")
                         .replace("\r", "") == "running"
                 ) context.resources.getString(R.string.summary_adb_daemon_running) else context.resources.getString(
                     R.string.summary_adb_daemon_stopped
@@ -33,7 +33,7 @@ fun informationHomeList(context: Context, port: String): List<Slot> {
         ),
         Slot(
             context.resources.getString(R.string.title_root_access),
-            if (App.isRoot()) context.resources.getString(R.string.summary_root_access_granted) else context.resources.getString(
+            if (App.root) context.resources.getString(R.string.summary_root_access_granted) else context.resources.getString(
                 R.string.summary_root_access_declined
             ),
             R.drawable.ic_hashtag_24dp
@@ -59,9 +59,9 @@ fun instructionHomeList(context: Context, port: String): List<Slot> {
             summary = context.resources.getString(R.string.summary_connect_to_device)
         ),
         Slot(
-            summary = if (Utils.ip() != Constants.UNDEFINED_TEXT) context.resources.getString(
+            summary = if (Utils.deviceIpv6Address != Constants.UNDEFINED_TEXT) context.resources.getString(
                 R.string.summary_run_command,
-                Utils.ip(),
+                Utils.deviceIpv6Address,
                 port
             ) else context.getString(R.string.message_ip_unable_determine)
         )

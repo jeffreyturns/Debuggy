@@ -97,7 +97,7 @@
 
     <string name="jeffrey_status">Developer &amp; Designer</string>
     <string name="title_developer_portfolio">Portfolio</string>
-    
+
     <string name="title_without_root">Can I use the app without root access?</string>
     <string name="message_without_root">No, the application uses root access to enable network debugging via system values. You can use network debugging through the "For Developers" item.</string>
     <string name="title_connect_via_pc">I cannot connect to the device via PC</string>

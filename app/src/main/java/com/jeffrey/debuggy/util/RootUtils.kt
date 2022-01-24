@@ -2,64 +2,46 @@ package com.jeffrey.debuggy.util
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import com.jeffrey.debuggy.data.notification.NotificationHelper
 import com.jeffrey.debuggy.ui.main.MainActivity
+import com.jeffrey.debuggy.util.extensions.Level
+import com.jeffrey.debuggy.util.extensions.writeLog
 import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.IOException
 import java.io.InputStreamReader
 
-
 object RootUtils {
 
-    fun canRunRootCommands(su: Process): Boolean {
+    val daemonStatus: String
+        get() {
+            val exec = Runtime.getRuntime().exec("su")
+            try {
+                val dataOutputStream = DataOutputStream(exec.outputStream)
+                val reader = BufferedReader(
+                    InputStreamReader(exec.inputStream)
+                )
+                val buffer = CharArray(4096)
+                val output = StringBuffer()
+                var read: Int
 
-        var retrieval: Boolean
-
-        try {
-            val os = DataOutputStream(su.outputStream)
-            val d = BufferedReader(InputStreamReader(su.inputStream))
-            os.writeBytes("id\n")
-            os.flush()
-            if (d.readLine().contains("uid=0")) {
-                retrieval = true
-                Log.d("ROOT", "Root access granted")
-            } else {
-                retrieval = false
-                Log.d("ROOT", "Root access rejected: $d")
+                dataOutputStream.writeBytes("getprop init.svc.adbd" + "\n")
+                dataOutputStream.flush()
+                dataOutputStream.close()
+                while (reader.read(buffer).also { read = it } > 0) {
+                    output.append(buffer, 0, read)
+                }
+                reader.close()
+                exec.waitFor()
+                return output.toString()
+            } catch (e: IOException) {
+                writeLog(Level.ERROR, "cannot get Daemon status cause IOException", e)
+                return ""
+            } catch (e: InterruptedException) {
+                writeLog(Level.ERROR, "cannot get Daemon status cause InterruptedException", e)
+                return ""
             }
-        } catch (e: Exception) {
-            retrieval = false
-            Log.d("ROOT", "Root access rejected [" + e.javaClass.name + "] : " + e.message)
         }
-        return retrieval
-    }
-
-    fun getDaemonStatus(su: Process): String {
-        return try {
-            val dataOutputStream = DataOutputStream(su.outputStream)
-            dataOutputStream.writeBytes("getprop init.svc.adbd" + "\n")
-            dataOutputStream.flush()
-            dataOutputStream.close()
-            val reader = BufferedReader(
-                InputStreamReader(su.inputStream)
-            )
-            var read: Int
-            val buffer = CharArray(4096)
-            val output = StringBuffer()
-            while (reader.read(buffer).also { read = it } > 0) {
-                output.append(buffer, 0, read)
-            }
-            reader.close()
-            su.waitFor()
-            output.toString()
-        } catch (e: IOException) {
-            throw RuntimeException(e)
-        } catch (e: InterruptedException) {
-            throw RuntimeException(e)
-        }
-    }
 
     fun enableTcp(notificationHelper: NotificationHelper, context: Context, port: String) {
         val intent = Intent(context.applicationContext, MainActivity::class.java)
@@ -70,7 +52,7 @@ object RootUtils {
         try {
             callCommandWithADBDRestart("setprop service.adb.tcp.port $port")
         } catch (e: Exception) {
-            e.printStackTrace()
+            writeLog(Level.ERROR, "cannot enable TCP service", e)
         }
     }
 
@@ -79,7 +61,7 @@ object RootUtils {
         try {
             callCommandWithADBDRestart("setprop service.adb.tcp.port -1")
         } catch (e: Exception) {
-            e.printStackTrace()
+            writeLog(Level.ERROR, "cannot disable TCP service", e)
         }
     }
 
@@ -106,11 +88,11 @@ object RootUtils {
             dataOutputStream.flush()
             exec.waitFor()
         } catch (e: IOException) {
-            throw java.lang.Exception(e)
-        } catch (e2: InterruptedException) {
-            e2.printStackTrace()
-        } catch (e3: java.lang.Exception) {
-            e3.printStackTrace()
+            writeLog(Level.ERROR, "Soft restart IOException", e)
+        } catch (e: InterruptedException) {
+            writeLog(Level.ERROR, "Soft restart interrupted exception", e)
+        } catch (e: Exception) {
+            writeLog(Level.ERROR, "Soft restart exception", e)
         }
     }
 
@@ -118,7 +100,7 @@ object RootUtils {
         try {
             callCommandWithADBDRestart("settings put global adb_enabled ${if (enable) 1 else 0}")
         } catch (e: Exception) {
-            e.printStackTrace()
+            writeLog(Level.ERROR, "ADB variable changing failed", e)
         }
     }
 }

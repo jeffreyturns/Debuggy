@@ -36,11 +36,11 @@ class SwitchAdapter(private val context: Context) :
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         with(holder.binding as ItemSwitchBinding) {
-            rootError.visibility = if (App.isRoot()) View.GONE else View.VISIBLE
+            rootError.visibility = if (App.root) View.GONE else View.VISIBLE
 
-            masterSwitch.isEnabled = App.isRoot()
+            masterSwitch.isEnabled = App.root
 
-            if (App.isRoot()) {
+            if (App.root) {
                 masterSurface.setBackgroundColor(
                     if (preference.adbEnabled) context.getAttr(
                         R.attr.colorPrimaryContainer
@@ -71,7 +71,7 @@ class SwitchAdapter(private val context: Context) :
             }
 
             masterSwitch.text =
-                if (App.isRoot()) title else context.getString(R.string.title_switch_adb_unavailable)
+                if (App.root) title else context.getString(R.string.title_switch_adb_unavailable)
             masterSwitch.isChecked = preference.adbEnabled
 
             masterSwitch.setOnClickListener {

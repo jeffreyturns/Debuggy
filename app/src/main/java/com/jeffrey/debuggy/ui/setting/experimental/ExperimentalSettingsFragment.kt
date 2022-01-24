@@ -5,7 +5,6 @@ import androidx.preference.Preference
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.ui.base.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.RootUtils
-import com.jeffrey.debuggy.util.TransitionUtils
 
 class ExperimentalSettingsFragment : BasePreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

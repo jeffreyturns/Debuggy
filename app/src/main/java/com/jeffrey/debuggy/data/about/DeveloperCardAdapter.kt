@@ -1,16 +1,12 @@
 package com.jeffrey.debuggy.data.about
 
 import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.developer.Developer
 import com.jeffrey.debuggy.data.developer.DeveloperAdapter
 import com.jeffrey.debuggy.databinding.ItemDeveloperCardBinding
-import com.jeffrey.debuggy.databinding.ItemFaqBinding
 import com.jeffrey.debuggy.ui.base.BaseViewHolder
 
 class DeveloperCardAdapter(

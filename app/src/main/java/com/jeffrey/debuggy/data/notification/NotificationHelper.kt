@@ -26,10 +26,11 @@ class NotificationHelper(context: Context) {
             .setOngoing(true)
             .setColor(context.getAttr(R.attr.colorSecondary))
             .setContentTitle(context.resources.getString(R.string.title_adb_enabled))
+            .setShowWhen(false)
             .setContentText(
-                if (Utils.ip() != Constants.UNDEFINED_TEXT) context.resources.getString(
+                if (Utils.deviceIpv6Address != Constants.UNDEFINED_TEXT) context.resources.getString(
                     R.string.content_adb_enabled,
-                    Utils.ip()
+                    Utils.deviceIpv6Address
                 ) else context.getString(R.string.message_ip_unable_determine)
             )
             .setPriority(NotificationCompat.PRIORITY_LOW)

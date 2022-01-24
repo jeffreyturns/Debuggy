@@ -109,7 +109,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     fun tcpStatus() {
-        if (App.isRoot()) {
+        if (App.root) {
             if (preference.adbEnabled) {
                 RootUtils.disableTcp(notification)
                 work.cancelUniqueWork(workManager, Workers.WORKER_TIMEOUT_TASK_NAME)
@@ -124,13 +124,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 preference.adbEnabled = true
             }
         }
-    }
-
-    override fun onPreferenceStartFragment(
-        caller: PreferenceFragmentCompat?,
-        pref: Preference?
-    ): Boolean {
-        return true
     }
 
     private fun initFromStart() {
@@ -178,5 +171,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             insets
         }
+    }
+
+    override fun onPreferenceStartFragment(
+        caller: PreferenceFragmentCompat?,
+        pref: Preference?
+    ): Boolean {
+        return true
     }
 }

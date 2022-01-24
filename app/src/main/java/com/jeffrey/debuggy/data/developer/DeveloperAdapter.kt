@@ -1,16 +1,12 @@
 package com.jeffrey.debuggy.data.developer
 
 import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.social.SocialAdapter
 import com.jeffrey.debuggy.databinding.ItemDeveloperBinding
-import com.jeffrey.debuggy.databinding.ItemDeveloperCardBinding
 import com.jeffrey.debuggy.ui.base.BaseViewHolder
 
 class DeveloperAdapter(

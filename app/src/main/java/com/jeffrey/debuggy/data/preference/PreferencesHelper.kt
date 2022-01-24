@@ -42,9 +42,13 @@ open class PreferencesHelper(context: Context) {
 
     var authenticationEnabled: Boolean
         get() =
-            preferences.getBoolean(keys.KEY_AUTHENTICATION_ENABLED, keys.DEF_VAL_AUTHENTICATION_ENABLED)
+            preferences.getBoolean(
+                keys.KEY_AUTHENTICATION_ENABLED,
+                keys.DEF_VAL_AUTHENTICATION_ENABLED
+            )
         set(authenticationEnabled) =
-            preferences.edit().putBoolean(keys.KEY_AUTHENTICATION_ENABLED, authenticationEnabled).apply()
+            preferences.edit().putBoolean(keys.KEY_AUTHENTICATION_ENABLED, authenticationEnabled)
+                .apply()
 
     var adbAfterWhile: Int
         get() =

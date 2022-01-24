@@ -1,44 +1,46 @@
 package com.jeffrey.debuggy.util
 
 import android.content.Context
-import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
 import android.provider.Settings
-import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
 import com.jeffrey.debuggy.BuildConfig
+import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.util.extensions.Level
 import com.jeffrey.debuggy.util.extensions.writeLog
 import java.net.NetworkInterface
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Utils {
 
-    fun ip(): String {
-        var ip: String? = Constants.UNDEFINED_TEXT
-        try {
+    val deviceIpv6Address: String
+        get() {
+            var ip: String? = Constants.UNDEFINED_TEXT
             try {
-                val en = NetworkInterface
-                    .getNetworkInterfaces()
-                while (en.hasMoreElements()) {
-                    val networkInterface = en.nextElement()
-                    val addressEnumeration = networkInterface.inetAddresses
-                    while (addressEnumeration.hasMoreElements()) {
-                        val inetAddress = addressEnumeration.nextElement()
-                        if (!inetAddress.isLoopbackAddress) {
-                            ip = inetAddress.hostAddress
+                try {
+                    val en = NetworkInterface
+                        .getNetworkInterfaces()
+                    while (en.hasMoreElements()) {
+                        val networkInterface = en.nextElement()
+                        val addressEnumeration = networkInterface.inetAddresses
+                        while (addressEnumeration.hasMoreElements()) {
+                            val inetAddress = addressEnumeration.nextElement()
+                            if (!inetAddress.isLoopbackAddress) {
+                                ip = inetAddress.hostAddress
+                            }
                         }
                     }
+                } catch (e: Exception) {
+                    writeLog(Level.ERROR, "Cannot get IP address using NetworkInterface", e)
                 }
             } catch (e: Exception) {
-                writeLog(Level.ERROR,"Cannot get IP address", e)
+                writeLog(Level.ERROR, "Cannot get IP address", e)
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
+            return if (ip.toString().length > 13) Constants.UNDEFINED_TEXT else ip.toString()
         }
-        return if (ip.toString().length > 13) Constants.UNDEFINED_TEXT else ip.toString()
-    }
 
     fun getADBOverUSBStatus(context: Context): Boolean {
         return Settings.Global.getInt(
@@ -91,5 +93,14 @@ object Utils {
             2 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             0 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
+    }
+
+    fun getBuildTime(context: Context): String {
+        return context.getString(
+            R.string.version_concat_with_buildtime, BuildConfig.VERSION_NAME, SimpleDateFormat(
+                Constants.BUILDTIME_PATTERN,
+                Locale.getDefault()
+            ).format(BuildConfig.BUILD_TIME)
+        )
     }
 }
