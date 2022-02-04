@@ -32,6 +32,7 @@
     <string name="summary_connect_to_device">Подключите это устройство и компьютер к одной сети WI-FI</string>
     <string name="summary_run_command">На ПК запустите команду: adb connect %1$s:%2$s</string>
     <string name="message_ip_unable_determine">Невозможно определить IP-адрес. Проверьте ваше WI-FI соединение.</string>
+    <string name="message_instruction_when_adb_enabled">Для отображения инструкций включите ADB</string>
 
     <string name="title_general">Общие</string>
     <string name="summary_general">Пользовательский порт, запуск после загрузки</string>

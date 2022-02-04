@@ -16,6 +16,8 @@ class CardSectionedAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
+    var slotAdapter = SlotAdapter()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
         BaseViewHolder.create(parent, ItemCardSectionedBinding::inflate)
 
@@ -24,9 +26,9 @@ class CardSectionedAdapter(
             if (title.isEmpty()) category.visibility =
                 View.GONE else category.text = title
             recyclerView.layoutManager = LinearLayoutManager(context)
-            recyclerView.adapter = SlotAdapter(data)
+            slotAdapter.items = data
+            recyclerView.adapter = slotAdapter
         }
-
     }
 
     override fun getItemCount() = 1

@@ -31,6 +31,7 @@
 
     <string name="summary_connect_to_device">connect this device and PC to same WI-FI network</string>
     <string name="summary_run_command">on PC run command: adb connect %1$s:%2$s</string>
+    <string name="message_instruction_when_adb_enabled">Turn on the ADB to display instructions</string>
 
     <string name="title_general">General</string>
     <string name="summary_general">Custom port, run after boot</string>

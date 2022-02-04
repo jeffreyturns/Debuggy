@@ -12,15 +12,18 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
+import com.jeffrey.debuggy.data.slot.Slot
+import com.jeffrey.debuggy.data.slot.instructionHomeList
 import com.jeffrey.debuggy.databinding.ItemSwitchBinding
 import com.jeffrey.debuggy.ui.base.BaseViewHolder
+import com.jeffrey.debuggy.ui.home.HomeFragment
 import com.jeffrey.debuggy.ui.main.MainActivity
 import com.jeffrey.debuggy.util.ShapeAppearanceUtils
 import com.jeffrey.debuggy.util.extensions.getAttr
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class SwitchAdapter(private val context: Context) :
+class SwitchAdapter(private val context: Context, private val homeFragment: HomeFragment) :
     RecyclerView.Adapter<BaseViewHolder>(), KoinComponent {
 
     private val preference: PreferencesHelper by inject()
@@ -76,6 +79,13 @@ class SwitchAdapter(private val context: Context) :
 
             masterSwitch.setOnClickListener {
                 (context as MainActivity).tcpStatus()
+                if (preference.adbEnabled) homeFragment.instructionAdapter?.slotAdapter?.items =
+                    instructionHomeList(context, preference.port)
+                else homeFragment.instructionAdapter?.slotAdapter?.items = listOf(
+                    Slot(
+                        summary = context.getString(R.string.message_instruction_when_adb_enabled)
+                    )
+                )
                 masterSwitch.text = title
                 changeColor(masterSurface, masterSwitch)
             }

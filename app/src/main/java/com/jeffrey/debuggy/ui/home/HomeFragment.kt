@@ -24,6 +24,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     var container: MotionLayout? = null
     private val preference: PreferencesHelper by inject()
+    var switchAdapter: SwitchAdapter? = null
+    var informationAdapter: CardSectionedAdapter? = null
+    var instructionAdapter: CardSectionedAdapter? = null
 
     override fun setUpViews() {
         returnTransition = TransitionUtils.getMaterialSharedAxis(requireActivity(), true)
@@ -33,26 +36,30 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         NetworkUtils.listener(
             requireActivity(),
-            ::hideBanner,
-            ::showBanner
+            ::onAvailable,
+            ::onLost
+        )
+
+        switchAdapter = SwitchAdapter(requireActivity(), this)
+
+        informationAdapter = CardSectionedAdapter(
+            informationHomeList(requireActivity(), preference.port),
+            requireActivity().resources.getString(R.string.header_information),
+            requireActivity()
+        )
+
+        instructionAdapter = CardSectionedAdapter(
+            instructionHomeList(requireActivity(), preference.port),
+            requireActivity().resources.getString(R.string.header_instruction),
+            requireActivity()
         )
 
         binding.recyclerView.addInsetPaddings(bottom = true)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         binding.recyclerView.adapter = ConcatAdapter(
-            SwitchAdapter(
-                requireActivity()
-            ),
-            CardSectionedAdapter(
-                informationHomeList(requireActivity(), preference.port),
-                requireActivity().resources.getString(R.string.header_information),
-                requireActivity()
-            ),
-            CardSectionedAdapter(
-                instructionHomeList(requireActivity(), preference.port),
-                requireActivity().resources.getString(R.string.header_instruction),
-                requireActivity()
-            )
+            switchAdapter,
+            informationAdapter,
+            instructionAdapter
         )
     }
 
@@ -70,11 +77,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         return false
     }
 
-    private fun showBanner() {
+    private fun onLost() {
         container?.transitionToEnd()
+        if (preference.adbEnabled) instructionAdapter?.slotAdapter?.items =
+            instructionHomeList(requireActivity(), preference.port)
     }
 
-    private fun hideBanner() {
+    private fun onAvailable() {
         container?.transitionToStart()
+        if (preference.adbEnabled) instructionAdapter?.slotAdapter?.items =
+            instructionHomeList(requireActivity(), preference.port)
     }
 }

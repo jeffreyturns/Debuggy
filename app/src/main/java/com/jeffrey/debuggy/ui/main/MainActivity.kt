@@ -62,9 +62,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         if (preference.authenticationEnabled) {
             AuthenticationManager.getBiometricPrompt(
                 this,
-                onError = ::closeApp,
+                onError = ::finishAffinity,
                 onSucceeded = ::initFromStart,
-                onFailed = ::closeApp
+                onFailed = ::finishAffinity
             )
                 .authenticate(AuthenticationManager.info(getString(R.string.title_biometric_prompt)))
         } else {
@@ -138,10 +138,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             RootUtils.disableTcp(notification)
             work.cancelUniqueWork(workManager, Workers.WORKER_TIMEOUT_TASK_NAME)
         }
-    }
-
-    private fun closeApp() {
-        finishAffinity()
     }
 
     private fun setupInsets() {

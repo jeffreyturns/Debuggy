@@ -5,16 +5,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jeffrey.debuggy.databinding.ItemSlotBinding
 import com.jeffrey.debuggy.ui.base.BaseViewHolder
+import com.jeffrey.debuggy.ui.base.recyclerview.UpdatableAdapter
 import com.jeffrey.debuggy.util.Constants
+import kotlin.properties.Delegates
 
-class SlotAdapter(private val slot: List<Slot>) :
-    RecyclerView.Adapter<BaseViewHolder>() {
+class SlotAdapter :
+    RecyclerView.Adapter<BaseViewHolder>(), UpdatableAdapter {
+
+    var items: List<Slot> by Delegates.observable(emptyList()) {
+            _, old, new ->
+        autoNotify(old, new) { o, n -> o.title == n.title || o.summary == n.summary }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
         BaseViewHolder.create(parent, ItemSlotBinding::inflate)
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        val list: Slot = slot[position]
+        val list: Slot = items[position]
 
         with(holder.binding as ItemSlotBinding) {
             if (list.icon == Constants.NO_ICON_SLOT)
@@ -32,5 +39,5 @@ class SlotAdapter(private val slot: List<Slot>) :
         }
     }
 
-    override fun getItemCount() = slot.size
+    override fun getItemCount() = items.size
 }
