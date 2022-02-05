@@ -8,8 +8,9 @@ Application for enable android debug bride over network with some additional fea
 * Enable ADB over network with just a few clicks 
 * Run ADB over network after boot device
 * Custom port support
-* Android 12 features, like [dynamic color (monet)](.github/images/monet.png) support
-
+* Disable ADB after some time
+* Material 3 full support
+![material3](.github/images/monet.png)
 ## License
 
     Copyright 2021 Jeffrey Turns
