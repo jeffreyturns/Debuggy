@@ -68,6 +68,14 @@ fun instructionHomeList(context: Context, port: String): List<Slot> {
     )
 }
 
+fun instructionADBDisabledList(context: Context): List<Slot> {
+    return listOf(
+        Slot(
+            summary = context.getString(R.string.message_instruction_when_adb_enabled)
+        )
+    )
+}
+
 fun descriptionAboutList(context: Context): List<Slot> {
     return listOf(
         Slot(

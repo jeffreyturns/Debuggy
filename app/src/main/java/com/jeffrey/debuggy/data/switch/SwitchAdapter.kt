@@ -13,6 +13,7 @@ import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.data.slot.Slot
+import com.jeffrey.debuggy.data.slot.instructionADBDisabledList
 import com.jeffrey.debuggy.data.slot.instructionHomeList
 import com.jeffrey.debuggy.databinding.ItemSwitchBinding
 import com.jeffrey.debuggy.ui.base.BaseViewHolder
@@ -81,11 +82,7 @@ class SwitchAdapter(private val context: Context, private val homeFragment: Home
                 (context as MainActivity).tcpStatus()
                 if (preference.adbEnabled) homeFragment.instructionAdapter?.slotAdapter?.items =
                     instructionHomeList(context, preference.port)
-                else homeFragment.instructionAdapter?.slotAdapter?.items = listOf(
-                    Slot(
-                        summary = context.getString(R.string.message_instruction_when_adb_enabled)
-                    )
-                )
+                else homeFragment.instructionAdapter?.slotAdapter?.items = instructionADBDisabledList(context)
                 masterSwitch.text = title
                 changeColor(masterSurface, masterSwitch)
             }

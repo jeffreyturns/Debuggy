@@ -10,6 +10,7 @@ import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.data.sectioned.CardSectionedAdapter
 import com.jeffrey.debuggy.data.slot.informationHomeList
+import com.jeffrey.debuggy.data.slot.instructionADBDisabledList
 import com.jeffrey.debuggy.data.slot.instructionHomeList
 import com.jeffrey.debuggy.data.switch.SwitchAdapter
 import com.jeffrey.debuggy.databinding.FragmentHomeBinding
@@ -49,7 +50,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         )
 
         instructionAdapter = CardSectionedAdapter(
-            instructionHomeList(requireActivity(), preference.port),
+            if (preference.adbEnabled) instructionHomeList(
+                requireActivity(),
+                preference.port
+            ) else instructionADBDisabledList(requireActivity()),
             requireActivity().resources.getString(R.string.header_instruction),
             requireActivity()
         )
