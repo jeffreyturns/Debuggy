@@ -12,8 +12,7 @@ import kotlin.properties.Delegates
 class SlotAdapter :
     RecyclerView.Adapter<BaseViewHolder>(), UpdatableAdapter {
 
-    var items: List<Slot> by Delegates.observable(emptyList()) {
-            _, old, new ->
+    var items: List<Slot> by Delegates.observable(emptyList()) { _, old, new ->
         autoNotify(old, new) { o, n -> o.title == n.title || o.summary == n.summary }
     }
 

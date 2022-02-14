@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id ("com.github.ben-manes.versions")
+    id("com.github.ben-manes.versions")
 }
 
 android {
