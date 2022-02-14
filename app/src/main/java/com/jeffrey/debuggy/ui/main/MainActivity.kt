@@ -9,8 +9,6 @@ import androidx.core.view.*
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.android.material.appbar.AppBarLayout
@@ -32,8 +30,7 @@ import com.jeffrey.debuggy.worker.Workers
 import org.koin.android.ext.android.inject
 import kotlin.math.roundToInt
 
-class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate),
-    PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
+class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
     private val notification: NotificationHelper by inject()
     private val preference: PreferencesHelper by inject()
@@ -167,12 +164,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             insets
         }
-    }
-
-    override fun onPreferenceStartFragment(
-        caller: PreferenceFragmentCompat?,
-        pref: Preference?
-    ): Boolean {
-        return true
     }
 }
