@@ -14,7 +14,6 @@ buildscript {
     repositories {
         gradlePluginPortal()
         google()
-        jcenter()
     }
 }
 

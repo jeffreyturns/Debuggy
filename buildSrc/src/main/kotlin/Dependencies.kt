@@ -15,18 +15,18 @@ object Application {
 object Versions {
     object Essential {
         const val Kotlin = "1.5.30"
-        const val Ktx = "1.8.0-alpha02"
+        const val Ktx = "1.8.0-alpha04"
         const val Coroutines = "1.6.0"
-        const val Gradle = "7.0.3"
+        const val Gradle = "7.1.1"
     }
 
     object AndroidX {
-        const val AppCompat = "1.4.0"
+        const val AppCompat = "1.4.1"
         const val ConstraintLayout = "2.1.3"
-        const val Preference = "1.1.1"
+        const val Preference = "1.2.0"
         const val RecyclerView = "1.3.0-alpha01"
-        const val NavigationFragment = "2.4.0-rc01"
-        const val NavigationUI = "2.4.0-rc01"
+        const val NavigationFragment = "2.5.0-alpha02"
+        const val NavigationUI = "2.5.0-alpha02"
         const val LifecycleExtensions = "2.2.0"
         const val LegacySupport = "1.0.0"
         const val Browser = "1.4.0"
@@ -35,12 +35,12 @@ object Versions {
     }
 
     object UI {
-        const val MaterialComponents = "1.5.0"
-        const val Coil = "2.0.0-alpha06"
+        const val MaterialComponents = "1.6.0-alpha02"
+        const val Coil = "2.0.0-alpha08"
     }
 
     object DI {
-        const val Koin = "3.1.5"
+        const val Koin = "3.2.0-beta-1"
     }
 
     object Test {
