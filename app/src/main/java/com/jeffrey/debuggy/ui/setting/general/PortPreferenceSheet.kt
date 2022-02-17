@@ -3,7 +3,7 @@ package com.jeffrey.debuggy.ui.setting.general
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.DialogPortPreferenceBinding
-import com.jeffrey.debuggy.ui.base.BaseSheetFragment
+import com.jeffrey.debuggy.ui.base.fragment.BaseSheetFragment
 import com.jeffrey.debuggy.util.extensions.Level
 import com.jeffrey.debuggy.util.extensions.writeLog
 import org.koin.core.component.inject

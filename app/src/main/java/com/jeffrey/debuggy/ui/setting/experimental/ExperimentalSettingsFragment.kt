@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.preference.Preference
 import com.jeffrey.debuggy.App
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.ui.base.BasePreferenceFragmentCompat
+import com.jeffrey.debuggy.ui.base.fragment.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.RootUtils
 
 class ExperimentalSettingsFragment : BasePreferenceFragmentCompat() {

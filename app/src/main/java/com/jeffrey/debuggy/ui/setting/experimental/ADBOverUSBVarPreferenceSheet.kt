@@ -3,7 +3,7 @@ package com.jeffrey.debuggy.ui.setting.experimental
 import android.widget.CompoundButton
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.databinding.DialogAdbOverUsbVarPreferenceBinding
-import com.jeffrey.debuggy.ui.base.BaseSheetFragment
+import com.jeffrey.debuggy.ui.base.fragment.BaseSheetFragment
 import com.jeffrey.debuggy.util.RootUtils
 import com.jeffrey.debuggy.util.Utils
 

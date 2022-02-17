@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeffrey.debuggy.data.faq.FAQAdapter
 import com.jeffrey.debuggy.data.faq.faqList
 import com.jeffrey.debuggy.databinding.FragmentFaqBinding
-import com.jeffrey.debuggy.ui.base.BaseFragment
+import com.jeffrey.debuggy.ui.base.fragment.BaseFragment
 import com.jeffrey.debuggy.util.TransitionUtils
 import com.jeffrey.debuggy.util.extensions.addInsetPaddings
 

@@ -6,7 +6,7 @@ import androidx.preference.SwitchPreference
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.authentication.AuthenticationManager
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
-import com.jeffrey.debuggy.ui.base.BasePreferenceFragmentCompat
+import com.jeffrey.debuggy.ui.base.fragment.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.Constants
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject

@@ -5,7 +5,7 @@ import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.sectioned.CardSectionedAdapter
 import com.jeffrey.debuggy.data.slot.libsLibrariesList
 import com.jeffrey.debuggy.databinding.DialogLibrariesBinding
-import com.jeffrey.debuggy.ui.base.BaseSheetFragment
+import com.jeffrey.debuggy.ui.base.fragment.BaseSheetFragment
 
 class LibrariesSheet : BaseSheetFragment<DialogLibrariesBinding>(
     DialogLibrariesBinding::inflate

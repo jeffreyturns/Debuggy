@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jeffrey.debuggy.data.about.AboutAdapter
 import com.jeffrey.debuggy.databinding.FragmentAboutBinding
-import com.jeffrey.debuggy.ui.base.BaseFragment
+import com.jeffrey.debuggy.ui.base.fragment.BaseFragment
 import com.jeffrey.debuggy.util.TransitionUtils
 import kotlin.math.abs
 

@@ -14,7 +14,7 @@ import com.jeffrey.debuggy.data.slot.instructionADBDisabledList
 import com.jeffrey.debuggy.data.slot.instructionHomeList
 import com.jeffrey.debuggy.data.switch.SwitchAdapter
 import com.jeffrey.debuggy.databinding.FragmentHomeBinding
-import com.jeffrey.debuggy.ui.base.BaseFragment
+import com.jeffrey.debuggy.ui.base.fragment.BaseFragment
 import com.jeffrey.debuggy.util.NetworkUtils
 import com.jeffrey.debuggy.util.TransitionUtils
 import com.jeffrey.debuggy.util.extensions.addInsetPaddings

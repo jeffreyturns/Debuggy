@@ -3,7 +3,7 @@ package com.jeffrey.debuggy.ui.setting.appearance
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.DialogThemePreferenceBinding
-import com.jeffrey.debuggy.ui.base.BaseSheetFragment
+import com.jeffrey.debuggy.ui.base.fragment.BaseSheetFragment
 import com.jeffrey.debuggy.util.extensions.Level
 import com.jeffrey.debuggy.util.extensions.restartApp
 import com.jeffrey.debuggy.util.extensions.writeLog

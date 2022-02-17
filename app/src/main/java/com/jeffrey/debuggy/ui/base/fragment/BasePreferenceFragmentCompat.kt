@@ -1,4 +1,4 @@
-package com.jeffrey.debuggy.ui.base
+package com.jeffrey.debuggy.ui.base.fragment
 
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
