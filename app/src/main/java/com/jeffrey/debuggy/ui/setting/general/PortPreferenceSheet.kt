@@ -4,6 +4,8 @@ import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.DialogPortPreferenceBinding
 import com.jeffrey.debuggy.ui.base.BaseSheetFragment
+import com.jeffrey.debuggy.util.extensions.Level
+import com.jeffrey.debuggy.util.extensions.writeLog
 import org.koin.core.component.inject
 
 class PortPreferenceSheet : BaseSheetFragment<DialogPortPreferenceBinding>(
@@ -36,7 +38,7 @@ class PortPreferenceSheet : BaseSheetFragment<DialogPortPreferenceBinding>(
             val callback = parentFragment as GeneralSettingsFragment?
             callback!!.update()
         } catch (e: ClassCastException) {
-            throw ClassCastException("interface not implemented")
+            writeLog(Level.ERROR, "interface not implemented", e)
         }
     }
 }
