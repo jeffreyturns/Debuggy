@@ -4,8 +4,6 @@ import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.DialogAdbAfterWhilePreferenceBinding
 import com.jeffrey.debuggy.ui.base.fragment.BaseSheetFragment
-import com.jeffrey.debuggy.util.extensions.Level
-import com.jeffrey.debuggy.util.extensions.writeLog
 import org.koin.core.component.inject
 
 class ADBAfterWhilePreferenceSheet :
@@ -41,39 +39,30 @@ class ADBAfterWhilePreferenceSheet :
             when (binding.adbAfterWhileGroup.checkedRadioButtonId) {
                 R.id.radio_never -> {
                     preference.adbAfterWhile = 0
-                    parentFragmentCallBack()
+                    (parentFragment as SecuritySettingsFragment?)?.callback
                 }
                 R.id.radio_one_hour -> {
                     preference.adbAfterWhile = 1
-                    parentFragmentCallBack()
+                    (parentFragment as SecuritySettingsFragment?)?.callback
                 }
                 R.id.radio_two_hours -> {
                     preference.adbAfterWhile = 2
-                    parentFragmentCallBack()
+                    (parentFragment as SecuritySettingsFragment?)?.callback
                 }
                 R.id.radio_four_hours -> {
                     preference.adbAfterWhile = 4
-                    parentFragmentCallBack()
+                    (parentFragment as SecuritySettingsFragment?)?.callback
                 }
                 R.id.radio_six_hours -> {
                     preference.adbAfterWhile = 6
-                    parentFragmentCallBack()
+                    (parentFragment as SecuritySettingsFragment?)?.callback
                 }
                 R.id.radio_twelve_hours -> {
                     preference.adbAfterWhile = 12
-                    parentFragmentCallBack()
+                    (parentFragment as SecuritySettingsFragment?)?.callback
                 }
             }
             dismiss()
-        }
-    }
-
-    private fun parentFragmentCallBack() {
-        try {
-            val callback = parentFragment as SecuritySettingsFragment?
-            callback!!.update()
-        } catch (e: ClassCastException) {
-            writeLog(Level.ERROR, "interface not implemented", e)
         }
     }
 }

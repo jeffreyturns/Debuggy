@@ -6,14 +6,45 @@ import androidx.preference.SwitchPreference
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.authentication.AuthenticationManager
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
+import com.jeffrey.debuggy.ui.base.callback.BaseCallback
+import com.jeffrey.debuggy.ui.base.callback.assign
 import com.jeffrey.debuggy.ui.base.fragment.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.Constants
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class SecuritySettingsFragment : BasePreferenceFragmentCompat(), KoinComponent {
+class SecuritySettingsFragment : BasePreferenceFragmentCompat(), KoinComponent, BaseCallback {
 
     private val preference: PreferencesHelper by inject()
+
+    override val action: () -> Unit = {
+        assign {
+            val adbAfterWhile: Preference = findPreference("adb_after_while")!!
+            adbAfterWhile.summary = when (preference.adbAfterWhile) {
+                0 -> {
+                    requireActivity().getString(R.string.title_never)
+                }
+                1 -> {
+                    requireActivity().getString(R.string.title_one_hour)
+                }
+                2 -> {
+                    requireActivity().getString(R.string.title_two_hours)
+                }
+                4 -> {
+                    requireActivity().getString(R.string.title_four_hours)
+                }
+                6 -> {
+                    requireActivity().getString(R.string.title_six_hours)
+                }
+                12 -> {
+                    requireActivity().getString(R.string.title_twelve_hours)
+                }
+                else -> {
+                    Constants.UNDEFINED_TEXT
+                }
+            }
+        }
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_security, rootKey)
@@ -43,38 +74,11 @@ class SecuritySettingsFragment : BasePreferenceFragmentCompat(), KoinComponent {
             )
             true
         }
-        update()
+        callback
     }
 
     private fun authenticationPassed(value: Any, pref: SwitchPreference) {
         pref.isChecked = value == true
         preference.authenticationEnabled = value == true
-    }
-
-    fun update() {
-        val adbAfterWhile: Preference = findPreference("adb_after_while")!!
-        adbAfterWhile.summary = when (preference.adbAfterWhile) {
-            0 -> {
-                requireActivity().getString(R.string.title_never)
-            }
-            1 -> {
-                requireActivity().getString(R.string.title_one_hour)
-            }
-            2 -> {
-                requireActivity().getString(R.string.title_two_hours)
-            }
-            4 -> {
-                requireActivity().getString(R.string.title_four_hours)
-            }
-            6 -> {
-                requireActivity().getString(R.string.title_six_hours)
-            }
-            12 -> {
-                requireActivity().getString(R.string.title_twelve_hours)
-            }
-            else -> {
-                Constants.UNDEFINED_TEXT
-            }
-        }
     }
 }
