@@ -3,7 +3,7 @@ package com.jeffrey.debuggy
 import com.jeffrey.debuggy.data.notification.NotificationHelper.Companion.createChannels
 import com.jeffrey.debuggy.util.RootUtils
 
-class App : AppModule() {
+class AppDebuggy : AppModule() {
 
     companion object {
         var root = false

@@ -2,7 +2,7 @@ package com.jeffrey.debuggy.data.slot
 
 import android.content.Context
 import android.provider.Settings
-import com.jeffrey.debuggy.App
+import com.jeffrey.debuggy.AppDebuggy
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.ui.setting.about.LibrariesAction
 import com.jeffrey.debuggy.util.Constants
@@ -12,8 +12,8 @@ fun informationHomeList(context: Context, port: String): List<Slot> {
     return listOf(
         Slot(
             context.resources.getString(R.string.title_adb_daemon),
-            if (App.root) {
-                if ((App.daemonStatus).replace("\n", "")
+            if (AppDebuggy.root) {
+                if ((AppDebuggy.daemonStatus).replace("\n", "")
                         .replace("\r", "") == "running"
                 ) context.resources.getString(R.string.summary_adb_daemon_running) else context.resources.getString(
                     R.string.summary_adb_daemon_stopped
@@ -33,7 +33,7 @@ fun informationHomeList(context: Context, port: String): List<Slot> {
         ),
         Slot(
             context.resources.getString(R.string.title_root_access),
-            if (App.root) context.resources.getString(R.string.summary_root_access_granted) else context.resources.getString(
+            if (AppDebuggy.root) context.resources.getString(R.string.summary_root_access_granted) else context.resources.getString(
                 R.string.summary_root_access_declined
             ),
             R.drawable.ic_hashtag_24dp

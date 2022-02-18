@@ -14,7 +14,7 @@ import androidx.work.WorkManager
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.color.DynamicColors
-import com.jeffrey.debuggy.App
+import com.jeffrey.debuggy.AppDebuggy
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.authentication.AuthenticationManager
 import com.jeffrey.debuggy.data.notification.NotificationHelper
@@ -106,7 +106,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     fun tcpStatus() {
-        if (App.root) {
+        if (AppDebuggy.root) {
             if (preference.adbEnabled) {
                 RootUtils.disableTcp(notification)
                 work.cancelUniqueWork(workManager, Workers.WORKER_TIMEOUT_TASK_NAME)

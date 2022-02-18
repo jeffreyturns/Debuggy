@@ -9,7 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.switchmaterial.SwitchMaterial
-import com.jeffrey.debuggy.App
+import com.jeffrey.debuggy.AppDebuggy
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.data.slot.instructionADBDisabledList
@@ -39,11 +39,11 @@ class SwitchAdapter(private val context: Context, private val homeFragment: Home
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         with(holder.binding as ItemSwitchBinding) {
-            rootError.visibility = if (App.root) View.GONE else View.VISIBLE
+            rootError.visibility = if (AppDebuggy.root) View.GONE else View.VISIBLE
 
-            masterSwitch.isEnabled = App.root
+            masterSwitch.isEnabled = AppDebuggy.root
 
-            if (App.root) {
+            if (AppDebuggy.root) {
                 masterSurface.setBackgroundColor(
                     if (preference.adbEnabled) context.getAttr(
                         R.attr.colorPrimaryContainer
@@ -74,7 +74,7 @@ class SwitchAdapter(private val context: Context, private val homeFragment: Home
             }
 
             masterSwitch.text =
-                if (App.root) title else context.getString(R.string.title_switch_adb_unavailable)
+                if (AppDebuggy.root) title else context.getString(R.string.title_switch_adb_unavailable)
             masterSwitch.isChecked = preference.adbEnabled
 
             masterSwitch.setOnClickListener {
