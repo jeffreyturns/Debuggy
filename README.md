@@ -13,7 +13,7 @@ Application for enable android debug bride over network with some additional fea
 ![material3](.github/images/monet.png)
 ## License
 
-    Copyright 2021 Jeffrey Turns
+    Copyright 2022 Jeffrey Turns
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
