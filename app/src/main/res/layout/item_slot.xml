@@ -5,9 +5,6 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:selectableItemBackground"
-    android:clickable="true"
-    android:focusable="true"
     tools:context=".data.slot.SlotAdapter">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +30,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="?colorControlNormal" />
+            app:tint="?colorOnSurfaceVariant" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -58,7 +55,7 @@
             android:paddingTop="@dimen/keyline_2"
             android:paddingBottom="@dimen/keyline_2"
             android:text="@string/app_name"
-            android:textColor="?android:textColorPrimary"
+            android:textColor="?colorOnSurface"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,7 +67,7 @@
             android:paddingTop="@dimen/keyline_2"
             android:paddingBottom="@dimen/keyline_2"
             android:text="@string/app_name"
-            android:textColor="?android:textColorSecondary"
+            android:textColor="?colorOnSurfaceVariant"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title" />

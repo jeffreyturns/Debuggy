@@ -37,7 +37,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:switchMinWidth="58dp"
+                android:thumb="@drawable/shape_switch_thumb"
                 app:thumbTint="@color/selector_master_switch_thumb"
                 app:track="@drawable/shape_switch_track"
                 app:trackTint="@color/selector_master_switch_track"
