@@ -18,7 +18,7 @@
     <dimen name="three_section_list_size">72dp</dimen>
     <dimen name="banner_view_icon_size">40dp</dimen>
     <integer name="port_max_length">4</integer>
-    <dimen name="shared_axis_x_slide_distance">64dp</dimen>
+    <dimen name="shared_axis_x_slide_distance">96dp</dimen>
     <dimen name="parallax_about_height">250dp</dimen>
     <dimen name="fab_size">72dp</dimen>
     <dimen name="dialog_slot_height">64dp</dimen>
