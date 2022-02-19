@@ -1,5 +1,7 @@
 package com.jeffrey.debuggy.data.slot
 
+import android.content.Context
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +11,8 @@ import com.jeffrey.debuggy.ui.base.recyclerview.UpdatableAdapter
 import com.jeffrey.debuggy.util.Constants
 import kotlin.properties.Delegates
 
-class SlotAdapter :
+
+class SlotAdapter(private val context: Context) :
     RecyclerView.Adapter<BaseViewHolder>(), UpdatableAdapter {
 
     var items: List<Slot> by Delegates.observable(emptyList()) { _, old, new ->
@@ -23,6 +26,19 @@ class SlotAdapter :
         val list: Slot = items[position]
 
         with(holder.binding as ItemSlotBinding) {
+            if (list.clickable) {
+                val outValue = TypedValue()
+                context.theme.resolveAttribute(
+                    android.R.attr.selectableItemBackground,
+                    outValue,
+                    true
+                )
+                container.apply {
+                    setBackgroundResource(outValue.resourceId)
+                    isClickable = true
+                    isFocusable = true
+                }
+            }
             if (list.icon == Constants.NO_ICON_SLOT)
                 slot.visibility = View.GONE else
                 icon.setImageResource(list.icon)

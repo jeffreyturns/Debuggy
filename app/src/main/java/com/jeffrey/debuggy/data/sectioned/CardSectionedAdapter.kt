@@ -16,7 +16,7 @@ class CardSectionedAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
-    var slotAdapter = SlotAdapter()
+    var slotAdapter = SlotAdapter(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
         BaseViewHolder.create(parent, ItemCardSectionedBinding::inflate)

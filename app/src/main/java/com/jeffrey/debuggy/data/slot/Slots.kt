@@ -90,17 +90,20 @@ fun informationAboutList(context: Context, action: SlotAction): List<Slot> {
         Slot(
             title = context.getString(R.string.title_changelog),
             icon = R.drawable.ic_new_releases_24dp,
-            action = action::callChangelog
+            action = action::callChangelog,
+            clickable = true
         ),
         Slot(
             title = context.getString(R.string.title_libraries),
             icon = R.drawable.ic_local_library_24dp,
-            action = action::callLibraries
+            action = action::callLibraries,
+            clickable = true
         ),
         Slot(
             title = context.getString(R.string.title_updates),
             icon = R.drawable.ic_save_alt_24dp,
-            action = action::callUpdates
+            action = action::callUpdates,
+            clickable = true
         )
     )
 }
@@ -109,23 +112,28 @@ fun libsLibrariesList(action: LibrariesAction): List<Slot> {
     return listOf(
         Slot(
             title = "AndroidX / AndroidX",
-            action = action::callAndroidX
+            action = action::callAndroidX,
+            clickable = true
         ),
         Slot(
             title = "Material Components / Material Components Android",
-            action = action::callMaterialComponents
+            action = action::callMaterialComponents,
+            clickable = true
         ),
         Slot(
             title = "Coil-kt / Coil",
-            action = action::callCoilKtx
+            action = action::callCoilKtx,
+            clickable = true
         ),
         Slot(
             title = "InsertKoinIO / Koin",
-            action = action::callKoin
+            action = action::callKoin,
+            clickable = true
         ),
         Slot(
             title = "Kotlin / Kotlinx.coroutines",
-            action = action::callCoroutines
+            action = action::callCoroutines,
+            clickable = true
         )
     )
 }

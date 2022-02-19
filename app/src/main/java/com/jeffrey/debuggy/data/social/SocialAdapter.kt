@@ -1,6 +1,7 @@
 package com.jeffrey.debuggy.data.social
 
 import android.content.Context
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
@@ -20,6 +21,19 @@ class SocialAdapter(private val slot: List<Social>, private val context: Context
         val list: Social = slot[position]
 
         with(holder.binding as ItemSlotBinding) {
+            container.apply {
+                val outValue = TypedValue()
+                context.theme.resolveAttribute(
+                    android.R.attr.selectableItemBackground,
+                    outValue,
+                    true
+                )
+                container.apply {
+                    setBackgroundResource(outValue.resourceId)
+                    isClickable = true
+                    isFocusable = true
+                }
+            }
             summary.visibility = View.GONE
             icon.setImageDrawable(
                 ResourcesCompat.getDrawable(
