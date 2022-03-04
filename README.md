@@ -21,7 +21,7 @@ Application for enable android debug bride over network with some additional fea
 
 Application for enable android debug bride over network with some additional features.
 
-## Downloads
+## Download
 
 <a href='https://github.com/Jeffrey01596/Debuggy/releases/latest'><img alt='Get it on GitHub' height="80" src='./.github/images/bages/github.png'/></a>
 
@@ -36,6 +36,8 @@ Application for enable android debug bride over network with some additional fea
 * Custom port support
 * Disable ADB after some time
 * Material 3 full support
+    
+<a href="./.github/images/monet.png"><img src="./.github/images/monet.png" width="1000px"/>
 
 ## Compatibility
 
