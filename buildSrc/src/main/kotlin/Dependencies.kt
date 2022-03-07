@@ -17,7 +17,7 @@ object Versions {
         const val Kotlin = "1.5.30"
         const val Ktx = "1.8.0-alpha04"
         const val Coroutines = "1.6.0"
-        const val Gradle = "7.1.1"
+        const val Gradle = "7.1.2"
     }
 
     object AndroidX {

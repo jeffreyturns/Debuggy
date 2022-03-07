@@ -7,11 +7,11 @@ import android.net.wifi.WifiManager
 import android.os.Build
 import android.provider.Settings
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.android.material.button.MaterialButton
-import com.jeffrey.debuggy.R
+import com.jeffrey.debuggy.databinding.ViewBannerConnectionBinding
 
 class NetworkBannerView @JvmOverloads constructor(
     context: Context,
@@ -20,12 +20,10 @@ class NetworkBannerView @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : ConstraintLayout(context, attrs, defStyle, defStyleRes) {
 
+    private val binding = ViewBannerConnectionBinding.inflate(LayoutInflater.from(context), this)
+
     init {
-        inflate(context, R.layout.view_banner_connection, this)
-
-        val actionButton: MaterialButton = findViewById(R.id.action_button)
-
-        actionButton.setOnClickListener {
+        binding.actionButton.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 val panelIntent = Intent(Settings.Panel.ACTION_WIFI)
                 ActivityCompat.startActivityForResult(context as Activity, panelIntent, 545, null)

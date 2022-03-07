@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.FrameLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.*
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -47,6 +49,11 @@ abstract class BaseSheetFragment<VB : ViewBinding>(
             override fun onAttachedToWindow() {
                 super.onAttachedToWindow()
 
+                val container =
+                    findViewById<FrameLayout>(com.google.android.material.R.id.container)
+                val coordinator =
+                    findViewById<CoordinatorLayout>(com.google.android.material.R.id.coordinator)
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     if (!Utils.isDarkMode(context, theme)) {
                         @Suppress("DEPRECATION")
@@ -61,7 +68,7 @@ abstract class BaseSheetFragment<VB : ViewBinding>(
                         WindowCompat.setDecorFitsSystemWindows(it, false)
                     }
 
-                    findViewById<View>(com.google.android.material.R.id.container)?.apply {
+                    container?.apply {
                         fitsSystemWindows = false
                         val topMargin = marginTop
                         ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
@@ -72,7 +79,7 @@ abstract class BaseSheetFragment<VB : ViewBinding>(
                         }
                     }
 
-                    findViewById<View>(com.google.android.material.R.id.coordinator)?.fitsSystemWindows =
+                    coordinator?.fitsSystemWindows =
                         false
                 }
             }
@@ -89,6 +96,7 @@ abstract class BaseSheetFragment<VB : ViewBinding>(
                 }
             }
         }
+
         return dialog
     }
 }
