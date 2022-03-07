@@ -15,28 +15,27 @@ object Application {
 object Versions {
     object Essential {
         const val Kotlin = "1.5.30"
-        const val Ktx = "1.8.0-alpha04"
+        const val Ktx = "1.9.0-alpha01"
         const val Coroutines = "1.6.0"
         const val Gradle = "7.1.2"
     }
 
     object AndroidX {
-        const val AppCompat = "1.4.1"
+        const val AppCompat = "1.6.0-alpha01"
         const val ConstraintLayout = "2.1.3"
         const val Preference = "1.2.0"
         const val RecyclerView = "1.3.0-alpha01"
-        const val NavigationFragment = "2.5.0-alpha02"
-        const val NavigationUI = "2.5.0-alpha02"
+        const val NavigationFragment = "2.5.0-alpha03"
+        const val NavigationUI = "2.5.0-alpha03"
         const val LifecycleExtensions = "2.2.0"
-        const val LegacySupport = "1.0.0"
         const val Browser = "1.4.0"
         const val Biometric = "1.2.0-alpha04"
         const val Work = "2.8.0-alpha01"
     }
 
     object UI {
-        const val MaterialComponents = "1.6.0-alpha02"
-        const val Coil = "2.0.0-alpha08"
+        const val MaterialComponents = "1.6.0-alpha03"
+        const val Coil = "2.0.0-rc01"
     }
 
     object DI {
@@ -48,8 +47,8 @@ object Versions {
     }
 
     object AndroidTest {
-        const val JunitExt = "1.1.4-alpha03"
-        const val Espresso = "3.5.0-alpha03"
+        const val JunitExt = "1.1.4-alpha04"
+        const val Espresso = "3.5.0-alpha04"
     }
 }
 
@@ -67,7 +66,6 @@ object Dependencies {
         "androidx.navigation:navigation-fragment-ktx:${Versions.AndroidX.NavigationFragment}",
         "androidx.navigation:navigation-ui-ktx:${Versions.AndroidX.NavigationUI}",
         "androidx.lifecycle:lifecycle-extensions:${Versions.AndroidX.LifecycleExtensions}",
-        "androidx.legacy:legacy-support-v4:${Versions.AndroidX.LegacySupport}",
         "androidx.browser:browser:${Versions.AndroidX.Browser}",
         "androidx.biometric:biometric:${Versions.AndroidX.Biometric}",
         "androidx.work:work-runtime-ktx:${Versions.AndroidX.Work}"
