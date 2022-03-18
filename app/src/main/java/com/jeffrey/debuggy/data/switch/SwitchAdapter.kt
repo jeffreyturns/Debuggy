@@ -15,30 +15,34 @@ import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.data.slot.instructionADBDisabledList
 import com.jeffrey.debuggy.data.slot.instructionHomeList
 import com.jeffrey.debuggy.databinding.ItemSwitchBinding
-import com.jeffrey.debuggy.ui.base.BaseViewHolder
+import com.jeffrey.debuggy.ui.base.holder.BaseViewHolder
 import com.jeffrey.debuggy.ui.home.HomeFragment
 import com.jeffrey.debuggy.ui.main.MainActivity
 import com.jeffrey.debuggy.util.ShapeAppearanceUtils
-import com.jeffrey.debuggy.util.extensions.getAttr
+import com.jeffrey.debuggy.util.system.getAttr
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class SwitchAdapter(private val context: Context, private val homeFragment: HomeFragment) :
     RecyclerView.Adapter<BaseViewHolder>(), KoinComponent {
 
-    private val preference: PreferencesHelper by inject()
+    private val preference by inject<PreferencesHelper>()
 
     val title
         get() = context.getString(
             if (preference.adbEnabled)
                 R.string.title_switch_adb_enabled else R.string.title_switch_adb_disabled
         )
+    var switch: SwitchMaterial? = null
+    var switchSurface: ConstraintLayout? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
         BaseViewHolder.create(parent, ItemSwitchBinding::inflate)
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         with(holder.binding as ItemSwitchBinding) {
+            switch = masterSwitch
+            switchSurface = masterSurface
             rootError.visibility = if (AppDebuggy.root) View.GONE else View.VISIBLE
 
             masterSwitch.isEnabled = AppDebuggy.root
@@ -87,6 +91,16 @@ class SwitchAdapter(private val context: Context, private val homeFragment: Home
                 changeColor(masterSurface, masterSwitch)
             }
         }
+    }
+
+    fun updateUI() {
+        if (preference.adbEnabled) homeFragment.instructionAdapter?.slotAdapter?.items =
+            instructionHomeList(context, preference.port)
+        else homeFragment.instructionAdapter?.slotAdapter?.items =
+            instructionADBDisabledList(context)
+        switch?.text = title
+        switch?.isChecked = preference.adbEnabled
+        changeColor(switchSurface!!, switch!!)
     }
 
     private fun changeColor(surface: ConstraintLayout, switchText: SwitchMaterial) {

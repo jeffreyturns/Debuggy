@@ -13,9 +13,9 @@ import com.jeffrey.debuggy.data.slot.SlotAction
 import com.jeffrey.debuggy.data.slot.descriptionAboutList
 import com.jeffrey.debuggy.data.slot.informationAboutList
 import com.jeffrey.debuggy.databinding.ItemAboutBinding
-import com.jeffrey.debuggy.ui.base.BaseViewHolder
+import com.jeffrey.debuggy.ui.base.holder.BaseViewHolder
 import com.jeffrey.debuggy.util.Utils
-import com.jeffrey.debuggy.util.extensions.addInsetPaddings
+import com.jeffrey.debuggy.util.view.addInsetPaddings
 
 class AboutAdapter(private val context: Context, fragment: Fragment) :
     RecyclerView.Adapter<BaseViewHolder>() {

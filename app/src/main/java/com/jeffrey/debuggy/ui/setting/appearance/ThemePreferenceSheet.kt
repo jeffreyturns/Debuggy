@@ -4,7 +4,7 @@ import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.DialogThemePreferenceBinding
 import com.jeffrey.debuggy.ui.base.fragment.BaseSheetFragment
-import com.jeffrey.debuggy.util.extensions.restartApp
+import com.jeffrey.debuggy.util.system.restartApp
 import org.koin.core.component.inject
 
 class ThemePreferenceSheet : BaseSheetFragment<DialogThemePreferenceBinding>(

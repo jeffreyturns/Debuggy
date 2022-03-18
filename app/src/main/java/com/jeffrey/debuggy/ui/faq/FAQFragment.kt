@@ -6,7 +6,7 @@ import com.jeffrey.debuggy.data.faq.faqList
 import com.jeffrey.debuggy.databinding.FragmentFaqBinding
 import com.jeffrey.debuggy.ui.base.fragment.BaseFragment
 import com.jeffrey.debuggy.util.TransitionUtils
-import com.jeffrey.debuggy.util.extensions.addInsetPaddings
+import com.jeffrey.debuggy.util.view.addInsetPaddings
 
 class FAQFragment : BaseFragment<FragmentFaqBinding>(FragmentFaqBinding::inflate) {
 

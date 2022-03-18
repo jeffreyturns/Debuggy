@@ -10,7 +10,7 @@ import com.jeffrey.debuggy.ui.base.callback.BaseCallback
 import com.jeffrey.debuggy.ui.base.callback.assign
 import com.jeffrey.debuggy.ui.base.fragment.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.Constants
-import com.jeffrey.debuggy.util.extensions.restartApp
+import com.jeffrey.debuggy.util.system.restartApp
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

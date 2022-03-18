@@ -1,4 +1,4 @@
-package com.jeffrey.debuggy.util.extensions
+package com.jeffrey.debuggy.util.view
 
 import android.os.Build
 import android.view.View

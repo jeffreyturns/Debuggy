@@ -5,7 +5,7 @@ import androidx.preference.Preference
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.ui.base.fragment.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.TransitionUtils
-import com.jeffrey.debuggy.util.extensions.navigate
+import com.jeffrey.debuggy.util.system.navigate
 
 class SettingsFragment : BasePreferenceFragmentCompat() {
 

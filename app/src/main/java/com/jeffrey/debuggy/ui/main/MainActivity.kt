@@ -20,10 +20,11 @@ import com.jeffrey.debuggy.data.authentication.AuthenticationManager
 import com.jeffrey.debuggy.data.notification.NotificationHelper
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.databinding.ActivityMainBinding
-import com.jeffrey.debuggy.ui.base.BaseActivity
+import com.jeffrey.debuggy.ui.base.activity.BaseActivity
 import com.jeffrey.debuggy.util.RootUtils
 import com.jeffrey.debuggy.util.Utils
-import com.jeffrey.debuggy.util.extensions.*
+import com.jeffrey.debuggy.util.system.*
+import com.jeffrey.debuggy.util.view.addInsetPaddings
 import com.jeffrey.debuggy.worker.TimeoutWorker
 import com.jeffrey.debuggy.worker.WorkerUtils
 import com.jeffrey.debuggy.worker.Workers

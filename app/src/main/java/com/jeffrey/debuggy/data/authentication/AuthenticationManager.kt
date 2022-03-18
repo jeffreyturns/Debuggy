@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import com.jeffrey.debuggy.util.extensions.toast
+import com.jeffrey.debuggy.util.system.toast
 
 object AuthenticationManager {
 

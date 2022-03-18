@@ -120,4 +120,6 @@
 
     <string name="title_biometric_prompt">Аутентификация действия</string>
     <string name="message_switch_root_unavailable">Функционал не доступен, так как вы отказали в доступе к рут-правам приложению</string>
+
+    <string name="message_disable_tcp">Отключить</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.jeffrey.debuggy.util.extensions
+package com.jeffrey.debuggy.util.system
 
 import android.content.Context
 import android.content.Intent

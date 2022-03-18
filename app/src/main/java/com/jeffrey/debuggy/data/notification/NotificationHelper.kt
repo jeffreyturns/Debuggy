@@ -1,79 +1,67 @@
 package com.jeffrey.debuggy.data.notification
 
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.util.Constants
-import com.jeffrey.debuggy.util.Utils
-import com.jeffrey.debuggy.util.extensions.getAttr
+import com.jeffrey.debuggy.util.system.getAttr
 
-class NotificationHelper(context: Context) {
+class NotificationHelper(private val context: Context) {
 
     private val notificationManager = NotificationManagerCompat.from(context)
 
-    fun createADBEnabledNotification(context: Context, intent: Intent) {
-
-        val notification = NotificationCompat.Builder(
+    fun create(model: BaseNotification): Notification {
+        return NotificationCompat.Builder(
             context,
-            Notifications.CHANNEL_ENABLE_ADB
-        ).setSmallIcon(R.drawable.ic_debuggy_notification_24dp)
-            .setOngoing(true)
-            .setColor(context.getAttr(R.attr.colorSecondary))
-            .setContentTitle(context.resources.getString(R.string.title_adb_enabled))
-            .setShowWhen(false)
-            .setContentText(
-                if (Utils.deviceIpv6Address != Constants.UNDEFINED_TEXT) context.resources.getString(
-                    R.string.content_adb_enabled,
-                    Utils.deviceIpv6Address
-                ) else context.getString(R.string.message_ip_unable_determine)
-            )
-            .setPriority(NotificationCompat.PRIORITY_LOW)
-            .setCategory(NotificationCompat.CATEGORY_SERVICE).setContentIntent(
-                PendingIntent.getActivity(
-                    context.applicationContext,
-                    0,
-                    intent,
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                        PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT else
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                )
-            )
-            .build()
+            model.channelId
+        ).apply {
+            setSmallIcon(R.drawable.ic_debuggy_notification_24dp)
+            color = context.getAttr(R.attr.colorPrimaryContainer)
+            setContentTitle(model.title)
+            setContentText(model.content)
+            priority = model.priority
 
-        this.notificationManager.notify(Notifications.ID_CREATE_ENABLED_ADB, notification)
+            when (model) {
+                is OngoingNotification -> {
+                    setOngoing(true)
+                    setShowWhen(model.isShowWhen)
+                }
+                is ExpandableNotification -> {
+                    setStyle(NotificationCompat.BigTextStyle().bigText(model.longText))
+                }
+                else -> {}
+            }
+
+            model.actions.forEach { (iconId, title, actionIntent) ->
+                addAction(iconId, title, actionIntent)
+            }
+        }.build()
     }
 
-    fun cancelADBEnabledNotification() {
-        this.notificationManager.cancel(Notifications.ID_CREATE_ENABLED_ADB)
-    }
+    fun show(id: Int, notification: BaseNotification) =
+        this.notificationManager.notify(id, create(notification))
+
+    fun cancel(id: Int) = this.notificationManager.cancel(id)
 
     companion object {
 
         fun createChannels(context: Context) {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
 
-            val channels = listOf(
+            val notificationManager =
+                context.getSystemService(NotificationManager::class.java) as NotificationManager
+
+            listOf(
                 NotificationChannel(
                     Notifications.CHANNEL_ENABLE_ADB,
                     context.getString(R.string.title_adb_enabled),
                     NotificationManager.IMPORTANCE_DEFAULT
                 )
-            )
-
-            val notificationManager =
-                context.getSystemService(NotificationManager::class.java) as NotificationManager
-
-            channels.forEach {
-                notificationManager.createNotificationChannel(
-                    it
-                )
-            }
+            ).forEach { notificationManager.createNotificationChannel(it) }
         }
     }
 }

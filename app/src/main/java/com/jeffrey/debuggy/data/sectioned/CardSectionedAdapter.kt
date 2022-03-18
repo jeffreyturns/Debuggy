@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jeffrey.debuggy.data.slot.Slot
 import com.jeffrey.debuggy.data.slot.SlotAdapter
 import com.jeffrey.debuggy.databinding.ItemCardSectionedBinding
-import com.jeffrey.debuggy.ui.base.BaseViewHolder
+import com.jeffrey.debuggy.ui.base.holder.BaseViewHolder
 
 class CardSectionedAdapter(
     private val data: List<Slot>,

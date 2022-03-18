@@ -8,7 +8,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.databinding.ItemSlotBinding
-import com.jeffrey.debuggy.ui.base.BaseViewHolder
+import com.jeffrey.debuggy.ui.base.holder.BaseViewHolder
 import com.jeffrey.debuggy.util.Utils
 
 class SocialAdapter(private val slot: List<Social>, private val context: Context) :

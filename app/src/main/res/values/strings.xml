@@ -121,4 +121,6 @@
 
     <string name="title_biometric_prompt">Action authentication</string>
     <string name="message_switch_root_unavailable">The functionality is not available, because you have denied access to the root-rights of the application</string>
+
+    <string name="message_disable_tcp">Disable</string>
 </resources>

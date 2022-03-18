@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jeffrey.debuggy.databinding.ItemSlotBinding
-import com.jeffrey.debuggy.ui.base.BaseViewHolder
+import com.jeffrey.debuggy.ui.base.holder.BaseViewHolder
 import com.jeffrey.debuggy.ui.base.recyclerview.UpdatableAdapter
 import com.jeffrey.debuggy.util.Constants
 import kotlin.properties.Delegates

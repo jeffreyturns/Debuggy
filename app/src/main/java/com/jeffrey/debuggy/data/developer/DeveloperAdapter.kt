@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.jeffrey.debuggy.data.social.SocialAdapter
 import com.jeffrey.debuggy.databinding.ItemDeveloperBinding
-import com.jeffrey.debuggy.ui.base.BaseViewHolder
+import com.jeffrey.debuggy.ui.base.holder.BaseViewHolder
 
 class DeveloperAdapter(
     private val slot: List<Developer>,

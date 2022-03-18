@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jeffrey.debuggy.data.developer.Developer
 import com.jeffrey.debuggy.data.developer.DeveloperAdapter
 import com.jeffrey.debuggy.databinding.ItemDeveloperCardBinding
-import com.jeffrey.debuggy.ui.base.BaseViewHolder
+import com.jeffrey.debuggy.ui.base.holder.BaseViewHolder
 
 class DeveloperCardAdapter(
     private val data: List<Developer>,

@@ -1,10 +1,11 @@
 package com.jeffrey.debuggy.worker
 
-import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import com.jeffrey.debuggy.util.system.LogLevel
+import com.jeffrey.debuggy.util.system.writeLog
 
 object WorkerUtils {
 
@@ -18,7 +19,7 @@ object WorkerUtils {
             request
         ).enqueue().state
             .observe(lifecycleOwner) { state ->
-                Log.d("WorkerHelper", "${request.javaClass.canonicalName} status: $state")
+                writeLog(LogLevel.DEBUG, "${request.javaClass.canonicalName} status: $state")
             }
     }
 

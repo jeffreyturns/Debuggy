@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
 import com.jeffrey.debuggy.BuildConfig
 import com.jeffrey.debuggy.R
-import com.jeffrey.debuggy.util.extensions.Level
-import com.jeffrey.debuggy.util.extensions.writeLog
+import com.jeffrey.debuggy.util.system.LogLevel
+import com.jeffrey.debuggy.util.system.writeLog
 import java.net.NetworkInterface
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,10 +34,10 @@ object Utils {
                         }
                     }
                 } catch (e: Exception) {
-                    writeLog(Level.ERROR, "Cannot get IP address using NetworkInterface", e)
+                    writeLog(LogLevel.ERROR, "Cannot get IP address using NetworkInterface", e)
                 }
             } catch (e: Exception) {
-                writeLog(Level.ERROR, "Cannot get IP address", e)
+                writeLog(LogLevel.ERROR, "Cannot get IP address", e)
             }
             return if (ip.toString().length > 13) Constants.UNDEFINED_TEXT else ip.toString()
         }

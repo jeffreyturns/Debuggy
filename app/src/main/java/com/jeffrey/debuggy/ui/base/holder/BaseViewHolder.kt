@@ -1,4 +1,4 @@
-package com.jeffrey.debuggy.ui.base
+package com.jeffrey.debuggy.ui.base.holder
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
