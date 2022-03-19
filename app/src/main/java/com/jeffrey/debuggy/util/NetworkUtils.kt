@@ -7,6 +7,7 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Build
+import com.jeffrey.debuggy.util.system.launchUI
 
 object NetworkUtils {
 
@@ -50,14 +51,14 @@ object NetworkUtils {
             object : ConnectivityManager.NetworkCallback() {
 
                 override fun onAvailable(network: Network) {
-                    (context as Activity).runOnUiThread {
+                    launchUI {
                         if (isOverWIFI(context))
                             onAvailable()
                     }
                 }
 
                 override fun onLost(network: Network) {
-                    (context as Activity).runOnUiThread {
+                    launchUI {
                         if (isOverWIFI(context))
                             onLost()
                     }

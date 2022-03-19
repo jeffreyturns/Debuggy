@@ -5,10 +5,13 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsIntent.COLOR_SCHEME_SYSTEM
 import com.jeffrey.debuggy.BuildConfig
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.util.system.LogLevel
+import com.jeffrey.debuggy.util.system.getAttr
 import com.jeffrey.debuggy.util.system.writeLog
 import java.net.NetworkInterface
 import java.text.SimpleDateFormat
@@ -74,9 +77,17 @@ object Utils {
         context: Context,
         url: String
     ) {
-        val intentBuilder = CustomTabsIntent.Builder()
-        val customTabsIntent = intentBuilder.build()
-        customTabsIntent.launchUrl(context, Uri.parse(url))
+        val intentBuilder = CustomTabsIntent.Builder().apply {
+            setShowTitle(true)
+
+            val scheme = CustomTabColorSchemeParams.Builder().apply {
+                setNavigationBarColor(context.getAttr(R.attr.colorSurface))
+                setToolbarColor(context.getAttr(R.attr.colorSurface))
+            }.build()
+            setDefaultColorSchemeParams(scheme)
+        }.build()
+
+        intentBuilder.launchUrl(context, Uri.parse(url))
     }
 
     fun getCurrentReleaseUrl(): String {
