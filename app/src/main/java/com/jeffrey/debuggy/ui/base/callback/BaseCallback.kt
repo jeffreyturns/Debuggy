@@ -5,10 +5,12 @@ package com.jeffrey.debuggy.ui.base.callback
  */
 interface BaseCallback {
 
-    val action: () -> Unit
+    val action: Action
 
     val callback: Unit
         get() {
             return action.invoke()
         }
 }
+
+typealias Action = () -> Unit
