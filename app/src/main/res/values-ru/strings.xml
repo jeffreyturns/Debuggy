@@ -30,6 +30,7 @@
     <string name="title_switch_adb_unavailable">ADB недоступен</string>
 
     <string name="summary_connect_to_device">Подключите это устройство и компьютер к одной сети WI-FI</string>
+    <string name="summary_run_command_def_port">На ПК запустите команду: adb connect %1$s</string>
     <string name="summary_run_command">На ПК запустите команду: adb connect %1$s:%2$s</string>
     <string name="message_ip_unable_determine">Невозможно определить IP-адрес. Проверьте ваше WI-FI соединение.</string>
     <string name="message_instruction_when_adb_enabled">Для отображения инструкций включите ADB</string>
@@ -57,6 +58,8 @@
     <string name="action_cancel">Отмена</string>
     <string name="action_reset">Сбросить</string>
     <string name="action_ok">OK</string>
+    <string name="action_yes">Да</string>
+    <string name="action_undo">Отменить</string>
 
     <string name="title_set_custom_port">Установить пользовательский порт</string>
     <string name="summary_port">Порт</string>
@@ -122,4 +125,7 @@
     <string name="message_switch_root_unavailable">Функционал не доступен, так как вы отказали в доступе к рут-правам приложению</string>
 
     <string name="message_disable_tcp">Отключить</string>
+    <string name="message_soft_restart">Вы уверены?</string>
+
+    <string name="message_port_reset">ADBD порт сброшен</string>
 </resources>

@@ -15,8 +15,8 @@ class PortPreferenceSheet : BaseSheetFragment<DialogPortPreferenceBinding>(
 
     override fun setUpViews() {
         binding.actionReset.setOnClickListener {
-            preference.port = PreferenceKeys.DEF_VAL_CUSTOM_PORT
-            (parentFragment as GeneralSettingsFragment?)?.callback
+//            preference.port = PreferenceKeys.DEF_VAL_CUSTOM_PORT
+            (parentFragment as GeneralSettingsFragment?)?.undo()
             dismiss()
         }
         binding.actionCancel.setOnClickListener { dismiss() }

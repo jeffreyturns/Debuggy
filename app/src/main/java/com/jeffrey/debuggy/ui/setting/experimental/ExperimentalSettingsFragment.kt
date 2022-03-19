@@ -6,6 +6,8 @@ import com.jeffrey.debuggy.AppDebuggy
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.ui.base.fragment.BasePreferenceFragmentCompat
 import com.jeffrey.debuggy.util.RootUtils
+import com.jeffrey.debuggy.util.view.action
+import com.jeffrey.debuggy.util.view.snack
 
 class ExperimentalSettingsFragment : BasePreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -19,7 +21,9 @@ class ExperimentalSettingsFragment : BasePreferenceFragmentCompat() {
         }
 
         softRestart.setOnPreferenceClickListener {
-            RootUtils.softRestart()
+            requireActivity().snack(requireActivity().getString(R.string.message_soft_restart)) {
+                action(requireActivity().getString(R.string.action_yes)) { RootUtils.softRestart() }
+            }
             true
         }
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.provider.Settings
 import com.jeffrey.debuggy.AppDebuggy
 import com.jeffrey.debuggy.R
+import com.jeffrey.debuggy.data.preference.PreferenceKeys
 import com.jeffrey.debuggy.ui.setting.about.LibrariesAction
 import com.jeffrey.debuggy.util.Constants
 import com.jeffrey.debuggy.util.Utils
@@ -59,11 +60,17 @@ fun instructionHomeList(context: Context, port: String): List<Slot> {
             summary = context.resources.getString(R.string.summary_connect_to_device)
         ),
         Slot(
-            summary = if (Utils.deviceIpv6Address != Constants.UNDEFINED_TEXT) context.resources.getString(
-                R.string.summary_run_command,
-                Utils.deviceIpv6Address,
-                port
-            ) else context.getString(R.string.message_ip_unable_determine)
+            summary = if (Utils.deviceIpv6Address != Constants.UNDEFINED_TEXT)
+                if (port != PreferenceKeys.DEF_VAL_CUSTOM_PORT) context.resources.getString(
+                    R.string.summary_run_command,
+                    Utils.deviceIpv6Address,
+                    port
+                )
+                else context.resources.getString(
+                    R.string.summary_run_command_def_port,
+                    Utils.deviceIpv6Address
+                )
+            else context.getString(R.string.message_ip_unable_determine)
         )
     )
 }

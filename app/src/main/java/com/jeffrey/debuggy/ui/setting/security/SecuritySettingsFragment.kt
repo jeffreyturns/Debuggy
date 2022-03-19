@@ -6,6 +6,7 @@ import androidx.preference.SwitchPreference
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.authentication.AuthenticationManager
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
+import com.jeffrey.debuggy.ui.base.callback.Action
 import com.jeffrey.debuggy.ui.base.callback.BaseCallback
 import com.jeffrey.debuggy.ui.base.callback.assign
 import com.jeffrey.debuggy.ui.base.fragment.BasePreferenceFragmentCompat
@@ -17,7 +18,7 @@ class SecuritySettingsFragment : BasePreferenceFragmentCompat(), KoinComponent, 
 
     private val preference: PreferencesHelper by inject()
 
-    override val action: () -> Unit = {
+    override val action: Action = {
         assign {
             val adbAfterWhile: Preference = findPreference("adb_after_while")!!
             adbAfterWhile.summary = when (preference.adbAfterWhile) {
