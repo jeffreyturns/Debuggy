@@ -47,7 +47,8 @@
     <string name="summary_about">Версия, журнал изменений, F.A.Q, обновления</string>
 
     <string name="title_adb_enabled">Отладка по сети включена</string>
-    <string name="content_adb_enabled">"Доступна на: %1$s:5555"</string>
+    <string name="content_adb_enabled">"Доступна на: %1$s:%2$s"</string>
+    <string name="content_adb_enabled_def_port">"Доступна на: %1$s"</string>
 
     <string name="message_action_unavailable">Это действие доступно только с рут</string>
 

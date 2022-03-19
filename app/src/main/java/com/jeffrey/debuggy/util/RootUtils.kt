@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.core.app.NotificationCompat
 import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.notification.*
+import com.jeffrey.debuggy.data.preference.PreferenceKeys
 import com.jeffrey.debuggy.util.system.LogLevel
 import com.jeffrey.debuggy.util.system.writeLog
 import java.io.BufferedReader
@@ -52,10 +53,15 @@ object RootUtils {
             OngoingNotification(
                 Notifications.CHANNEL_ENABLE_ADB,
                 context.resources.getString(R.string.title_adb_enabled),
-                if (Utils.deviceIpv6Address != Constants.UNDEFINED_TEXT) context.resources.getString(
-                    R.string.content_adb_enabled,
-                    Utils.deviceIpv6Address
-                ) else context.getString(R.string.message_ip_unable_determine),
+                if (Utils.deviceIpv6Address != Constants.UNDEFINED_TEXT)
+                    if (port != PreferenceKeys.DEF_VAL_CUSTOM_PORT) context.resources.getString(
+                        R.string.content_adb_enabled,
+                        Utils.deviceIpv6Address,
+                        port
+                    ) else context.resources.getString(
+                        R.string.content_adb_enabled_def_port,
+                        Utils.deviceIpv6Address
+                    ) else context.getString(R.string.message_ip_unable_determine),
                 NotificationCompat.PRIORITY_LOW,
                 false,
                 listOf(

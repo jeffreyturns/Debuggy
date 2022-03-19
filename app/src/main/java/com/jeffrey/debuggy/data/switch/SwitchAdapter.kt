@@ -19,7 +19,9 @@ import com.jeffrey.debuggy.ui.base.holder.BaseViewHolder
 import com.jeffrey.debuggy.ui.home.HomeFragment
 import com.jeffrey.debuggy.ui.main.MainActivity
 import com.jeffrey.debuggy.util.ShapeAppearanceUtils
+import com.jeffrey.debuggy.util.system.LogLevel
 import com.jeffrey.debuggy.util.system.getAttr
+import com.jeffrey.debuggy.util.system.writeLog
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -100,7 +102,11 @@ class SwitchAdapter(private val context: Context, private val homeFragment: Home
             instructionADBDisabledList(context)
         switch?.text = title
         switch?.isChecked = preference.adbEnabled
-        changeColor(switchSurface!!, switch!!)
+        try {
+            changeColor(switchSurface!!, switch!!)
+        } catch (e: NullPointerException) {
+            writeLog(LogLevel.ERROR, "View not must be null", e)
+        }
     }
 
     private fun changeColor(surface: ConstraintLayout, switchText: SwitchMaterial) {

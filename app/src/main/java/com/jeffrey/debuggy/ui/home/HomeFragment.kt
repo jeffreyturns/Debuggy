@@ -19,8 +19,8 @@ import com.jeffrey.debuggy.data.switch.SwitchAdapter
 import com.jeffrey.debuggy.databinding.FragmentHomeBinding
 import com.jeffrey.debuggy.ui.base.fragment.BaseFragment
 import com.jeffrey.debuggy.util.TransitionUtils
-import com.jeffrey.debuggy.util.view.addInsetPaddings
 import com.jeffrey.debuggy.util.system.navigate
+import com.jeffrey.debuggy.util.view.addInsetPaddings
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
@@ -69,6 +69,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             informationAdapter,
             instructionAdapter
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        switchAdapter?.updateUI()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
