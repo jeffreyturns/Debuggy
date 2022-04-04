@@ -12,14 +12,25 @@ Application for enable android debug bride over network with some additional fea
 * Material 3 full support
 ![material3](.github/images/monet.png) -->
 
+<p align="center">
+  <img src="./.github/images/header.png" alt="Debuggy">
+</p>
 
-<img src="./.github/images/header.png" />
+<p align="center">
+  Debuggy is application for enable android debug bride over network with some additional features.
+<p>
 
-# Debuggy
-
-[![License: APACHE 2.0](https://img.shields.io/github/license/Jeffrey01596/Debuggy?color=D22128&logo=apache)](https://www.apache.org/licenses/LICENSE-2.0)  [![Release](https://img.shields.io/github/v/release/Jeffrey01596/Debuggy?label=Release&logo=github)](https://github.com/Jeffrey01596/Debuggy/releases)  [![APK Downloads](https://img.shields.io/github/downloads/jeffrey01596/Debuggy/total.svg?label=APK%20Downloads&logo=github)](https://github.com/Jeffrey01596/Debuggy/releases)
-
-Application for enable android debug bride over network with some additional features.
+<p align="center">
+  <a href="https://github.com/Jeffrey01596/Debuggy/releases">
+    <img src="https://img.shields.io/github/v/release/Jeffrey01596/Debuggy?label=Release&logo=github" alt="Release">
+  </a>
+  <a href="https://github.com/Jeffrey01596/argente-icons/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/Jeffrey01596/Debuggy?color=D22128&logo=apache" alt="License">
+  </a>
+  <a href="https://github.com/Jeffrey01596/Debuggy/releases">
+    <img src="https://img.shields.io/github/downloads/jeffrey01596/Debuggy/total.svg?label=APK%20Downloads&logo=github" alt="APK Downloads">
+  </a>  
+</p>
 
 ## Download
 
