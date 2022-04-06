@@ -42,7 +42,7 @@ object Utils {
             } catch (e: Exception) {
                 writeLog(LogLevel.ERROR, "Cannot get IP address", e)
             }
-            return if (ip.toString().length > 13) Constants.UNDEFINED_TEXT else ip.toString()
+            return if (ip.toString().length > 15) Constants.UNDEFINED_TEXT else ip.toString()
         }
 
     fun getADBOverUSBStatus(context: Context): Boolean {
