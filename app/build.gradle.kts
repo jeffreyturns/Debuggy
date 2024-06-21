@@ -9,11 +9,13 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     defaultConfig {
         buildConfigField("long", "BUILD_TIME", "${System.currentTimeMillis()}L")
 
+        namespace = "com.jeffrey.debuggy"
         applicationId = "com.jeffrey.debuggy"
         minSdk = Application.minSdk
         targetSdk = Application.targetSdk
