@@ -29,8 +29,8 @@ inline fun Context.snack(
     Snackbar.make(contentView, message, length).apply {
         animationMode = Snackbar.ANIMATION_MODE_SLIDE
         setBackgroundTint(SurfaceColors.SURFACE_3.getColor(context))
-        setTextColor(context.getAttr(R.attr.colorOnSurface))
-        setActionTextColor(context.getAttr(R.attr.colorPrimary))
+        setTextColor(context.getAttr(com.google.android.material.R.attr.colorOnSurface))
+        setActionTextColor(context.getAttr(com.google.android.material.R.attr.colorPrimary))
         action()
         show()
     }

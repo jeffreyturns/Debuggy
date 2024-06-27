@@ -2,22 +2,22 @@ import org.gradle.api.JavaVersion
 
 object Application {
     const val minSdk = 22
-    const val targetSdk = 31
-    const val compileSdk = 31
-    const val jvmTarget = "1.8"
+    const val targetSdk = 34
+    const val compileSdk = 34
+    const val jvmTarget = "17"
     const val versionCode = 3
     const val versionName = "2.0.0"
 
-    val targetCompat = JavaVersion.VERSION_1_8
-    val sourceCompat = JavaVersion.VERSION_1_8
+    val targetCompat = JavaVersion.VERSION_17
+    val sourceCompat = JavaVersion.VERSION_17
 }
 
 object Versions {
     object Essential {
-        const val Kotlin = "1.5.30"
-        const val Ktx = "1.9.0-alpha01"
+        const val Kotlin = "2.0.0"
+        const val Ktx = "1.13.1"
         const val Coroutines = "1.6.0"
-        const val Gradle = "7.1.2"
+        const val Gradle = "8.2.2"
     }
 
     object AndroidX {
@@ -34,7 +34,7 @@ object Versions {
     }
 
     object UI {
-        const val MaterialComponents = "1.6.0-alpha03"
+        const val MaterialComponents = "1.12.0"
         const val Coil = "2.0.0-rc01"
     }
 

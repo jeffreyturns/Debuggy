@@ -11,9 +11,11 @@ import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.*
+import androidx.lifecycle.Lifecycle
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.jeffrey.debuggy.R
 import com.jeffrey.debuggy.data.preference.PreferencesHelper
 import com.jeffrey.debuggy.util.Utils
 import com.jeffrey.debuggy.util.aliases.FragmentInflate
@@ -46,13 +48,12 @@ abstract class BaseSheetFragment<VB : ViewBinding>(
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = object : BottomSheetDialog(requireContext(), theme) {
+
             override fun onAttachedToWindow() {
                 super.onAttachedToWindow()
 
-                val container =
-                    findViewById<FrameLayout>(com.google.android.material.R.id.container)
-                val coordinator =
-                    findViewById<CoordinatorLayout>(com.google.android.material.R.id.coordinator)
+                val container = findViewById<FrameLayout>(R.id.container)
+                val coordinator = findViewById<CoordinatorLayout>(com.google.android.material.R.id.coordinator)
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     if (!Utils.isDarkMode(context, theme)) {
@@ -70,28 +71,33 @@ abstract class BaseSheetFragment<VB : ViewBinding>(
 
                     container?.apply {
                         fitsSystemWindows = false
-                        val topMargin = marginTop
+                        val topMargin = (layoutParams as? ViewGroup.MarginLayoutParams)?.topMargin ?: 0
                         ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
-                            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                                updateMargins(top = topMargin + insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
-                            }
+                            val newTopMargin = topMargin + insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
+                            val layoutParams = view.layoutParams as? ViewGroup.MarginLayoutParams
+                            layoutParams?.topMargin = newTopMargin
+                            view.layoutParams = layoutParams
                             insets
                         }
                     }
 
-                    coordinator?.fitsSystemWindows =
-                        false
+                    coordinator?.fitsSystemWindows = false
                 }
             }
         }
+
         dialog.window?.let {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 WindowCompat.setDecorFitsSystemWindows(it, false)
                 it.navigationBarColor = Color.TRANSPARENT
                 ViewCompat.setOnApplyWindowInsetsListener(it.decorView) { view, insets ->
-                    val navigationInsets =
-                        insets.getInsets(WindowInsetsCompat.Type.navigationBars())
-                    view.updatePadding(left = navigationInsets.left, right = navigationInsets.right)
+                    val navigationInsets = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+                    view.setPadding(
+                        navigationInsets.left,
+                        view.paddingTop,
+                        navigationInsets.right,
+                        view.paddingBottom
+                    )
                     insets
                 }
             }

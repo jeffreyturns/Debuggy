@@ -20,7 +20,7 @@ class NotificationHelper(private val context: Context) {
             model.channelId
         ).apply {
             setSmallIcon(R.drawable.ic_debuggy_notification_24dp)
-            color = context.getAttr(R.attr.colorPrimaryContainer)
+            color = context.getAttr(com.google.android.material.R.attr.colorPrimaryContainer)
             setContentTitle(model.title)
             setContentText(model.content)
             priority = model.priority

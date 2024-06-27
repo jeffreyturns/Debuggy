@@ -52,21 +52,21 @@ class SwitchAdapter(private val context: Context, private val homeFragment: Home
             if (AppDebuggy.root) {
                 masterSurface.setBackgroundColor(
                     if (preference.adbEnabled) context.getAttr(
-                        R.attr.colorPrimaryContainer
+                        com.google.android.material.R.attr.colorPrimaryContainer
                     ) else context.getAttr(
-                        R.attr.colorSurfaceVariant
+                        com.google.android.material.R.attr.colorSurfaceVariant
                     )
                 )
                 masterSwitch.setTextColor(
                     if (preference.adbEnabled) context.getAttr(
-                        R.attr.colorOnPrimaryContainer
+                        com.google.android.material.R.attr.colorOnPrimaryContainer
                     ) else context.getAttr(
-                        R.attr.colorOnSurfaceVariant
+                        com.google.android.material.R.attr.colorOnSurfaceVariant
                     )
                 )
             } else {
-                masterCard.setCardBackgroundColor(context.getAttr(R.attr.colorErrorContainer))
-                masterSwitch.setTextColor(context.getAttr(R.attr.colorOnErrorContainer))
+                masterCard.setCardBackgroundColor(context.getAttr(com.google.android.material.R.attr.colorErrorContainer))
+                masterSwitch.setTextColor(context.getAttr(com.google.android.material.R.attr.colorOnErrorContainer))
                 errorRootCard.shapeAppearanceModel = ShapeAppearanceUtils.getBottomShape(context)
                 masterCard.shapeAppearanceModel = ShapeAppearanceUtils.getTopShape(context)
                 masterSwitch.thumbTintList = ContextCompat.getColorStateList(
@@ -111,21 +111,21 @@ class SwitchAdapter(private val context: Context, private val homeFragment: Home
 
     private fun changeColor(surface: ConstraintLayout, switchText: SwitchMaterial) {
         val fromColorContainer =
-            if (preference.adbEnabled) context.getAttr(R.attr.colorPrimaryContainer) else context.getAttr(
-                R.attr.colorSurfaceVariant
+            if (preference.adbEnabled) context.getAttr(com.google.android.material.R.attr.colorPrimaryContainer) else context.getAttr(
+                com.google.android.material.R.attr.colorSurfaceVariant
             )
         val toColorContainer =
-            if (!preference.adbEnabled) context.getAttr(R.attr.colorPrimaryContainer) else context.getAttr(
-                R.attr.colorSurfaceVariant
+            if (!preference.adbEnabled) context.getAttr(com.google.android.material.R.attr.colorPrimaryContainer) else context.getAttr(
+                com.google.android.material.R.attr.colorSurfaceVariant
             )
 
         val fromColorText =
-            if (preference.adbEnabled) context.getAttr(R.attr.colorOnPrimaryContainer) else context.getAttr(
-                R.attr.colorOnSurfaceVariant
+            if (preference.adbEnabled) context.getAttr(com.google.android.material.R.attr.colorOnPrimaryContainer) else context.getAttr(
+                com.google.android.material.R.attr.colorOnSurfaceVariant
             )
         val toColorText =
-            if (!preference.adbEnabled) context.getAttr(R.attr.colorOnPrimaryContainer) else context.getAttr(
-                R.attr.colorOnSurfaceVariant
+            if (!preference.adbEnabled) context.getAttr(com.google.android.material.R.attr.colorOnPrimaryContainer) else context.getAttr(
+                com.google.android.material.R.attr.colorOnSurfaceVariant
             )
 
         val colorAnimationText: ValueAnimator =

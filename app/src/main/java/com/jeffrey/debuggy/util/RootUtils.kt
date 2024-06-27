@@ -16,8 +16,9 @@ object RootUtils {
 
     val daemonStatus: String
         get() {
-            val exec = Runtime.getRuntime().exec("su")
             try {
+                val exec = Runtime.getRuntime().exec("su")
+
                 val dataOutputStream = DataOutputStream(exec.outputStream)
                 val reader = BufferedReader(
                     InputStreamReader(exec.inputStream)

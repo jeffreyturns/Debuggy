@@ -81,8 +81,8 @@ object Utils {
             setShowTitle(true)
 
             val scheme = CustomTabColorSchemeParams.Builder().apply {
-                setNavigationBarColor(context.getAttr(R.attr.colorSurface))
-                setToolbarColor(context.getAttr(R.attr.colorSurface))
+                setNavigationBarColor(context.getAttr(com.google.android.material.R.attr.colorSurface))
+                setToolbarColor(context.getAttr(com.google.android.material.R.attr.colorSurface))
             }.build()
             setDefaultColorSchemeParams(scheme)
         }.build()
